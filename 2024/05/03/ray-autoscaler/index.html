@@ -28,14 +28,14 @@
 <meta property="og:site_name" content="Leo&#39;s Blog">
 <meta property="og:description" content="1 简介Autoscaler：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。 2 Autoscaler 能力GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gyhaoran.github.io/.io//autoscaler.png">
-<meta property="og:image" content="https://gyhaoran.github.io/.io//scheduler.webp">
+<meta property="og:image" content="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/autoscaler.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/scheduler.webp">
 <meta property="article:published_time" content="2024-05-03T13:49:29.000Z">
 <meta property="article:modified_time" content="2024-07-06T13:46:26.367Z">
 <meta property="article:author" content="Leo Ge">
 <meta property="article:tag" content="Linux, C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gyhaoran.github.io/.io//autoscaler.png">
+<meta name="twitter:image" content="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/autoscaler.png">
 
 
 <link rel="canonical" href="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/">
@@ -296,7 +296,7 @@
     
     <div class="post-body" itemprop="articleBody"><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p><strong>Autoscaler</strong>：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。</p>
 <h2 id="2-Autoscaler-能力"><a href="#2-Autoscaler-能力" class="headerlink" title="2 Autoscaler 能力"></a>2 Autoscaler 能力</h2><p>GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，<strong>GCS 会每隔 100ms 从所有的注册到自己的 raylets 去拉取最新的资源使用情况的视图，也会间隔 100ms 去广播给其它的 raylets。</strong> 同时 GCS 也会为 Autoscaler 组件提供当前集群的负载的数据，以帮助 Autoscaler 去判断什么时候给集群增加机器和从集群中移除机器。</p>
-<p><img src="/.io//autoscaler.png" alt="ray autoscaler"></p>
+<p><img src="/2024/05/03/ray-autoscaler/autoscaler.png" alt="ray autoscaler"></p>
 <p>Ray Autoscaler 负责从集群中添加和删除节点。它查看分布式调度器公开的逻辑资源需求、集群中当前的节点、集群的节点配置文件， 计算所需的集群配置，并执行将集群移动到所需状态的操作。<strong>Autoscaler 会从 GCS 中去拉取当前集群的负载情况，然后调用云厂商的实现去添加和移除节点。</strong></p>
 <hr>
 <p><strong>自动扩缩容的主要工作包含以下几点</strong>：</p>
@@ -312,7 +312,7 @@
 <li><p>当新的节点启动了，也注册到 Ray 的集群中了，这些节点就可以接收应用的工作负载了。</p>
 </li>
 </ul>
-<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/.io//scheduler.webp" alt="scheduler"></p>
+<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/2024/05/03/ray-autoscaler/scheduler.webp" alt="scheduler"></p>
 <p>当资源请求 (i.e RequestWorkerLease PRC) 被 raylet 接受之后, 整个过程就如上图的状态机一样，<strong>主要包含三个状态:</strong></p>
 <ol>
 <li><strong>Granted</strong>: 在这个状态下，client 是可以使用申请的资源和 raylet 返回来的对应的 worker 去运行 actor 和 task 的。</li>

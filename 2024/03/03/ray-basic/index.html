@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="Leo&#39;s Blog">
 <meta property="og:description" content="什么是 Ray？Ray 是一个开源框架，专为构建可扩展的分布式应用程序而设计，旨在通过提供简单直观的 API，简化分布式计算的复杂性，让开发者能够便捷高效地编写并行和分布式 Python 应用程序。 Ray 的统一计算框架由三层组成： Ray AI libraries一个开源、Python 语言的特定领域库集，为 ML 工程师、数据科学家和研究人员提供了一个可扩展且统一的 ML 应用程序工具包。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gyhaoran.github.io/.io//map-of-ray.svg">
-<meta property="og:image" content="https://gyhaoran.github.io/.io//ray-core.png">
-<meta property="og:image" content="https://gyhaoran.github.io/.io//ray-cluster.svg">
+<meta property="og:image" content="https://gyhaoran.github.io/2024/03/03/ray-basic/map-of-ray.svg">
+<meta property="og:image" content="https://gyhaoran.github.io/2024/03/03/ray-basic/ray-core.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2024/03/03/ray-basic/ray-cluster.svg">
 <meta property="article:published_time" content="2024-03-03T13:49:29.000Z">
-<meta property="article:modified_time" content="2024-07-06T13:26:43.181Z">
+<meta property="article:modified_time" content="2024-07-07T12:32:15.380Z">
 <meta property="article:author" content="Leo Ge">
 <meta property="article:tag" content="Linux, C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gyhaoran.github.io/.io//map-of-ray.svg">
+<meta name="twitter:image" content="https://gyhaoran.github.io/2024/03/03/ray-basic/map-of-ray.svg">
 
 
 <link rel="canonical" href="https://gyhaoran.github.io/2024/03/03/ray-basic/">
@@ -238,7 +238,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-06 21:26:43" itemprop="dateModified" datetime="2024-07-06T21:26:43+08:00">2024-07-06</time>
+      <time title="修改时间：2024-07-07 20:32:15" itemprop="dateModified" datetime="2024-07-07T20:32:15+08:00">2024-07-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -300,16 +300,16 @@
 <h3 id="Ray-AI-libraries"><a href="#Ray-AI-libraries" class="headerlink" title="Ray AI libraries"></a>Ray AI libraries</h3><p>一个开源、Python 语言的特定领域库集，为 ML 工程师、数据科学家和研究人员提供了一个可扩展且统一的 ML 应用程序工具包。</p>
 <h3 id="Ray-Core"><a href="#Ray-Core" class="headerlink" title="Ray Core"></a>Ray Core</h3><p>一个开源的 Python 通用分布式计算库，使机器学习工程师和 Python 开发人员能够扩展 Python 应用程序并加速机器学习工作负载。</p>
 <h3 id="Ray-Cluster"><a href="#Ray-Cluster" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h3><p>Ray 集群由一个 Head 节点（负责协调和管理整个 Ray 集群，以及运行 Ray 的一些关键的全局服务）和若干个 Worker 节点（实际执行计算任务的节点，可以自动伸缩以适应工作负载的资源需求变化）组成，Worker 节点连接到 Head 节点。Ray 集群可以部署在物理机、虚拟机、Kubernetes 以及各种云环境之上。</p>
-<p><img src="/.io//map-of-ray.svg" alt="ray-framework"></p>
+<p><img src="/2024/03/03/ray-basic/map-of-ray.svg" alt="ray-framework"></p>
 <h2 id="Ray-Core-1"><a href="#Ray-Core-1" class="headerlink" title="Ray Core"></a>Ray Core</h2><p>Ray Core 包含以下三个核心概念：</p>
 <h3 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h3><p>Ray 支持在独立的 Python 工作线程中异步执行任意函数，这些可异步执行的函数称作“任务（Task）”。开发者能够为每个任务配置所需的 CPU、GPU 及其他自定义资源。Ray 集群调度器会根据这些资源请求在集群中合理调度任务，从而实现高效并行处理。</p>
 <h3 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h3><p>参与者（Actor）将 Ray API 从函数（即任务）扩展到类。参与者本质上是一个有状态的工作实体（或服务）。每当一个新的参与者被实例化时，将创建一个新的工作线程，并将该参与者调度到该特定的工作线程上，并且可以访问和改变该工作线程的状态。与任务一样，参与者也支持 CPU、GPU 和自定义资源需求。</p>
 <h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>在 Ray 中，任务和参与者在对象（Objects）上创建和计算。我们将这些对象称为远程对象（remote objects），因为它们可以存储在 Ray 集群中的任何位置，并且我们使用 objects ref 来引用它们。远程对象缓存在 Ray 的分布式共享内存的对象存储中，并且集群中的每个节点都有一个对象存储。在 Ray 集群设置中，一个远程对象可以驻留在一个或多个节点上，与谁持有 objects ref 无关。</p>
-<p><img src="/.io//ray-core.png" alt="ray core"></p>
+<p><img src="/2024/03/03/ray-basic/ray-core.png" alt="ray core"></p>
 <h2 id="Ray-Cluster-1"><a href="#Ray-Cluster-1" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h2><p>Ray Cluster 的基本架构如下图所示。一个 Ray 集群由一个 Head 节点和若干个 Worker 节点组成，Worker 节点通过网络连接到 Head 节点，进行协同和通信。</p>
 <p>Head 节点主要负责运行 Ray 集群管理相关的控制进程（以蓝色突出显示），例如 Autoscaler、GCS，以及负责运行 Ray 作业的 Driver processes。除此之外，主节点与其他 Worker 节点无异，Ray 可以像任何其他 Worker 节点一样在 Head 节点上调度任务。</p>
 <p><strong>Worker 节点则专注于执行 Ray 作业中用户的应用程序代码</strong>，不运行任何 Head 节点中的控制和管理进程。它们参与分布式调度，以及 Ray Objects 在集群内存中的存储和分发。</p>
-<p><img src="/.io//ray-cluster.svg" alt="ray cluster"></p>
+<p><img src="/2024/03/03/ray-basic/ray-cluster.svg" alt="ray cluster"></p>
 <p>要在生产环境中跨多台机器部署 Ray，首要步骤是部署一个由 Head 节点和 Worker 节点（Ray 节点在 Kubernetes 上运行时实现为 pod）构成的 Ray 集群。该集群支持通过 Ray 自带的 autoscaler 功能实现弹性扩缩。</p>
 
     </div>

@@ -228,7 +228,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-06 21:42:41" itemprop="dateModified" datetime="2024-07-06T21:42:41+08:00">2024-07-06</time>
+      <time title="修改时间：2024-07-07 20:32:51" itemprop="dateModified" datetime="2024-07-07T20:32:51+08:00">2024-07-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,7 +279,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="Ray-如何提交-Job"><a href="#Ray-如何提交-Job" class="headerlink" title="Ray 如何提交 Job"></a>Ray 如何提交 Job</h2><p><img src="/.io//ray-job.png" alt="ray job"></p>
+          <h2 id="Ray-如何提交-Job"><a href="#Ray-如何提交-Job" class="headerlink" title="Ray 如何提交 Job"></a>Ray 如何提交 Job</h2><p><img src="/2024/06/06/ray-job/ray-job.png" alt="ray job"></p>
 <p>在 Ray 中，Actor 和 Task 是归属于一个 Job 的，所以要运行真正的 code，需要提交 Job。Job 提交的时候可以通过** CLI、Python SDK、或者 REST API <strong>去提交，</strong>提交的入口是 Head 节点**。</p>
 <p>Head 节点中有 Job 提交的 api 服务。在提交了 Job 之后<strong>，Head 节点中的 Driver 会去创建 Actor 这个特殊类型的 Task，以及 Function 类型的 Task</strong>，之后调度到 Worker 节点中，由 <strong>Worker process</strong> 去运行这些 Task，这中间还会涉及到调度等能力，不在这里细化。</p>
 <h2 id="1-Ray-Jobs-CLI"><a href="#1-Ray-Jobs-CLI" class="headerlink" title="1 Ray Jobs CLI"></a>1 Ray Jobs CLI</h2><h3 id="1-1-启动ray集群"><a href="#1-1-启动ray集群" class="headerlink" title="1.1 启动ray集群"></a>1.1 启动ray集群</h3><ul>
@@ -300,26 +300,26 @@
 <li><p>ray job submit 提交任务</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray job submit --working-dir your_working_directory -- python script.py</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="1-3-查看集群和任务状态"><a href="#1-3-查看集群和任务状态" class="headerlink" title="1.3 查看集群和任务状态"></a>1.3 查看集群和任务状态</h3><h4 id="1-3-1-通过DashBoard查看状态"><a href="#1-3-1-通过DashBoard查看状态" class="headerlink" title="1.3.1 通过DashBoard查看状态"></a>1.3.1 通过DashBoard查看状态</h4><p><img src="/.io//ray-dashborad.png" alt="ray dashborad"></p>
+<h3 id="1-3-查看集群和任务状态"><a href="#1-3-查看集群和任务状态" class="headerlink" title="1.3 查看集群和任务状态"></a>1.3 查看集群和任务状态</h3><h4 id="1-3-1-通过DashBoard查看状态"><a href="#1-3-1-通过DashBoard查看状态" class="headerlink" title="1.3.1 通过DashBoard查看状态"></a>1.3.1 通过DashBoard查看状态</h4><p><img src="/2024/06/06/ray-job/ray-dashborad.png" alt="ray dashborad"></p>
 <ul>
 <li>可以在<strong>Jobs</strong>页面查看单个任务的运行情况，包括当前<strong>任务状态</strong>（PENDING, RUNNING, SUCCEED, FAILED），<strong>任务日志</strong>, 任务的启动时间和运行时间等等</li>
 <li>可以在<strong>Cluster</strong>页面查看查看集群结点的状态，包含<strong>CPU和MEM的使用情况</strong>等等</li>
 </ul>
 <h4 id="1-3-2-通过命令行查询状态"><a href="#1-3-2-通过命令行查询状态" class="headerlink" title="1.3.2 通过命令行查询状态"></a>1.3.2 通过命令行查询状态</h4><ul>
 <li><p>使用** ray status** 命令可以查看当前集群的状态的概要信息。</p>
-<p>  <img src="/.io//status.png" alt="ray status"></p>
+<p>  <img src="/2024/06/06/ray-job/status.png" alt="ray status"></p>
 </li>
 <li><p>查看node、job等信息：ray list命令可以显示具体信息</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ray list nodes：  <span class="comment"># 列出当前 Ray 集群中所有节点的信息，包括节点的 ID、IP 地址、端口号、资源等。 </span></span><br><span class="line">ray list <span class="built_in">jobs</span>     <span class="comment"># 列出当前 Ray 集群中所有作业（jobs）的信息，包括作业的 ID、状态、创建时间等。 </span></span><br><span class="line">ray list workers：<span class="comment"># 列出当前 Ray 集群中所有 worker 的信息，包括 worker 的 ID、节点 ID、PID、状态等。 </span></span><br><span class="line">ray list tasks    <span class="comment"># 列出当前 Ray 集群中所有任务（tasks）的信息，包括任务的名称（function/class name)、 ID、状态、所属的job和node id创建时间等。</span></span><br></pre></td></tr></table></figure>
 <p>可以在各个子命令后加上 –limit n限制显示的条数，–detail显示详细信息</p>
 </li>
-<li><p>ray list jobs显示情况<br>  <img src="/.io//list_jobs.png" alt="list_jobs"><br>图中，通过<strong>Status字段可以可到每个job的状态</strong>，包括失败、正在运行以及等待的任务，还有任务失败和等待的原因（<strong>MESSAGE字段</strong>）</p>
+<li><p>ray list jobs显示情况<br>  <img src="/2024/06/06/ray-job/list_jobs.png" alt="list_jobs"><br>图中，通过<strong>Status字段可以可到每个job的状态</strong>，包括失败、正在运行以及等待的任务，还有任务失败和等待的原因（<strong>MESSAGE字段</strong>）</p>
 </li>
 </ul>
 <h3 id="1-4-取消任务"><a href="#1-4-取消任务" class="headerlink" title="1.4 取消任务"></a>1.4 取消任务</h3><ul>
 <li><p>使用ray job的子命令stop取消指定job</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray job stop &lt;jobsub-id&gt;</span><br></pre></td></tr></table></figure>
-<p>  <img src="/.io//stop.png" alt="ray job stop"></p>
+<p>  <img src="/2024/06/06/ray-job/stop.png" alt="ray job stop"></p>
 </li>
 <li><p>ray job子命令：ray job COMMAND [ARGS] Commands:</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">delete  Deletes a stopped job and its associated data from memory.</span><br><span class="line">list    Lists all running <span class="built_in">jobs</span> and their information.</span><br><span class="line">logs    Gets the logs of a job.</span><br><span class="line">status  Queries <span class="keyword">for</span> the current status of a job.</span><br><span class="line">stop    Attempts to stop a job.</span><br><span class="line">submit  Submits a job to be run on the cluster.</span><br></pre></td></tr></table></figure></li>
@@ -355,7 +355,7 @@
 </li>
 <li><p>API遗留问题</p>
 <p>  这里ray<code>JobSubmissionClient.stop_job</code>接口，对于PENDING的任务无法停止或者取消，这里也不能说是问题，但是ray应该加一个<strong>cancel的接口</strong>专门用来停止PENDING的job，多说一下，通过<strong>JobSubmissionClient</strong>接口提交的任务，在ray的底层都会创建一个<strong>ActorHandler</strong>对象用来运行任务，<strong>PENDING</strong>的任务，一般来说就是node资源不足或者环境不满足需求，无法被调度，所有stop的方法也无法被调度。</p>
-<p>  <img src="/.io//pending-actor.png" alt="ray pending actor"></p>
+<p>  <img src="/2024/06/06/ray-job/pending-actor.png" alt="ray pending actor"></p>
 <ul>
 <li>一种规避ray这个问题的方法，打补丁<br>在ray的底层获得<code>ActorHandler</code> 对象，通过ray.kill的方式取消这个Actor即可。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ray  底层源码</span></span><br><span class="line">stopped = self.get_job_manager().stop_job(job.submission_id)</span><br><span class="line">resp = JobStopResponse(stopped=stopped)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后的源码</span></span><br><span class="line">status = self.get_job_manager().get_job_status(job.submission_id)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">str</span>(status) == <span class="string">&#x27;PENDING&#x27;</span>:</span><br><span class="line">    logger.warning(<span class="string">&#x27;pending job using ray.kill to stop&#x27;</span>)</span><br><span class="line">    ray.kill(self.get_job_manager()._get_actor_for_job(job.submission_id))</span><br><span class="line">    stopped =<span class="literal">True</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    stopped = self.get_job_manager().stop_job(job.submission_id)</span><br><span class="line">resp = JobStopResponse(stopped=stopped)</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -476,7 +476,7 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p><strong>Autoscaler</strong>：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。</p>
 <h2 id="2-Autoscaler-能力"><a href="#2-Autoscaler-能力" class="headerlink" title="2 Autoscaler 能力"></a>2 Autoscaler 能力</h2><p>GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，<strong>GCS 会每隔 100ms 从所有的注册到自己的 raylets 去拉取最新的资源使用情况的视图，也会间隔 100ms 去广播给其它的 raylets。</strong> 同时 GCS 也会为 Autoscaler 组件提供当前集群的负载的数据，以帮助 Autoscaler 去判断什么时候给集群增加机器和从集群中移除机器。</p>
-<p><img src="/.io//autoscaler.png" alt="ray autoscaler"></p>
+<p><img src="/2024/05/03/ray-autoscaler/autoscaler.png" alt="ray autoscaler"></p>
 <p>Ray Autoscaler 负责从集群中添加和删除节点。它查看分布式调度器公开的逻辑资源需求、集群中当前的节点、集群的节点配置文件， 计算所需的集群配置，并执行将集群移动到所需状态的操作。<strong>Autoscaler 会从 GCS 中去拉取当前集群的负载情况，然后调用云厂商的实现去添加和移除节点。</strong></p>
 <hr>
 <p><strong>自动扩缩容的主要工作包含以下几点</strong>：</p>
@@ -492,7 +492,7 @@
 <li><p>当新的节点启动了，也注册到 Ray 的集群中了，这些节点就可以接收应用的工作负载了。</p>
 </li>
 </ul>
-<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/.io//scheduler.webp" alt="scheduler"></p>
+<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/2024/05/03/ray-autoscaler/scheduler.webp" alt="scheduler"></p>
 <p>当资源请求 (i.e RequestWorkerLease PRC) 被 raylet 接受之后, 整个过程就如上图的状态机一样，<strong>主要包含三个状态:</strong></p>
 <ol>
 <li><strong>Granted</strong>: 在这个状态下，client 是可以使用申请的资源和 raylet 返回来的对应的 worker 去运行 actor 和 task 的。</li>
@@ -579,7 +579,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-06 21:26:43" itemprop="dateModified" datetime="2024-07-06T21:26:43+08:00">2024-07-06</time>
+      <time title="修改时间：2024-07-07 20:32:15" itemprop="dateModified" datetime="2024-07-07T20:32:15+08:00">2024-07-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -635,16 +635,16 @@
 <h3 id="Ray-AI-libraries"><a href="#Ray-AI-libraries" class="headerlink" title="Ray AI libraries"></a>Ray AI libraries</h3><p>一个开源、Python 语言的特定领域库集，为 ML 工程师、数据科学家和研究人员提供了一个可扩展且统一的 ML 应用程序工具包。</p>
 <h3 id="Ray-Core"><a href="#Ray-Core" class="headerlink" title="Ray Core"></a>Ray Core</h3><p>一个开源的 Python 通用分布式计算库，使机器学习工程师和 Python 开发人员能够扩展 Python 应用程序并加速机器学习工作负载。</p>
 <h3 id="Ray-Cluster"><a href="#Ray-Cluster" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h3><p>Ray 集群由一个 Head 节点（负责协调和管理整个 Ray 集群，以及运行 Ray 的一些关键的全局服务）和若干个 Worker 节点（实际执行计算任务的节点，可以自动伸缩以适应工作负载的资源需求变化）组成，Worker 节点连接到 Head 节点。Ray 集群可以部署在物理机、虚拟机、Kubernetes 以及各种云环境之上。</p>
-<p><img src="/.io//map-of-ray.svg" alt="ray-framework"></p>
+<p><img src="/2024/03/03/ray-basic/map-of-ray.svg" alt="ray-framework"></p>
 <h2 id="Ray-Core-1"><a href="#Ray-Core-1" class="headerlink" title="Ray Core"></a>Ray Core</h2><p>Ray Core 包含以下三个核心概念：</p>
 <h3 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h3><p>Ray 支持在独立的 Python 工作线程中异步执行任意函数，这些可异步执行的函数称作“任务（Task）”。开发者能够为每个任务配置所需的 CPU、GPU 及其他自定义资源。Ray 集群调度器会根据这些资源请求在集群中合理调度任务，从而实现高效并行处理。</p>
 <h3 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h3><p>参与者（Actor）将 Ray API 从函数（即任务）扩展到类。参与者本质上是一个有状态的工作实体（或服务）。每当一个新的参与者被实例化时，将创建一个新的工作线程，并将该参与者调度到该特定的工作线程上，并且可以访问和改变该工作线程的状态。与任务一样，参与者也支持 CPU、GPU 和自定义资源需求。</p>
 <h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>在 Ray 中，任务和参与者在对象（Objects）上创建和计算。我们将这些对象称为远程对象（remote objects），因为它们可以存储在 Ray 集群中的任何位置，并且我们使用 objects ref 来引用它们。远程对象缓存在 Ray 的分布式共享内存的对象存储中，并且集群中的每个节点都有一个对象存储。在 Ray 集群设置中，一个远程对象可以驻留在一个或多个节点上，与谁持有 objects ref 无关。</p>
-<p><img src="/.io//ray-core.png" alt="ray core"></p>
+<p><img src="/2024/03/03/ray-basic/ray-core.png" alt="ray core"></p>
 <h2 id="Ray-Cluster-1"><a href="#Ray-Cluster-1" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h2><p>Ray Cluster 的基本架构如下图所示。一个 Ray 集群由一个 Head 节点和若干个 Worker 节点组成，Worker 节点通过网络连接到 Head 节点，进行协同和通信。</p>
 <p>Head 节点主要负责运行 Ray 集群管理相关的控制进程（以蓝色突出显示），例如 Autoscaler、GCS，以及负责运行 Ray 作业的 Driver processes。除此之外，主节点与其他 Worker 节点无异，Ray 可以像任何其他 Worker 节点一样在 Head 节点上调度任务。</p>
 <p><strong>Worker 节点则专注于执行 Ray 作业中用户的应用程序代码</strong>，不运行任何 Head 节点中的控制和管理进程。它们参与分布式调度，以及 Ray Objects 在集群内存中的存储和分发。</p>
-<p><img src="/.io//ray-cluster.svg" alt="ray cluster"></p>
+<p><img src="/2024/03/03/ray-basic/ray-cluster.svg" alt="ray cluster"></p>
 <p>要在生产环境中跨多台机器部署 Ray，首要步骤是部署一个由 Head 节点和 Worker 节点（Ray 节点在 Kubernetes 上运行时实现为 pod）构成的 Ray 集群。该集群支持通过 Ray 自带的 autoscaler 功能实现弹性扩缩。</p>
 
       
@@ -708,7 +708,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-06 21:38:03" itemprop="dateModified" datetime="2024-07-06T21:38:03+08:00">2024-07-06</time>
+      <time title="修改时间：2024-07-07 20:33:08" itemprop="dateModified" datetime="2024-07-07T20:33:08+08:00">2024-07-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -778,7 +778,7 @@
 <blockquote>
 <p>子曰：“士志于道，而耻恶衣恶食者，未足与议也”</p>
 </blockquote>
-<p><img src="/.io//library.jpg" alt="图书馆标语"></p>
+<p><img src="/2023/09/03/read-life/library.jpg" alt="图书馆标语"></p>
 <p>作家梁晓声在《读书是最对得起付出的一件事》一书中说到：“寂寞是对人性的缓慢的破坏人啊，为了使自己具有抵抗寂寞的能力，读书吧”</p>
 <h3 id="阅读的投资回报率"><a href="#阅读的投资回报率" class="headerlink" title="阅读的投资回报率"></a>阅读的投资回报率</h3><p>作为一个理工生，做一件事情很喜欢去考虑投资回报率</p>
 <p>一般高中生阅读现代文的速度不少于600字&#x2F;分钟。我们就按每分钟600字估算，每小时就是3.6万字，因人而异，这里只是简单做个估算；</p>
@@ -874,7 +874,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-06 20:18:29" itemprop="dateModified" datetime="2024-07-06T20:18:29+08:00">2024-07-06</time>
+      <time title="修改时间：2024-07-07 20:36:36" itemprop="dateModified" datetime="2024-07-07T20:36:36+08:00">2024-07-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -934,7 +934,8 @@
 <li>对系统现有能力进行定制</li>
 </ul>
 <h2 id="Why-We-Need-Plugin"><a href="#Why-We-Need-Plugin" class="headerlink" title="Why We Need Plugin?"></a>Why We Need Plugin?</h2><p>我们的软件系统往往是要面向持续性的迭代的，在开发之初很难把所有需要支持的功能都想清楚，有时候还需要借助社区的力量去持续生产新的功能点，或者优化已有的功能。这就需要我们的软件系统具备一定的可扩展性。插件模式就是我们常常选用的方法。</p>
-<h2 id="What-is-Plugin"><a href="#What-is-Plugin" class="headerlink" title="What is Plugin"></a>What is Plugin</h2><p>插件是安装在应用程序上的附加组件，扩展了系统的功能，它实现了系统的接口，但是插件通常不能独立运行。<br>例如，如果你想在网站上观看视频，您可能需要一个插件来执行此操作。如果未安装该插件，你的浏览器可能将无法播放视频。<br><img src="/.io//plugin-architecture.png" alt="Plugin Architecture"></p>
+<h2 id="What-is-Plugin"><a href="#What-is-Plugin" class="headerlink" title="What is Plugin"></a>What is Plugin</h2><p>插件是安装在应用程序上的附加组件，扩展了系统的功能，它实现了系统的接口，但是插件通常不能独立运行。<br>例如，如果你想在网站上观看视频，您可能需要一个插件来执行此操作。如果未安装该插件，你的浏览器可能将无法播放视频。</p>
+<p><img src="/2023/07/19/plugin/plugin-architecture.png" alt="Plugin Architecture"></p>
 <h3 id="Rules-for-C-Plugin"><a href="#Rules-for-C-Plugin" class="headerlink" title="Rules for C++ Plugin"></a>Rules for C++ Plugin</h3><p>其实，插件在概念上不是C++语言的一部分。相反，插件是操作系统层面的概念，即OS如何加载动态链接库(通常，动态库的后缀，Windows .dll, linux .so, MAC OS .dylib)。对于任何规模非常大的项目，应用程序通常分为一个主程序文件和若干动态库组成</p>
 <ol>
 <li>在插件中分配的内存必须在同一插件中释放</li>
