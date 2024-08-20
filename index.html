@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/red/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gyhaoran.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Leo&#39;s Blog">
+<meta property="og:url" content="https://gyhaoran.github.io/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Leo Ge">
+<meta property="article:tag" content="Linux, C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://gyhaoran.github.io/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Leo's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Leo's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">保持谦逊，终身学习</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Ge"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">Leo Ge</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2024/08/20/non-modifying-part1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/08/20/non-modifying-part1/" class="post-title-link" itemprop="url">Non-Modifying Operations 上</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-08-20 09:13:14 / 修改时间：11:42:57" itemprop="dateCreated datePublished" datetime="2024-08-20T09:13:14+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Standard-Library-Algorithms/" itemprop="url" rel="index"><span itemprop="name">Standard Library Algorithms</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Non-Modifying Operations 上" href="/2024/08/20/non-modifying-part1/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::8cfe58f1449859e4ca2e8eaf9dbf55da" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>945</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.</p>
+</blockquote>
+<h2 id="Existence-Queries"><a href="#Existence-Queries" class="headerlink" title="Existence Queries"></a>Existence Queries</h2><h3 id="any-of-x2F-all-of-x2F-none-of"><a href="#any-of-x2F-all-of-x2F-none-of" class="headerlink" title="any_of &#x2F; all_of &#x2F; none_of"></a>any_of &#x2F; all_of &#x2F; none_of</h3><ul>
+<li><p>intro（c++11）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">all_of</span><span class="params">(begin, end, check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// true</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">any_of</span><span class="params">(begin, end, check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// if check yield true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* for all, any or none of the elements in the input range */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">none_of</span><span class="params">(begin, end, check(v) -&gt; <span class="type">bool</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> check = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> x &gt;= <span class="number">1</span>; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in subrange (as shown in image):</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">all_of</span> (<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">any_of</span> (<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">none_of</span>(<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, check);  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// in entire vector:</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">all_of</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), check);  <span class="comment">// false</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">any_of</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">none_of</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), check);  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++ 20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">all_of</span><span class="params">(range, check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// true</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">any_of</span><span class="params">(range check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// if check yield true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* for all, any or none of the elements in the input range */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">none_of</span><span class="params">(range, check(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br></pre></td></tr></table></figure></li>
+<li><p>usage</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> check = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> x &gt;= <span class="number">1</span>; &#125;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">all_of</span>(v, check);  <span class="comment">// false</span></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">any_of</span>(v, check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">none_of</span>(v, check);  <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="count-x2F-count-if"><a href="#count-x2F-count-if" class="headerlink" title="count&#x2F;count_if"></a>count&#x2F;count_if</h3><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">count</span><span class="params">(begin, end, v)</span></span>; <span class="comment">// number of occurrences</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* number of elements(pred=true) */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">count_if</span><span class="params">(begin, end, pred(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="comment">// count in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> n = <span class="built_in">count</span>(<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">8</span>, <span class="number">2</span>);  <span class="comment">// n = 3</span></span><br><span class="line"><span class="comment">// count in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> m = <span class="built_in">count</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">2</span>);  <span class="comment">// m = 4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> is_even = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> !(x &amp; <span class="number">1</span>); &#125;;</span><br><span class="line"><span class="comment">// count in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> n = <span class="built_in">count_if</span> (<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">8</span>, is_even);  <span class="comment">// n = 3</span></span><br><span class="line"><span class="comment">// count in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> m = <span class="built_in">count_if</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), is_even);  <span class="comment">// m = 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++ 20<br>As mentioned above.</p>
+</li>
+</ul>
+<h2 id="Finding-x2F-Locating-Elements"><a href="#Finding-x2F-Locating-Elements" class="headerlink" title="Finding &#x2F; Locating Elements"></a>Finding &#x2F; Locating Elements</h2><h3 id="Find-Single-Elements"><a href="#Find-Single-Elements" class="headerlink" title="Find Single Elements"></a>Find Single Elements</h3><h4 id="find-x2F-find-if-x2F-find-if-not"><a href="#find-x2F-find-if-x2F-find-if-not" class="headerlink" title="find&#x2F;find_if&#x2F;find_if_not"></a>find&#x2F;find_if&#x2F;find_if_not</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st elem equal v, return end if no match</span></span><br><span class="line"><span class="function">interator <span class="title">find</span><span class="params">(begin, end, v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// @1st elem which pred is true, return end if no match</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_if</span><span class="params">(begin, end, pred(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// @1st elem which pred is false, return end if no match</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_if_not</span><span class="params">(begin, end, pred(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">9</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find &#x27;9&#x27; in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">9</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> f = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> x &gt;= <span class="number">6</span>; &#125;;</span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_if</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), f);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_if_not</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), f);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>c++ 20<br>As mentioned above.</p>
+</li>
+</ul>
+<h4 id="find-first-of"><a href="#find-first-of" class="headerlink" title="find_first_of"></a>find_first_of</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">iterator <span class="title">find_first_of</span><span class="params">(s_begin, s_end, w_begin, w_end)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>returns an iterator to the 1st element in range s that compares equal to any of the elements in range w; otherwise returns @send if no such element was found</p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find any of &#x27;w&#x27; in all of &#x27;s&#x27;:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_first_of</span>(<span class="built_in">begin</span>(s), <span class="built_in">end</span>(s), <span class="built_in">begin</span>(w), <span class="built_in">end</span>(w));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), j);  <span class="comment">// index = 1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">find_first_of</span>(s, w);  </span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), i);  <span class="comment">// index = 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Find-Subranges"><a href="#Find-Subranges" class="headerlink" title="Find Subranges"></a>Find Subranges</h3><h4 id="search"><a href="#search" class="headerlink" title="search"></a>search</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of range w inside range s, return s_end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">search</span><span class="params">(s_begin, s_end, w_begin, w_end)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">search</span>(s_range, w_range);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find all of &#x27;w&#x27; in all of &#x27;s&#x27;:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">search</span>(<span class="built_in">begin</span>(s), <span class="built_in">end</span>(s), <span class="built_in">begin</span>(w), <span class="built_in">end</span>(w));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), j);  <span class="comment">// index = 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">search</span>(s, w);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> x : r) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 4 6 5 8 9</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="find-end"><a href="#find-end" class="headerlink" title="find_end"></a>find_end</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// last occurrence of range w inside range s, return s_end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">find_end</span><span class="params">(s_begin, s_end, w_begin, w_end)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">find_end</span>(s_range, w_range);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find all of &#x27;w&#x27; in all of &#x27;s&#x27;:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_end</span>(<span class="built_in">begin</span>(s), <span class="built_in">end</span>(s), <span class="built_in">begin</span>(w), <span class="built_in">end</span>(w));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), j);  <span class="comment">// index = 5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">find_end</span>(s, w);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> x : r) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 6 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Find-Run-of-Equal-Elements-查找相等元素的连续序列"><a href="#Find-Run-of-Equal-Elements-查找相等元素的连续序列" class="headerlink" title="Find Run of Equal Elements(查找相等元素的连续序列)"></a>Find Run of Equal Elements(查找相等元素的连续序列)</h3><h4 id="adjacent-find"><a href="#adjacent-find" class="headerlink" title="adjacent_find"></a>adjacent_find</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of 2 consecutive elements, return @end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">adjacent_find</span><span class="params">(begin, end)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">adjacent_find</span>(range); <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">adjacent_find</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">adjacent_find</span>(v);  </span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), i);  <span class="comment">// index = 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="search-n"><a href="#search-n" class="headerlink" title="search_n"></a>search_n</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of v consecutive v, return @end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">search_n</span><span class="params">(begin, end, n, v)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">search_n</span>(range, n, v); <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>example<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">search_n</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), n, <span class="number">9</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 8</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">search_n</span>(v, n, <span class="number">2</span>);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), <span class="built_in">begin</span>(r));  <span class="comment">// index = 3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2024/06/06/ray-job/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/06/06/ray-job/" class="post-title-link" itemprop="url">Ray Job Management</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-06-06 21:49:29" itemprop="dateCreated datePublished" datetime="2024-06-06T21:49:29+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ray/" itemprop="url" rel="index"><span itemprop="name">ray</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Ray Job Management" href="/2024/06/06/ray-job/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::b9ce3bb8c9d757f89884ce42afc987d3" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Ray-如何提交-Job"><a href="#Ray-如何提交-Job" class="headerlink" title="Ray 如何提交 Job"></a>Ray 如何提交 Job</h2><p><img src="/2024/06/06/ray-job/ray-job.png" alt="ray job"></p>
+<p>在 Ray 中，Actor 和 Task 是归属于一个 Job 的，所以要运行真正的 code，需要提交 Job。Job 提交的时候可以通过** CLI、Python SDK、或者 REST API <strong>去提交，</strong>提交的入口是 Head 节点**。</p>
+<p>Head 节点中有 Job 提交的 api 服务。在提交了 Job 之后<strong>，Head 节点中的 Driver 会去创建 Actor 这个特殊类型的 Task，以及 Function 类型的 Task</strong>，之后调度到 Worker 节点中，由 <strong>Worker process</strong> 去运行这些 Task，这中间还会涉及到调度等能力，不在这里细化。</p>
+<h2 id="1-Ray-Jobs-CLI"><a href="#1-Ray-Jobs-CLI" class="headerlink" title="1 Ray Jobs CLI"></a>1 Ray Jobs CLI</h2><h3 id="1-1-启动ray集群"><a href="#1-1-启动ray集群" class="headerlink" title="1.1 启动ray集群"></a>1.1 启动ray集群</h3><ul>
+<li><p>启动head节点</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray start --<span class="built_in">head</span> --num-cpus=1 --num-gpus=0 --resources=<span class="string">&#x27;&#123;&quot;CustomResource&quot;: 2&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>在这个命令中，**–num-cpus和–num-gpu**s分别指定了head节点的CPU和GPU数量 ，–resources标志用于指定自定义资源</p>
+</li>
+<li><p>启动worker节点</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray start --address=<span class="string">&#x27;&lt;head_node_ip&gt;:&lt;port&gt;&#x27;</span> --num-cpus=4 --num-gpus=0 --resources=<span class="string">&#x27;&#123;&quot;CustomResource&quot;: 2&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>在这个命令中，**–address指定了head节点的IP地址和端口**。</p>
+</li>
+</ul>
+<h3 id="1-2-提交任务"><a href="#1-2-提交任务" class="headerlink" title="1.2 提交任务"></a>1.2 提交任务</h3><ul>
+<li><p>ray submit 提交任务</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray submit my_job.py --num-cpus=2 --num-gpus=1</span><br></pre></td></tr></table></figure>
+<p>这里将使用my_job.py作为入口点，并为作业指定了2个CPU核心和1个GPU。</p>
+</li>
+<li><p>ray job submit 提交任务</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray job submit --working-dir your_working_directory -- python script.py</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="1-3-查看集群和任务状态"><a href="#1-3-查看集群和任务状态" class="headerlink" title="1.3 查看集群和任务状态"></a>1.3 查看集群和任务状态</h3><h4 id="1-3-1-通过DashBoard查看状态"><a href="#1-3-1-通过DashBoard查看状态" class="headerlink" title="1.3.1 通过DashBoard查看状态"></a>1.3.1 通过DashBoard查看状态</h4><p><img src="/2024/06/06/ray-job/ray-dashborad.png" alt="ray dashborad"></p>
+<ul>
+<li>可以在<strong>Jobs</strong>页面查看单个任务的运行情况，包括当前<strong>任务状态</strong>（PENDING, RUNNING, SUCCEED, FAILED），<strong>任务日志</strong>, 任务的启动时间和运行时间等等</li>
+<li>可以在<strong>Cluster</strong>页面查看查看集群结点的状态，包含<strong>CPU和MEM的使用情况</strong>等等</li>
+</ul>
+<h4 id="1-3-2-通过命令行查询状态"><a href="#1-3-2-通过命令行查询状态" class="headerlink" title="1.3.2 通过命令行查询状态"></a>1.3.2 通过命令行查询状态</h4><ul>
+<li><p>使用** ray status** 命令可以查看当前集群的状态的概要信息。</p>
+<p>  <img src="/2024/06/06/ray-job/status.png" alt="ray status"></p>
+</li>
+<li><p>查看node、job等信息：ray list命令可以显示具体信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ray list nodes：  <span class="comment"># 列出当前 Ray 集群中所有节点的信息，包括节点的 ID、IP 地址、端口号、资源等。 </span></span><br><span class="line">ray list <span class="built_in">jobs</span>     <span class="comment"># 列出当前 Ray 集群中所有作业（jobs）的信息，包括作业的 ID、状态、创建时间等。 </span></span><br><span class="line">ray list workers：<span class="comment"># 列出当前 Ray 集群中所有 worker 的信息，包括 worker 的 ID、节点 ID、PID、状态等。 </span></span><br><span class="line">ray list tasks    <span class="comment"># 列出当前 Ray 集群中所有任务（tasks）的信息，包括任务的名称（function/class name)、 ID、状态、所属的job和node id创建时间等。</span></span><br></pre></td></tr></table></figure>
+<p>可以在各个子命令后加上 –limit n限制显示的条数，–detail显示详细信息</p>
+</li>
+<li><p>ray list jobs显示情况<br>  <img src="/2024/06/06/ray-job/list_jobs.png" alt="list_jobs"><br>图中，通过<strong>Status字段可以可到每个job的状态</strong>，包括失败、正在运行以及等待的任务，还有任务失败和等待的原因（<strong>MESSAGE字段</strong>）</p>
+</li>
+</ul>
+<h3 id="1-4-取消任务"><a href="#1-4-取消任务" class="headerlink" title="1.4 取消任务"></a>1.4 取消任务</h3><ul>
+<li><p>使用ray job的子命令stop取消指定job</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ray job stop &lt;jobsub-id&gt;</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2024/06/06/ray-job/stop.png" alt="ray job stop"></p>
+</li>
+<li><p>ray job子命令：ray job COMMAND [ARGS] Commands:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">delete  Deletes a stopped job and its associated data from memory.</span><br><span class="line">list    Lists all running <span class="built_in">jobs</span> and their information.</span><br><span class="line">logs    Gets the logs of a job.</span><br><span class="line">status  Queries <span class="keyword">for</span> the current status of a job.</span><br><span class="line">stop    Attempts to stop a job.</span><br><span class="line">submit  Submits a job to be run on the cluster.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-Ray-Python-SDK"><a href="#2-Ray-Python-SDK" class="headerlink" title="2 Ray Python SDK"></a>2 Ray Python SDK</h2><h3 id="2-1-remote装饰器"><a href="#2-1-remote装饰器" class="headerlink" title="2.1 remote装饰器"></a>2.1 remote装饰器</h3><ul>
+<li><p>你可以使用ray.remote装饰器来定义可以并行执行的任务，然后使用ray.get或ray.wait来获取任务的结果。</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ray </span><br><span class="line"></span><br><span class="line">ray.init() <span class="comment"># 启动ray集群 </span></span><br><span class="line"></span><br><span class="line"><span class="meta">@ray.remote </span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_function</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x * x </span><br><span class="line"></span><br><span class="line"><span class="comment">### submit job </span></span><br><span class="line">result_refs = [my_function.remote(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)] </span><br><span class="line"></span><br><span class="line"><span class="comment">### 获取运行结果 </span></span><br><span class="line">result = [ray.get(i) <span class="keyword">for</span> i <span class="keyword">in</span> result_refs]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定资源 你可以通过@ray.remote装饰器的参数来指定资源信息，例如：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ray.remote(<span class="params">num_cpus=<span class="number">2</span>, num_gpus=<span class="number">0</span>, memory=<span class="number">1024</span></span>) </span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_function</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x * x</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>在这个示例中，num_cpus用于指定CPU数量，num_gpus用于指定GPU数量，memory用于指定内存大小。</p>
+<h3 id="2-2-JobSubmissionClient提交任务"><a href="#2-2-JobSubmissionClient提交任务" class="headerlink" title="2.2 JobSubmissionClient提交任务"></a>2.2 JobSubmissionClient提交任务</h3><ul>
+<li>Using Ray Jobs API (Python SDK)  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ray.job_submission <span class="keyword">import</span> JobSubmissionClient</span><br><span class="line"></span><br><span class="line">client = JobSubmissionClient(<span class="string">&quot;http://&lt;head-node-ip&gt;:8265&quot;</span>)</span><br><span class="line">job_id = client.submit_job(</span><br><span class="line">    entrypoint=<span class="string">&quot;python my_ray_script.py&quot;</span>,</span><br><span class="line">    runtime_env=runtime_env,</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-3-查看集群和任务状态"><a href="#2-3-查看集群和任务状态" class="headerlink" title="2.3 查看集群和任务状态"></a>2.3 查看集群和任务状态</h3><ul>
+<li><p>获取集群所有资源<br>cluster_resources &#x3D; ray.cluster_resources()</p>
+</li>
+<li><p>获取当前可用的资源<br>available_resources &#x3D; ray.available_resources()</p>
+</li>
+<li><p>获取node、job等信息</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nodes = ray.state.nodes() </span><br><span class="line">jobs = ray.state.jobs() </span><br><span class="line">workers = ray.state.workers() </span><br><span class="line">actors = ray.state.actors()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-4-取消任务"><a href="#2-4-取消任务" class="headerlink" title="2.4 取消任务"></a>2.4 取消任务</h3><ul>
+<li><p>使用ray.cancel取消</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ray.remote</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">long_running_task</span>():</span><br><span class="line">    <span class="comment"># 这里是任务代码</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交任务</span></span><br><span class="line">task = long_running_task.remote()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消任务</span></span><br><span class="line">ray.cancel(task)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JobSubmissionClient方式</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ray.job_submission <span class="keyword">import</span> JobSubmissionClient </span><br><span class="line"></span><br><span class="line">client = JobSubmissionClient(<span class="string">&quot;http://127.0.0.1:8265&quot;</span>) </span><br><span class="line"></span><br><span class="line">sub_id = client.submit_job(entrypoint=<span class="string">&quot;sleep 10&quot;</span>) </span><br><span class="line"></span><br><span class="line">client.stop_job(sub_id)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>任务管理Client <strong>JobSubmissionClient API列表</strong></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">JobSubmissionClient.submit_job:      Submit <span class="keyword">and</span> execute a job asynchronously.</span><br><span class="line">JobSubmissionClient.stop_job:        Request a job to exit asynchronously.</span><br><span class="line">JobSubmissionClient.get_job_status： Get the most recent status of a job.</span><br><span class="line">JobSubmissionClient.get_job_info：   Get the latest status <span class="keyword">and</span> other information associated <span class="keyword">with</span> a job.</span><br><span class="line">JobSubmissionClient.list_jobs：      <span class="type">List</span> <span class="built_in">all</span> jobs along <span class="keyword">with</span> their status <span class="keyword">and</span> other information.</span><br><span class="line">JobSubmissionClient.get_job_logs：   Get <span class="built_in">all</span> logs produced by a job.</span><br><span class="line">JobSubmissionClient.tail_job_logs:   Get an iterator that follows the logs of a job.</span><br><span class="line">JobSubmissionClient.delete_job：     Delete a job <span class="keyword">in</span> a terminal state <span class="keyword">and</span> <span class="built_in">all</span> of its associated data.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>API遗留问题</p>
+<p>  这里ray<code>JobSubmissionClient.stop_job</code>接口，对于PENDING的任务无法停止或者取消，这里也不能说是问题，但是ray应该加一个<strong>cancel的接口</strong>专门用来停止PENDING的job，多说一下，通过<strong>JobSubmissionClient</strong>接口提交的任务，在ray的底层都会创建一个<strong>ActorHandler</strong>对象用来运行任务，<strong>PENDING</strong>的任务，一般来说就是node资源不足或者环境不满足需求，无法被调度，所有stop的方法也无法被调度。</p>
+<p>  <img src="/2024/06/06/ray-job/pending-actor.png" alt="ray pending actor"></p>
+<ul>
+<li>一种规避ray这个问题的方法，打补丁<br>在ray的底层获得<code>ActorHandler</code> 对象，通过ray.kill的方式取消这个Actor即可。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ray  底层源码</span></span><br><span class="line">stopped = self.get_job_manager().stop_job(job.submission_id)</span><br><span class="line">resp = JobStopResponse(stopped=stopped)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后的源码</span></span><br><span class="line">status = self.get_job_manager().get_job_status(job.submission_id)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">str</span>(status) == <span class="string">&#x27;PENDING&#x27;</span>:</span><br><span class="line">    logger.warning(<span class="string">&#x27;pending job using ray.kill to stop&#x27;</span>)</span><br><span class="line">    ray.kill(self.get_job_manager()._get_actor_for_job(job.submission_id))</span><br><span class="line">    stopped =<span class="literal">True</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    stopped = self.get_job_manager().stop_job(job.submission_id)</span><br><span class="line">resp = JobStopResponse(stopped=stopped)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/03/ray-autoscaler/" class="post-title-link" itemprop="url">Ray AutoScaler Introduction</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-03 21:49:29" itemprop="dateCreated datePublished" datetime="2024-05-03T21:49:29+08:00">2024-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ray/" itemprop="url" rel="index"><span itemprop="name">ray</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Ray AutoScaler Introduction" href="/2024/05/03/ray-autoscaler/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::d4dcadb4ffe068435edbd04d9076e61a" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p><strong>Autoscaler</strong>：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。</p>
+<h2 id="2-Autoscaler-能力"><a href="#2-Autoscaler-能力" class="headerlink" title="2 Autoscaler 能力"></a>2 Autoscaler 能力</h2><p>GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，<strong>GCS 会每隔 100ms 从所有的注册到自己的 raylets 去拉取最新的资源使用情况的视图，也会间隔 100ms 去广播给其它的 raylets。</strong> 同时 GCS 也会为 Autoscaler 组件提供当前集群的负载的数据，以帮助 Autoscaler 去判断什么时候给集群增加机器和从集群中移除机器。</p>
+<p><img src="/2024/05/03/ray-autoscaler/autoscaler.png" alt="ray autoscaler"></p>
+<p>Ray Autoscaler 负责从集群中添加和删除节点。它查看分布式调度器公开的逻辑资源需求、集群中当前的节点、集群的节点配置文件， 计算所需的集群配置，并执行将集群移动到所需状态的操作。<strong>Autoscaler 会从 GCS 中去拉取当前集群的负载情况，然后调用云厂商的实现去添加和移除节点。</strong></p>
+<hr>
+<p><strong>自动扩缩容的主要工作包含以下几点</strong>：</p>
+<ul>
+<li><p>当应用提交 actors、tasks、placement groups 去请求资源，如 CPU、GPU 等。</p>
+</li>
+<li><p>调度器会查看资源的要求和可用的资源，然后决定 tasks 应该放置的位置，或者<strong>资源不满足的时候就会阻塞，这个信息会被作为一个快照放到 GCS 中</strong>。</p>
+</li>
+<li><p>Autoscaler 作为一个独立的进程运行，<strong>它周期性地从 GCS 中抓取步骤 2 中提到的快照</strong>， 然后从中查看集群的可用资源、请求的资源、有什么 tasks 是阻塞的，以及 worker 节点被设置的配置， <strong>然后运行bin-packing 算法（下面第3节有介绍）</strong>去计算一下，在能保证运行中的 tasks&#x2F;actors&#x2F;placement group 和阻塞的这些 tasks&#x2F;actors&#x2F;placement group 的资源都能满足的情况下，一共需要多少节点。</p>
+</li>
+<li><p>然后 Autoscaler 使用 node provider interface 去添加和移除节点，<strong>各种 cloud provider 可以去实现自己的 node provider interface</strong>，如 AWS、 GCP、Azure、Kubernetes 以及 on-premise 的数据中心。（也包括LSF和Slurm）</p>
+</li>
+<li><p>当新的节点启动了，也注册到 Ray 的集群中了，这些节点就可以接收应用的工作负载了。</p>
+</li>
+</ul>
+<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/2024/05/03/ray-autoscaler/scheduler.webp" alt="scheduler"></p>
+<p>当资源请求 (i.e RequestWorkerLease PRC) 被 raylet 接受之后, 整个过程就如上图的状态机一样，<strong>主要包含三个状态:</strong></p>
+<ol>
+<li><strong>Granted</strong>: 在这个状态下，client 是可以使用申请的资源和 raylet 返回来的对应的 worker 去运行 actor 和 task 的。</li>
+<li><strong>Reschedule</strong>: 如果有比本地节点更合适的节点的时候，就需要重新调度到别的节点，这个过程就是重新调度的过程。在这个过程中，本地节点是可以从集群视角去看到集群全部节点的资源使用情况。</li>
+<li><strong>Canceled</strong>: 当申请的资源无法被满足的时候，就会取消本地的调度。比如一个 client 请求了一个特定的机器，但是这个机器挂了。再比如，给 task 请求分配的运行环境不能正常的创建出来，就会导致 raylet 不能启动 worker 去运行 task，这个时候调度的请求也会被取消。</li>
+</ol>
+<p><strong>调度策略主要包含：</strong></p>
+<ul>
+<li><p><strong>Hybrid Policy</strong>：如果不指定特定的调度策略，这个就是一种默认的调度策略。</p>
+<ol>
+<li>该策略首先是尝试将 task 放在自己本地来运行，但是当本地节点的资源使用量超过了配置的阈值（默认为 50%），就将 task 分配到其它的机器上，这个分配机器的过程是按照机器的 ID 进行排序（保证每次都按照相同顺序来），这里有第一远程节点、第二远程节点等等，依此类推，直到所有节点上的关键资源利用率都超过阈值。它将选择资源利用率最低的节点。</li>
+<li>该策略是在 bin-packing 和 load-balancing 之间进行平衡。<strong>bin-packing 的场景就是先紧着第一台机器，等第一台机器实在不行了，再到第二台，这种会造成大部分有 task 的机器的负载都很高，会导致一些不确定的问题</strong>，机器的负载高了，什么问题都可能发生。</li>
+<li>load-balancing 就是下面介绍的 spread 的方式，简单理解就是，有 task 大家一起均摊来运行，这种会有资源碎片化的问题。</li>
+</ol>
+</li>
+<li><p><strong>Spread Policy</strong>：该策略使用轮询的方式，在具有可用资源的节点之间分配 task，这样可以保证所有的 task 在整个集群中比较均衡地分布，不至于某一些机器的负载很高，其它的机器又很空闲。但这种调度的问题是，可能会导致资源碎片化。</p>
+</li>
+<li><p><strong>Node Affinity Policy</strong>：使用此策略，用户可以明确指定 task 或 actor 应运行的目标节点。如果目标节点处于活动状态，则任务或参与者只会在那里运行。如果目标节点已挂了，则取决于亲和力是否是软限制，task 或 actor 可能会被安排到其他节点或无法被安排。</p>
+</li>
+<li><p><strong>Data Locality Policy</strong>：简单理解就是，task 可能依赖很多参数对象，task 依赖的参数对象分布在哪个节点多，就调度到哪个节点去，这样就不需要将依赖的参数对象搬来搬去了。就是所谓的，数据本地化策略。</p>
+</li>
+<li><p><strong>Placement Group Policy</strong>：task 和 actor 将在 placement group 所在的位置运行。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2024/03/03/ray-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/03/03/ray-basic/" class="post-title-link" itemprop="url">Ray Basic Introdution</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-03 21:49:29" itemprop="dateCreated datePublished" datetime="2024-03-03T21:49:29+08:00">2024-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ray/" itemprop="url" rel="index"><span itemprop="name">ray</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Ray Basic Introdution" href="/2024/03/03/ray-basic/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::0dcfb037176cdfba7bf4e6d1fb295d0a" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>949</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="什么是-Ray？"><a href="#什么是-Ray？" class="headerlink" title="什么是 Ray？"></a>什么是 Ray？</h2><p>Ray 是一个开源框架，专为构建可扩展的分布式应用程序而设计，旨在通过提供简单直观的 API，简化分布式计算的复杂性，让开发者能够便捷高效地编写并行和分布式 Python 应用程序。</p>
+<p>Ray 的统一计算框架由三层组成：</p>
+<h3 id="Ray-AI-libraries"><a href="#Ray-AI-libraries" class="headerlink" title="Ray AI libraries"></a>Ray AI libraries</h3><p>一个开源、Python 语言的特定领域库集，为 ML 工程师、数据科学家和研究人员提供了一个可扩展且统一的 ML 应用程序工具包。</p>
+<h3 id="Ray-Core"><a href="#Ray-Core" class="headerlink" title="Ray Core"></a>Ray Core</h3><p>一个开源的 Python 通用分布式计算库，使机器学习工程师和 Python 开发人员能够扩展 Python 应用程序并加速机器学习工作负载。</p>
+<h3 id="Ray-Cluster"><a href="#Ray-Cluster" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h3><p>Ray 集群由一个 Head 节点（负责协调和管理整个 Ray 集群，以及运行 Ray 的一些关键的全局服务）和若干个 Worker 节点（实际执行计算任务的节点，可以自动伸缩以适应工作负载的资源需求变化）组成，Worker 节点连接到 Head 节点。Ray 集群可以部署在物理机、虚拟机、Kubernetes 以及各种云环境之上。</p>
+<p><img src="/2024/03/03/ray-basic/map-of-ray.svg" alt="ray-framework"></p>
+<h2 id="Ray-Core-1"><a href="#Ray-Core-1" class="headerlink" title="Ray Core"></a>Ray Core</h2><p>Ray Core 包含以下三个核心概念：</p>
+<h3 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h3><p>Ray 支持在独立的 Python 工作线程中异步执行任意函数，这些可异步执行的函数称作“任务（Task）”。开发者能够为每个任务配置所需的 CPU、GPU 及其他自定义资源。Ray 集群调度器会根据这些资源请求在集群中合理调度任务，从而实现高效并行处理。</p>
+<h3 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h3><p>参与者（Actor）将 Ray API 从函数（即任务）扩展到类。参与者本质上是一个有状态的工作实体（或服务）。每当一个新的参与者被实例化时，将创建一个新的工作线程，并将该参与者调度到该特定的工作线程上，并且可以访问和改变该工作线程的状态。与任务一样，参与者也支持 CPU、GPU 和自定义资源需求。</p>
+<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>在 Ray 中，任务和参与者在对象（Objects）上创建和计算。我们将这些对象称为远程对象（remote objects），因为它们可以存储在 Ray 集群中的任何位置，并且我们使用 objects ref 来引用它们。远程对象缓存在 Ray 的分布式共享内存的对象存储中，并且集群中的每个节点都有一个对象存储。在 Ray 集群设置中，一个远程对象可以驻留在一个或多个节点上，与谁持有 objects ref 无关。</p>
+<p><img src="/2024/03/03/ray-basic/ray-core.png" alt="ray core"></p>
+<h2 id="Ray-Cluster-1"><a href="#Ray-Cluster-1" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h2><p>Ray Cluster 的基本架构如下图所示。一个 Ray 集群由一个 Head 节点和若干个 Worker 节点组成，Worker 节点通过网络连接到 Head 节点，进行协同和通信。</p>
+<p>Head 节点主要负责运行 Ray 集群管理相关的控制进程（以蓝色突出显示），例如 Autoscaler、GCS，以及负责运行 Ray 作业的 Driver processes。除此之外，主节点与其他 Worker 节点无异，Ray 可以像任何其他 Worker 节点一样在 Head 节点上调度任务。</p>
+<p><strong>Worker 节点则专注于执行 Ray 作业中用户的应用程序代码</strong>，不运行任何 Head 节点中的控制和管理进程。它们参与分布式调度，以及 Ray Objects 在集群内存中的存储和分发。</p>
+<p><img src="/2024/03/03/ray-basic/ray-cluster.svg" alt="ray cluster"></p>
+<p>要在生产环境中跨多台机器部署 Ray，首要步骤是部署一个由 Head 节点和 Worker 节点（Ray 节点在 Kubernetes 上运行时实现为 pod）构成的 Ray 集群。该集群支持通过 Ray 自带的 autoscaler 功能实现弹性扩缩。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2024/01/12/lex-yacc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/01/12/lex-yacc/" class="post-title-link" itemprop="url">Introduction with Lex and Yacc</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-12 20:21:49" itemprop="dateCreated datePublished" datetime="2024-01-12T20:21:49+08:00">2024-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Introduction with Lex and Yacc" href="/2024/01/12/lex-yacc/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::75be2f878494141dd78d138fe5d2698c" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>Lex（Flex）和Yacc（Bison）是用于词法分析和语法分析的工具，常用于编写编译器和解释器。</p>
+</blockquote>
+<h2 id="Lex（Flex）基础"><a href="#Lex（Flex）基础" class="headerlink" title="Lex（Flex）基础"></a>Lex（Flex）基础</h2><h3 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h3><p>词法分析是将输入文本拆分成一个个基本单元的过程，这些基本单元称为词法单元（token）。例如，在 C 语言中，标识符、关键字、数字、运算符等都是词法单元。</p>
+<h3 id="Lex-的工作原理"><a href="#Lex-的工作原理" class="headerlink" title="Lex 的工作原理"></a>Lex 的工作原理</h3><p>Lex是一个生成词法分析器的工具。它的输入是一个包含正则表达式和相应动作的文件，输出是一个C语言源文件，该文件包含词法分析器的代码。</p>
+<h3 id="Lex文件结构"><a href="#Lex文件结构" class="headerlink" title="Lex文件结构"></a>Lex文件结构</h3><p>一个典型的Lex文件（通常以.l或.lex为扩展名）包含三个部分：</p>
+<ul>
+<li>定义部分： 使用<code>%&#123;...%&#125;</code>定义变量、常量和宏。</li>
+<li>规则部分： 定义词法规则，使用正则表达式描述词法单元的模式。</li>
+<li>C 代码部分： 包含辅助函数和程序入口点。</li>
+</ul>
+<h3 id="简单的词法分析器"><a href="#简单的词法分析器" class="headerlink" title="简单的词法分析器"></a>简单的词法分析器</h3><p>创建一个名为simple.l的文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line">[0-9]+          &#123; printf(&quot;Number: %s\n&quot;, yytext); &#125;</span><br><span class="line">[a-zA-Z]+       &#123; printf(&quot;Word: %s\n&quot;, yytext); &#125;</span><br><span class="line">\\n              &#123; /* 忽略换行符 */ &#125;</span><br><span class="line">.               &#123; printf(&quot;Unknown character: %s\n&quot;, yytext); &#125;</span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">int yywarp()</span><br><span class="line">&#123;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    yylex();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编译和运行"><a href="#编译和运行" class="headerlink" title="编译和运行"></a>编译和运行</h3><p>使用Flex编译Lex文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex simple.l</span><br></pre></td></tr></table></figure>
+<p>这将生成一个名为<code>lex.yy.c</code>的C源文件。接下来，编译这个C文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc lex.yy.c -o lexer</span><br></pre></td></tr></table></figure>
+<p>假设输入文件<code>input.txt</code>内容为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">123</span><br><span class="line">!</span><br></pre></td></tr></table></figure>
+<p>运行生成的可执行文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./lexer &lt; input.txt</span><br></pre></td></tr></table></figure>
+<p><img src="/2024/01/12/lex-yacc/lexer.png" alt="alt text"></p>
+<h2 id="Yacc（Bison）基础"><a href="#Yacc（Bison）基础" class="headerlink" title="Yacc（Bison）基础"></a>Yacc（Bison）基础</h2><h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><p>语法分析是检查词法单元之间的关系，并构建抽象语法树的过程。例如，在 C 语言中，语法分析器会检查表达式、语句和函数定义的语法是否正确。</p>
+<h3 id="Yacc-的工作原理"><a href="#Yacc-的工作原理" class="headerlink" title="Yacc 的工作原理"></a>Yacc 的工作原理</h3><p>Yacc 工具接受一个描述语法规则的输入文件，并生成一个 C 代码文件，该文件包含一个语法分析器函数。这个函数可以被编译并链接到你的程序中，用于解析输入文本的语法。</p>
+<h3 id="Yacc-文件结构"><a href="#Yacc-文件结构" class="headerlink" title="Yacc 文件结构"></a>Yacc 文件结构</h3><p>Yacc 文件通常由三部分组成：</p>
+<ul>
+<li>声明部分： 使用 %{…} 定义数据类型、函数和变量。</li>
+<li>规则部分： 定义语法规则，使用 BNF 或类似的语法描述语言描述句法的结构。</li>
+<li>C 代码部分： 包含辅助函数和程序入口点。</li>
+</ul>
+<h3 id="示例：简单的语法分析器"><a href="#示例：简单的语法分析器" class="headerlink" title="示例：简单的语法分析器"></a>示例：简单的语法分析器</h3><p>创建一个名为<code>parser.y</code>的文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%token NUMBER</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">expression : NUMBER &#123; printf(&quot;Expression value: %d\n&quot;, $1); &#125;</span><br><span class="line">            | expression &#x27;+&#x27; expression &#123; printf(&quot;Addition\n&quot;); &#125;</span><br><span class="line">            | expression &#x27;-&#x27; expression &#123; printf(&quot;Subtraction\n&quot;); &#125;</span><br><span class="line">            ;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">int yyerror(char *s) &#123;</span><br><span class="line">    fprintf(stderr, &quot;Error: %s\n&quot;, s);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    yyparse();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个 Yacc 文件定义了一个语法规则：</p>
+<ul>
+<li>expression 可以是一个 NUMBER，也可以是两个 expression 之间的加减运算。</li>
+</ul>
+<h3 id="编译和运行-1"><a href="#编译和运行-1" class="headerlink" title="编译和运行"></a>编译和运行</h3><p>使用Bison编译Yacc文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bison parser.y</span><br><span class="line">gcc parser.tab.c -o parser</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Lex-和-Yacc-构建计算器"><a href="#使用-Lex-和-Yacc-构建计算器" class="headerlink" title="使用 Lex 和 Yacc 构建计算器"></a>使用 Lex 和 Yacc 构建计算器</h2><h3 id="词法分析-1"><a href="#词法分析-1" class="headerlink" title="词法分析"></a>词法分析</h3><p>定义<code>lexer.l</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &quot;parser.tab.h&quot;</span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">[0-9]+   &#123; yylval = atoi(yytext); return NUMBER; &#125;</span><br><span class="line">&quot;+&quot;     &#123; return PLUS; &#125;</span><br><span class="line">&quot;-&quot;     &#123; return MINUS; &#125;</span><br><span class="line">&quot;*&quot;     &#123; return MUL; &#125;</span><br><span class="line">&quot;/&quot;     &#123; return DIV; &#125;</span><br><span class="line">&quot;%&quot;     &#123; return MOD; &#125;</span><br><span class="line">\n      &#123; return EOL; &#125;</span><br><span class="line">.       &#123; printf(&quot;Invalid character: %s\n&quot;, yytext); &#125;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">int yywrap() </span><br><span class="line">&#123;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="语法分析-1"><a href="#语法分析-1" class="headerlink" title="语法分析"></a>语法分析</h3><p>定义<code>parser.y</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">%&#123;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">static double result = 0.0;</span><br><span class="line"></span><br><span class="line">%&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">%token NUMBER PLUS MINUS MUL DIV MOD EOL</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">expression : expression PLUS expression  &#123; result = $1 + $3; $$ = result; &#125;</span><br><span class="line">            | expression MINUS expression &#123; result = $1 - $3; $$ = result; &#125;</span><br><span class="line">            | expression MUL expression   &#123; result = $1 * $3; $$ = result; &#125;</span><br><span class="line">            | expression DIV expression   &#123; result = $1 / $3; $$ = result; &#125;</span><br><span class="line">            | expression MOD expression   &#123; result = $1 % $3; $$ = result; &#125;</span><br><span class="line">            | NUMBER                      &#123; result = $1; $$ = result; &#125;</span><br><span class="line">            ;</span><br><span class="line"></span><br><span class="line">%%</span><br><span class="line"></span><br><span class="line">int yyerror(char *s) &#123;</span><br><span class="line">    fprintf(stderr, &quot;Error: %s\n&quot;, s);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;Enter an expression: &quot;);</span><br><span class="line">    yyparse();</span><br><span class="line">    printf(&quot;Result: %lf\n&quot;, result);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个 Yacc 文件定义了计算器支持的表达式语法，并使用 <code>$$</code>变量存储计算结果。</p>
+<h3 id="编译和运行计算器"><a href="#编译和运行计算器" class="headerlink" title="编译和运行计算器"></a>编译和运行计算器</h3><p>使用以下命令编译和运行计算器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flex lexer.l</span><br><span class="line">bison parser.y</span><br><span class="line">gcc lexer.yy.c parser.tab.c -o calculator</span><br></pre></td></tr></table></figure>
+
+<p><code>./calculator</code><br>输入一个表达式，例如 1 + 2 * 3，计算器会计算结果并打印出来。</p>
+<p><img src="/2024/01/12/lex-yacc/calc.png" alt="alt text"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Lex 和 Yacc 是构建编译器和解释器等复杂程序的强大工具。通过使用 Lex 进行词法分析，使用 Yacc 进行语法分析，可以有效地构建满足特定需求的文本分析器。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/09/03/read-life/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/03/read-life/" class="post-title-link" itemprop="url">读书和生活</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-03 20:40:29" itemprop="dateCreated datePublished" datetime="2023-09-03T20:40:29+08:00">2023-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="读书和生活" href="/2023/09/03/read-life/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::f436bb98841286f5a13fb2c888f0869f" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>寂寞是对人性的缓慢的破坏人啊，为了使自己具有抵抗寂寞的能力，读书吧   – 梁晓声</p>
+</blockquote>
+<h2 id="读书"><a href="#读书" class="headerlink" title="读书"></a>读书</h2><h3 id="为什么需要读书"><a href="#为什么需要读书" class="headerlink" title="为什么需要读书"></a>为什么需要读书</h3><p>有句话说：“读书，世界就在你面前；不读书，面前就是世界。”<br>你是不是经常听到<strong>读书无用论</strong>，经常感觉读过的书都忘了，感觉读过的书都白读了</p>
+<p><img src="https://pic4.zhimg.com/v2-204ae0c33968f05e2840aac3ad0631a1_1200x500.jpg" alt="pic"></p>
+<p>没有关系，记得曾经听过一段话：“当我们还是孩子的时候，吃过很多的食物，现在我们肯定都记不得了，但是可以肯定的是，这里面的一部分已经长成了我们的骨头和肉。”</p>
+<p>所以，我相信读过的书，也会成为了我们身心的一部分，内化到我们的骨子里，一点一点的影响着我们</p>
+<p>我们处在<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/162798722">VUCA</a>的时代，充满着不确定和多变性，新冠、金融危机和明天真的不知道谁先到来。我们每天都会接触大量的负面信息、不满和焦虑，舆论，它们会不自觉的侵入我们的大脑，比如：</p>
+<ul>
+<li>你只有变得有钱了，你才会感到幸福</li>
+<li>你只有变得更漂亮、帅气，你才会更幸福</li>
+<li>你只有嫁给一个有钱人，才能体现自己的价值，你才能令人羡慕</li>
+<li>……</li>
+</ul>
+<p>所以需要读书来丰富和强大自己思想，去对抗这些舆论和思想，让我们不易被人随意的左右（PUA）</p>
+<p>孔夫子也说过：</p>
+<blockquote>
+<p>子曰：“士志于道，而耻恶衣恶食者，未足与议也”</p>
+</blockquote>
+<p><img src="/2023/09/03/read-life/library.jpg" alt="图书馆标语"></p>
+<p>作家梁晓声在《读书是最对得起付出的一件事》一书中说到：“寂寞是对人性的缓慢的破坏人啊，为了使自己具有抵抗寂寞的能力，读书吧”</p>
+<h3 id="阅读的投资回报率"><a href="#阅读的投资回报率" class="headerlink" title="阅读的投资回报率"></a>阅读的投资回报率</h3><p>作为一个理工生，做一件事情很喜欢去考虑投资回报率</p>
+<p>一般高中生阅读现代文的速度不少于600字&#x2F;分钟。我们就按每分钟600字估算，每小时就是3.6万字，因人而异，这里只是简单做个估算；</p>
+<p>那么，一本30W字书，可能倾注了作者几年、十几年甚至一辈子的时间，我们只需要10个小时就能获得作者几十年的时间成果，这个投资回报率放在股市里估计人人都是巴菲特了。</p>
+<p>算完这个，我真的找不到什么比读书是更值得投资的事情了，至少我没找到</p>
+<p>史蒂芬·科特勒(Steven Kotler)在《跨越不可能》一书中详细分析了读书的投资回报率，有兴趣的朋友可以自己去看看。</p>
+<h3 id="无功利性读书"><a href="#无功利性读书" class="headerlink" title="无功利性读书"></a>无功利性读书</h3><p>现在网上有不少声音，都在力推无功利性读书，似乎好像带着功利性就会让人觉得有功利心</p>
+<p>确实，无功利性读书很舒服，没有压力，没有包袱</p>
+<p>其实，不论是那种方式，只要开始就是好的，重要的是行动，没有好坏之分</p>
+<ul>
+<li>功利性读书：有目标、有方向，更加具体，见效快</li>
+<li>无功利性读书：关注点在无用之用</li>
+</ul>
+<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>其实关于生活也没什么好说的，每个人都有自己想过的生活，每种生活方式都有其自身的价值，没有对错，只有立场不同，适合自己的才是最好的。</p>
+<p>我们只要守住做人最基本的原则（不害人）就行了，然后在此基础上，再去做一些有意义的事情，帮助他人和这个社会，尽己所能。</p>
+<h3 id="关于自律"><a href="#关于自律" class="headerlink" title="关于自律"></a>关于自律</h3><p>自律这个话题，已经被讨论了很多次，身边的朋友也总是说我每天早睡早起，很自律。。。</p>
+<p>简单谈一下我对自律的看法，我一直认为以下的<strong>都不是自律</strong></p>
+<ul>
+<li>早睡早起，健康饮食</li>
+<li>不熬夜、不打游戏、不抽烟不喝酒</li>
+<li>每年读50本书</li>
+<li>坚持跑步、运动健身</li>
+<li>制定各种满满to-do-list，非常有计划有规划<br>确实，做到上面的每一种人，都很厉害，很优秀，更多的我更想将这类归于勤奋和努力</li>
+</ul>
+<p>相反，抽烟和喝酒、熬夜、不给自己制定计划的人就不自律吗？不一定</p>
+<p>关于自律的定义，网上有很多，我很喜欢百度上的一段描述</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">自律，出自《左传·哀公十六年》，指在没有人现场监督的情况下，通过自己要求自己，变被动为主动，自觉地遵</span><br><span class="line">循法度，拿它来约束自己的一言一行。指不受外界约束和情感支配, 据自己善良意志按自己颁布的道德规律而行</span><br><span class="line">事的道德原则。</span><br></pre></td></tr></table></figure>
+<p>我很喜欢最后一句话，<strong>不受外界约束和情感支配, 据自己善良意志按自己颁布的道德规律而行事的道德原则</strong>。</p>
+<p>我认为的自律是知道自己在什么时候做什么事情，什么时候不该做什么；</p>
+<p>比如，你知道你的身体每天只能喝2瓶啤酒，那你就不喝2瓶以上的啤酒；<br>你知道自己每天的心力资源不能超过3小时，那你就不会强迫自己做更多的计划；<br>……</p>
+<p>我们中的大多数都是普通人，我们要允许自己普通，</p>
+<p>健康、积极、朴素的生活态度才是幸福的秘诀</p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><p>好好读书，好好生活。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/07/19/plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/07/19/plugin/" class="post-title-link" itemprop="url">Summary of Plugin in C++</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-19 21:49:29" itemprop="dateCreated datePublished" datetime="2023-07-19T21:49:29+08:00">2023-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Summary of Plugin in C++" href="/2023/07/19/plugin/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::6836b2fb001a87ccbfe37c3c2360cd9a" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>A plugin is a software component that enables new functionality to be added to a program after the program’s initial compile.</p>
+</blockquote>
+<h2 id="What-problem-Plugin-solve"><a href="#What-problem-Plugin-solve" class="headerlink" title="What problem Plugin solve?"></a>What problem Plugin solve?</h2><p>对于已经发布的软件，我们如何做到动态地（非侵入式）修改为其增强（增加、更新、删除）功能，插件架构就是一个很好的解决方案。<br>总结一下，我们创造插件主要是帮助解决两种类型的问题：</p>
+<ul>
+<li>为系统提供全新的能力</li>
+<li>对系统现有能力进行定制</li>
+</ul>
+<h2 id="Why-We-Need-Plugin"><a href="#Why-We-Need-Plugin" class="headerlink" title="Why We Need Plugin?"></a>Why We Need Plugin?</h2><p>我们的软件系统往往是要面向持续性的迭代的，在开发之初很难把所有需要支持的功能都想清楚，有时候还需要借助社区的力量去持续生产新的功能点，或者优化已有的功能。这就需要我们的软件系统具备一定的可扩展性。插件模式就是我们常常选用的方法。</p>
+<h2 id="What-is-Plugin"><a href="#What-is-Plugin" class="headerlink" title="What is Plugin"></a>What is Plugin</h2><p>插件是安装在应用程序上的附加组件，扩展了系统的功能，它实现了系统的接口，但是插件通常不能独立运行。<br>例如，如果你想在网站上观看视频，您可能需要一个插件来执行此操作。如果未安装该插件，你的浏览器可能将无法播放视频。</p>
+<p><img src="/2023/07/19/plugin/plugin-architecture.png" alt="Plugin Architecture"></p>
+<h3 id="Rules-for-C-Plugin"><a href="#Rules-for-C-Plugin" class="headerlink" title="Rules for C++ Plugin"></a>Rules for C++ Plugin</h3><p>其实，插件在概念上不是C++语言的一部分。相反，插件是操作系统层面的概念，即OS如何加载动态链接库(通常，动态库的后缀，Windows .dll, linux .so, MAC OS .dylib)。对于任何规模非常大的项目，应用程序通常分为一个主程序文件和若干动态库组成</p>
+<ol>
+<li>在插件中分配的内存必须在同一插件中释放</li>
+<li>插件接口中不能使用标准库组件(如， map、string、unique_ptr)</li>
+<li>假设对齐不兼容。如果变量在主应用程序中使用，请避免从具有成员变量的主应用程序类继承插件</li>
+<li>从插件中导出的函数（由应用程序调用）必须声明为 extern “C” 形式。反之，从主应用程序导出的函数亦是如此</li>
+<li>主应用程序应和插件之间应该通过接口（一般为纯虚函数）相联系</li>
+<li>不要让异常从插件中抛出</li>
+</ol>
+<h2 id="Plugin-Design"><a href="#Plugin-Design" class="headerlink" title="Plugin Design"></a>Plugin Design</h2><h3 id="Plugin-Interface"><a href="#Plugin-Interface" class="headerlink" title="Plugin Interface"></a>Plugin Interface</h3><h4 id="接口的功能职责"><a href="#接口的功能职责" class="headerlink" title="接口的功能职责"></a>接口的功能职责</h4><ol>
+<li>能够发现新的Command和添加新的GUI控件的接口</li>
+<li>提供内存分配和释放的API</li>
+<li>提供版本查询的API</li>
+</ol>
+<h4 id="如何发现新的Commmand"><a href="#如何发现新的Commmand" class="headerlink" title="如何发现新的Commmand"></a>如何发现新的Commmand</h4><p>我们面临的第一个问题是，当我们既不知道插件提供了什么命令，也不知道需要实例化的类的名称时，就不知道如何从插件中分配命令。<br>因此，我们定义一个接口，需要插件实现来提供这些信息，结合前面所述的C++ 插件规则，我们<code>Plugin</code>接口定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Plugin</span>() = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nCommands;</span><br><span class="line">        <span class="type">char</span>** commandNames;</span><br><span class="line">        Command** commands;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginDescriptor&amp; <span class="title">getPluginDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里<strong>Command</strong>的简单定义</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Command</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Command</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">exec</span><span class="params">()</span> <span class="keyword">noexcept</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> Command* <span class="title">clone</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">noexcept</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>说明：由于C++缺少反射机制，所以我们这里通过<code>clone</code>接口实现多态对象的克隆</p>
+<h4 id="添加GUI控件"><a href="#添加GUI控件" class="headerlink" title="添加GUI控件"></a>添加GUI控件</h4><p>同样地，动态添加按钮与动态添加命令没有太大区别，主应用程序也不知道需要从插件中导入哪些按钮，因此插件接口必须提供一个提供按钮描述的接口，定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginButtonDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nButtons;</span><br><span class="line">        <span class="type">char</span>** cmdLabels;    <span class="comment">// command label</span></span><br><span class="line">        <span class="type">char</span>** cmdNames;     <span class="comment">// command</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginButtonDescriptor* <span class="title">getPluginButtonDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>说明：接口<code>getPluginButtonDescriptor</code>返回指针的原因，插件可能没有相应GUI按钮的命令</p>
+<h4 id="API-Versioning"><a href="#API-Versioning" class="headerlink" title="API Versioning"></a>API Versioning</h4><p>当我们的应用程序的生命周期足够长，出于各种原因，插件的规范协议可能会发生变更。这就意味着，在某一特定时间点写的插件很可能不在适用新的API版本。<br>另外，由于插件被设计为独立于应用程序的开发，因此可能无法将插件版本与应用程序版本同步。<br>为了兼容性考虑，即使在开始之初，我们可能用不到API的版本号，但依然建议考虑加上<strong>api</strong>版本查询接口，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ApiVersion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> major;</span><br><span class="line">        <span class="type">int</span> minor;</span><br><span class="line">        <span class="type">int</span> patch;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ApiVersion <span class="title">apiVersion</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>至此，我们得到了第一版的Plugin接口，总体展示一下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Plugin</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nCommands;</span><br><span class="line">        <span class="type">char</span>** commandNames;</span><br><span class="line">        Command** commands;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginDescriptor&amp; <span class="title">getPluginDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* for gui */</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginButtonDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nButtons;      </span><br><span class="line">        <span class="type">char</span>** cmdLabels;    <span class="comment">// command label</span></span><br><span class="line">        <span class="type">char</span>** cmdNames;     <span class="comment">// command</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginButtonDescriptor* <span class="title">getPluginButtonDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ApiVersion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> major;</span><br><span class="line">        <span class="type">int</span> minor;</span><br><span class="line">        <span class="type">int</span> patch;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ApiVersion <span class="title">apiVersion</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Plugin-Allocation-and-Deallocation"><a href="#Plugin-Allocation-and-Deallocation" class="headerlink" title="Plugin Allocation and Deallocation"></a>Plugin Allocation and Deallocation</h3><p>与上一小节提到的问题相似，我们无法提前知道<code>Plugin</code>子类的名字，也就无法直接通过new的方式创建插件实例。<br>我们通过一种更为简单的方式解决这个问题，通过和插件实现放约定一个分配和释放插件实例的C接口，即可解决这个问题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">void</span>* <span class="title">AllocPlugin</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">void</span> <span class="title">DeallocPlugin</span><span class="params">(<span class="type">void</span>*)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>我们不需要具体插件的类名，<code>AllocPlugin</code>和<code>DellocPlugin</code>函数对帮助我们解决问题</p>
+<h3 id="Loading-Plugins"><a href="#Loading-Plugins" class="headerlink" title="Loading Plugins"></a>Loading Plugins</h3><p>如前所述，我们知道插件是基于操作系统的，从本质上讲，加载插件需要操作系统提供相关的代码。</p>
+<h4 id="不同平台的动态库加载方式"><a href="#不同平台的动态库加载方式" class="headerlink" title="不同平台的动态库加载方式"></a>不同平台的动态库加载方式</h4><p>为了使用插件，我们只需要三个特定于OS的函数：打开动态库，关闭动态库，以及从打开的动态库中提取需要的符号。</p>
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="center">POSIX</th>
+<th align="center">win32</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">header</td>
+<td align="center">dlfcn.h</td>
+<td align="center">windows.h</td>
+</tr>
+<tr>
+<td align="left">load library</td>
+<td align="center">dlopen()</td>
+<td align="center">LoadLibrary()</td>
+</tr>
+<tr>
+<td align="left">close library</td>
+<td align="center">dlclose()</td>
+<td align="center">FreeLibrary()</td>
+</tr>
+<tr>
+<td align="left">get library symbol</td>
+<td align="center">dlsym()</td>
+<td align="center">GetProcAddress()</td>
+</tr>
+</tbody></table>
+<p>使用插件的第一步就是运行平台库函数打开动态库，然后从打开的库中导出需要的符号用于程序流中，等程序处理完毕卸载库即可关闭插件</p>
+<h4 id="POSIX平台的加载方式"><a href="#POSIX平台的加载方式" class="headerlink" title="POSIX平台的加载方式"></a>POSIX平台的加载方式</h4><h3 id="Platform-Independent"><a href="#Platform-Independent" class="headerlink" title="Platform Independent"></a>Platform Independent</h3><h4 id="Solution1-using-3rd-library"><a href="#Solution1-using-3rd-library" class="headerlink" title="Solution1 using 3rd-library"></a>Solution1 using 3rd-library</h4><ul>
+<li>not free</li>
+<li>licence</li>
+<li>the cost</li>
+<li>may no support</li>
+<li>incompatible(toolchain, release period)</li>
+</ul>
+<h4 id="Solution2-using-预处理指令"><a href="#Solution2-using-预处理指令" class="headerlink" title="Solution2 using 预处理指令"></a>Solution2 using 预处理指令</h4><p>代码处理可能是这样</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> POSI</span></span><br><span class="line"><span class="type">void</span>* handle = <span class="built_in">dlopen</span>(<span class="string">&quot;libPlugin.so&quot;</span>, RTLD_LAZY)</span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> WIN3</span></span><br><span class="line">HINSTANCE handle = <span class="built_in">LoadLibrary</span>(<span class="string">&quot;Plugin.dll&quot;</span>)</span><br><span class="line"><span class="meta">#endi</span></span><br></pre></td></tr></table></figure>
+<p>还有，不要忘记头文件包含也要加预处理</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> POSI</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dlfcn.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> WIN32</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>问题不言而喻，这种处理方式，一旦代码规模变大，将会使得代码维护和阅读成本加大，添加和删除功能很容易遗漏而导致Bug的引入。<br>一种稍微聪明的预处理宏的使用方式</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> POSIX</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HANDLE void*</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CLOSE_LIBRARY dlclose</span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> WIN32</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CLOSE_LIBRARY FreeLibrary</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HANDLE HINSTANCE</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">CLOSE_LIBRARY</span>(handle);</span><br></pre></td></tr></table></figure>
+<p>但是，这种方法只适用于具有相同参数的函数调用emo~</p>
+<h4 id="Solution3-using-编译单元控制"><a href="#Solution3-using-编译单元控制" class="headerlink" title="Solution3 using 编译单元控制"></a>Solution3 using 编译单元控制</h4><p>分离源文件，通过编译脚本识别在不同的平台编译不同的文件。使用这种方式，将没有预处理宏的代码。不过采用这种方式存在一些问题</p>
+<ol>
+<li>必然会造成重复，软件设计中重复即耦合</li>
+<li>对于不同的平台，就要求我们需要实现所有的接口</li>
+<li>实现方式对代码开发人员不透明，并且两种平台之间没有任何痕迹表明另一份的存在，很可能导致一种平台适配完成，另一个平台功能未及时适配<br>一般不推荐这种纯编译技术控制的方式来解耦平台依赖</li>
+</ol>
+<h4 id="Solution4-using-An-Abstract-Factory-for-Platform"><a href="#Solution4-using-An-Abstract-Factory-for-Platform" class="headerlink" title="Solution4 using An Abstract Factory for Platform"></a>Solution4 using An Abstract Factory for Platform</h4><p>综上考虑，我们采用编译宏和抽象工厂结合的方式来处理平台独立性</p>
+<blockquote>
+<p>talk is cheap, show me the code</p>
+</blockquote>
+<ul>
+<li>PlatformFactory单例，用来分离平台<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">PlatformFactor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">static</span> PlatformFactory&amp; <span class="title">Instance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="meta">#<span class="keyword">ifdef</span> POSIX</span></span><br><span class="line">            <span class="type">static</span> PosixFactory instance;</span><br><span class="line">        <span class="meta">#<span class="keyword">elif</span> WIN32</span></span><br><span class="line">            <span class="type">static</span> WindowsFactory instance;</span><br><span class="line">        <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::unique_ptr&lt;DynamicLoader&gt; <span class="title">createDynamicLoader</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">PlatformFactory</span>(<span class="type">const</span> PlatformFactory&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    PlatformFactory&amp; <span class="keyword">operator</span>=(<span class="type">const</span> PlatformFactory&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+不同的实例，在接口<code>createDynamicLoader</code>中返回不同平台动态库加载<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">WindowsFactory</span> : <span class="keyword">public</span> PlatformFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">std::unique_ptr&lt;DynamicLoader&gt; <span class="title">createDynamicLoader</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">PosixFactory</span> : <span class="keyword">public</span> PlatformFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">std::unique_ptr&lt;DynamicLoader&gt; <span class="title">createDynamicLoader</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>DynamicLoader接口用来分离平台实现<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">DynamicLoader</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">DynamicLoader</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> Plugin* <span class="title">allocatePlugin</span><span class="params">(<span class="type">const</span> string&amp; pluginName)</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">deallocatePlugin</span><span class="params">(Plugin*)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+之后只要定义自己的平台的<code>DynamicLoader</code>即可。</li>
+</ul>
+<h2 id="Questions-or-Feature-to-Consider-in-Future"><a href="#Questions-or-Feature-to-Consider-in-Future" class="headerlink" title="Questions or Feature to Consider in Future"></a>Questions or Feature to Consider in Future</h2><ul>
+<li>Todo</li>
+<li><input checked disabled type="checkbox"> 平台移植性</li>
+<li><input disabled type="checkbox"> 控件扩展</li>
+<li><input disabled type="checkbox"> 如何显示当前的插件信息</li>
+<li><input disabled type="checkbox"> 插件安装的依赖关系</li>
+</ul>
+<h2 id="Some-Ref"><a href="#Some-Ref" class="headerlink" title="Some Ref"></a>Some Ref</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/427795467">C++ 程序设计 - 插件框架分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.linuxjournal.com/article/3687">Dynamic Class Loading for C++ on Linux</a></li>
+<li><a target="_blank" rel="noopener" href="https://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html">Dynamically Loaded (DL) Libraries</a></li>
+<li><a target="_blank" rel="noopener" href="https://cs.uwaterloo.ca/~m2nagapp/courses/CS446/1195/Arch_Design_Activity/PlugIn.pdf">Plugin architecture</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.computerhope.com/jargon/p/plugin.htm">Plugin</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/07/01/history-article/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/07/01/history-article/" class="post-title-link" itemprop="url">2023年以前的文章</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-01 21:49:29" itemprop="dateCreated datePublished" datetime="2023-07-01T21:49:29+08:00">2023-07-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/History/" itemprop="url" rel="index"><span itemprop="name">History</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="2023年以前的文章" href="/2023/07/01/history-article/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::c03b749a78d5f86ef79d2e0b52f67a71" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>204</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>历史文章，Welcome to my <a target="_blank" rel="noopener" href="https://www.jianshu.com/u/097b09693b97">简书主页</a></p>
+<p>23年以前的文章全部发布在了简书，未发布的以及以后都会更新在<a href="https://gyhaoran.github.io/">Leo’s Blog</a></p>
+<h2 id="文章分类"><a href="#文章分类" class="headerlink" title="文章分类"></a>文章分类</h2><h3 id="C-相关"><a href="#C-相关" class="headerlink" title="C++相关"></a>C++相关</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8b68acb04278">可调用对象</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/80b09e6d20a7">FP范式之旅</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/21d38236c260">浅析内存分配</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cd43ce140211">C++ 方法引用</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/971a8e861eca">控制对象的内存分配</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7ed95fdd0efb">几个关于vector的问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f1b6d44aeab6">Algorithms on sets in STL</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4e0a7ee1db23">组合（Composite）模式 in C++</a></li>
+</ul>
+<h3 id="Modern-cpp-recepies"><a href="#Modern-cpp-recepies" class="headerlink" title="Modern cpp recepies"></a>Modern cpp recepies</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8cda42b34d7c">类型别名</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2e0729c40623">using auto</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/579388f3b9da">使用作用域枚举</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a9f0490e8b05">自定义类型实现范围for循环</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/98e9eff85544">defaulted and deleted functions</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/40afbf741774">Mordern Cpp - Vocabulary Types</a></li>
+</ul>
+<h3 id="Kata"><a href="#Kata" class="headerlink" title="Kata"></a>Kata</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c175cd0fcff5">统计单词</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4319abbcebe3">Sum of Intervals</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/24de87579ced">Validating passwords in C++</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d1551fd13a26">A coding kata – Fibonacci sequence</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/11fc2b64bbe6">Serializing and Deserializing for XML in C++</a></li>
+</ul>
+<h3 id="Python相关"><a href="#Python相关" class="headerlink" title="Python相关"></a>Python相关</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a02ee5ac03c5">Python sched</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/38049a126769">Python Snippets</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4d61171f495f">Python Tricks – One-Line Code</a></li>
+</ul>
+<h3 id="个人思考"><a href="#个人思考" class="headerlink" title="个人思考"></a>个人思考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4625af0b9faf">Last 30 Days</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9b45f6f0ae58">高效学习和主动学习</a></li>
+</ul>
+<h3 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/184edfb171ec">第一个三年</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6f0ddb5ad2f3">成年人的世界可以很简单</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Leo Ge</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">10k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">35 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("06/30/2023 11:03:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/gyhaoran" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywKMio1u","appkey":"804af93d76e3f080dbb3d3ddaa361b28","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
