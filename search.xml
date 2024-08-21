@@ -56,52 +56,80 @@
 ]]></content>
   </entry>
   <entry>
-    <title>2023年以前的文章</title>
-    <url>/2023/07/01/history-article/</url>
-    <content><![CDATA[<p>历史文章，Welcome to my <a href="https://www.jianshu.com/u/097b09693b97">简书主页</a></p>
-<p>23年以前的文章全部发布在了简书，未发布的以及以后都会更新在<a href="https://gyhaoran.github.io/">Leo’s Blog</a></p>
-<h2 id="文章分类"><a href="#文章分类" class="headerlink" title="文章分类"></a>文章分类</h2><h3 id="C-相关"><a href="#C-相关" class="headerlink" title="C++相关"></a>C++相关</h3><ul>
-<li><a href="https://www.jianshu.com/p/8b68acb04278">可调用对象</a></li>
-<li><a href="https://www.jianshu.com/p/80b09e6d20a7">FP范式之旅</a></li>
-<li><a href="https://www.jianshu.com/p/21d38236c260">浅析内存分配</a></li>
-<li><a href="https://www.jianshu.com/p/cd43ce140211">C++ 方法引用</a></li>
-<li><a href="https://www.jianshu.com/p/971a8e861eca">控制对象的内存分配</a></li>
-<li><a href="https://www.jianshu.com/p/7ed95fdd0efb">几个关于vector的问题</a></li>
-<li><a href="https://www.jianshu.com/p/f1b6d44aeab6">Algorithms on sets in STL</a></li>
-<li><a href="https://www.jianshu.com/p/4e0a7ee1db23">组合（Composite）模式 in C++</a></li>
+    <title>Non-Modifying Operations 中</title>
+    <url>/2023/10/02/non-modifying-part2/</url>
+    <content><![CDATA[<blockquote>
+<p>A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.</p>
+</blockquote>
+<h2 id="Comparing-Ranges"><a href="#Comparing-Ranges" class="headerlink" title="Comparing Ranges"></a>Comparing Ranges</h2><h3 id="equal"><a href="#equal" class="headerlink" title="equal"></a>equal</h3><ul>
+<li><p>intro<br>uses <code>operator ==</code> for comparing elements; alternatively a custom <code>function(object)</code> can be passed as additional argument</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// true, if all elem in both range are equal</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2)</span></span>;       <span class="comment">// use  v1 == v2</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2, pred)</span></span>; <span class="comment">// use pred(v1, v2)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2, end2)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2, end2, pred)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ranges::equal</span><span class="params">(range1, range2)</span></span>;    <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; r1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; r2 &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">equal</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2));  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// compare other subranges:</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">equal</span>(<span class="built_in">begin</span>(r1)+<span class="number">1</span>, <span class="built_in">begin</span>(r1)+<span class="number">7</span>, <span class="built_in">begin</span>(r2), <span class="built_in">begin</span>(r2)+<span class="number">6</span>);  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// custom type</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">P</span> &#123; <span class="type">int</span> x; <span class="type">char</span> q; &#125;;</span><br><span class="line">std::vector&lt;P&gt; a &#123; P&#123;<span class="number">1</span>,<span class="string">&#x27;n&#x27;</span>&#125;, P&#123;<span class="number">2</span>,<span class="string">&#x27;m&#x27;</span>&#125; &#125;;</span><br><span class="line">std::vector&lt;P&gt; b &#123; P&#123;<span class="number">1</span>,<span class="string">&#x27;y&#x27;</span>&#125;, P&#123;<span class="number">2</span>,<span class="string">&#x27;z&#x27;</span>&#125; &#125;;</span><br><span class="line"><span class="comment">// compare &#x27;P&#x27;s only by member &#x27;x&#x27;</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">equal</span>(<span class="built_in">begin</span>(a),<span class="built_in">end</span>(a), <span class="built_in">begin</span>(b),<span class="built_in">end</span>(b), </span><br><span class="line">              [](P p1, P p2) &#123; <span class="keyword">return</span> p1.x == p2.x; &#125; );  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">equal</span>(range1, range2);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="Modern-cpp-recepies"><a href="#Modern-cpp-recepies" class="headerlink" title="Modern cpp recepies"></a>Modern cpp recepies</h3><ul>
-<li><a href="https://www.jianshu.com/p/8cda42b34d7c">类型别名</a></li>
-<li><a href="https://www.jianshu.com/p/2e0729c40623">using auto</a></li>
-<li><a href="https://www.jianshu.com/p/579388f3b9da">使用作用域枚举</a></li>
-<li><a href="https://www.jianshu.com/p/a9f0490e8b05">自定义类型实现范围for循环</a></li>
-<li><a href="https://www.jianshu.com/p/98e9eff85544">defaulted and deleted functions</a></li>
-<li><a href="https://www.jianshu.com/p/40afbf741774">Mordern Cpp - Vocabulary Types</a></li>
+<h3 id="mismatch"><a href="#mismatch" class="headerlink" title="mismatch"></a>mismatch</h3><ul>
+<li><p>intro<br>returns a std::pair of iterators to the first mismatching elements in 2 ranges<br>uses operator &#x3D;&#x3D; for comparing elements; alternatively a custom function(object) can be passed as additional argument</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2)</span></span>;</span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2, pred)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2, end2)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2, end2, pred)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"></span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(range1, range2)</span></span>;    <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; r1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; r2 &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// compare subranges (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> p = <span class="built_in">mismatch</span>(<span class="built_in">begin</span>(r1)+<span class="number">2</span>, <span class="built_in">begin</span>(r1)+<span class="number">9</span>, <span class="built_in">begin</span>(r2)+<span class="number">1</span>);</span><br><span class="line"><span class="comment">// != end-of-range ⇒ mismatch</span></span><br><span class="line"><span class="keyword">if</span> (p.first  != <span class="built_in">begin</span>(r1)+<span class="number">9</span>) &#123; <span class="keyword">auto</span> p1value = *p.first;  &#125;  <span class="comment">// 6</span></span><br><span class="line"><span class="keyword">if</span> (p.second != <span class="built_in">end</span>(r2))     &#123; <span class="keyword">auto</span> p2value = *p.second; &#125;  <span class="comment">// 7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// compare entire containers:</span></span><br><span class="line"><span class="keyword">auto</span> q = <span class="built_in">mismatch</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2));</span><br><span class="line"><span class="keyword">if</span> (q.first != <span class="built_in">end</span>(r1)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> q1value = *q.first;  <span class="comment">// 0</span></span><br><span class="line">  <span class="keyword">auto</span> q1index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(r1), q.first);  <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (q.second != <span class="built_in">end</span>(r2)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> q2value = *q.second;  <span class="comment">// 1</span></span><br><span class="line">  <span class="keyword">auto</span> q2index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(r2), q.second);  <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> [p1, p2] = std::ranges::<span class="built_in">mismatch</span>(range1, range2);</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> value1 = *p1;  <span class="comment">// 6</span></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> value2 = *p2;  <span class="comment">// 7</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="Kata"><a href="#Kata" class="headerlink" title="Kata"></a>Kata</h3><ul>
-<li><a href="https://www.jianshu.com/p/c175cd0fcff5">统计单词</a></li>
-<li><a href="https://www.jianshu.com/p/4319abbcebe3">Sum of Intervals</a></li>
-<li><a href="https://www.jianshu.com/p/24de87579ced">Validating passwords in C++</a></li>
-<li><a href="https://www.jianshu.com/p/d1551fd13a26">A coding kata – Fibonacci sequence</a></li>
-<li><a href="https://www.jianshu.com/p/11fc2b64bbe6">Serializing and Deserializing for XML in C++</a></li>
+<h2 id="Binary-Search-of-Sorted-Ranges"><a href="#Binary-Search-of-Sorted-Ranges" class="headerlink" title="Binary Search of Sorted Ranges"></a>Binary Search of Sorted Ranges</h2><h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/non-modifying-part2/binary_search.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">// find in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">lower_bound</span>(<span class="built_in">begin</span>(v)+<span class="number">3</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// find in entire vector</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">lower_bound</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *j;  <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">lower_bound</span>(v, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="Python相关"><a href="#Python相关" class="headerlink" title="Python相关"></a>Python相关</h3><ul>
-<li><a href="https://www.jianshu.com/p/a02ee5ac03c5">Python sched</a></li>
-<li><a href="https://www.jianshu.com/p/38049a126769">Python Snippets</a></li>
-<li><a href="https://www.jianshu.com/p/4d61171f495f">Python Tricks – One-Line Code</a></li>
+<h3 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/non-modifying-part2/lower_bound.png" alt="lower_bound"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">// find in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">lower_bound</span>(<span class="built_in">begin</span>(v)+<span class="number">3</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// find in entire vector</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">lower_bound</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *j;  <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">lower_bound</span>(v, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="个人思考"><a href="#个人思考" class="headerlink" title="个人思考"></a>个人思考</h3><ul>
-<li><a href="https://www.jianshu.com/p/4625af0b9faf">Last 30 Days</a></li>
-<li><a href="https://www.jianshu.com/p/9b45f6f0ae58">高效学习和主动学习</a></li>
+<h3 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h3><ul>
+<li>intro<br><img src="/2023/10/02/non-modifying-part2/upper_bound.png" alt="alt text"></li>
 </ul>
-<h3 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h3><ul>
-<li><a href="https://www.jianshu.com/p/184edfb171ec">第一个三年</a></li>
-<li><a href="https://www.jianshu.com/p/6f0ddb5ad2f3">成年人的世界可以很简单</a></li>
+<h3 id="equal-range"><a href="#equal-range" class="headerlink" title="equal_range"></a>equal_range</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/non-modifying-part2/equal_range.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> r5 = <span class="built_in">equal_range</span>(<span class="built_in">begin</span>(v)+<span class="number">3</span>, <span class="built_in">begin</span>(v)+<span class="number">11</span>, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// erase range of &#x27;5&#x27;</span></span><br><span class="line">v.<span class="built_in">erase</span>(r5.first, r5.second);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : v) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 1 2 3 4 6 6 7 7 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// find in entire vector</span></span><br><span class="line"><span class="keyword">auto</span> r6 = <span class="built_in">equal_range</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">6</span>);</span><br><span class="line"><span class="comment">// erase range of &#x27;6&#x27;</span></span><br><span class="line">v.<span class="built_in">erase</span>(r6.first, r6.second);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : v) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 1 2 3 4 7 7 8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> [r5b,r5e] = std::ranges::<span class="built_in">equal_range</span>(v, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// erase range</span></span><br><span class="line">v.<span class="built_in">erase</span>(r5b, r5e);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : v) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 3 4 6 6 7</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/non-modifying-part2/includes.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; r1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; r2 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="comment">// as shown in image</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">includes</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2)+<span class="number">1</span>, <span class="built_in">begin</span>(r2)+<span class="number">5</span>);  <span class="comment">// true</span></span><br><span class="line"><span class="comment">// entire r2 in r1?</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">includes</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2), <span class="built_in">end</span>(r2));  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">includes</span>(range1, range2);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>History</category>
+        <category>Standard Library Algorithms</category>
+        <category>C++</category>
       </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
   </entry>
   <entry>
     <title>Summary of Plugin in C++</title>
@@ -233,8 +261,83 @@
       </tags>
   </entry>
   <entry>
+    <title>Ray AutoScaler Introduction</title>
+    <url>/2024/05/03/ray-autoscaler/</url>
+    <content><![CDATA[<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p><strong>Autoscaler</strong>：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。</p>
+<h2 id="2-Autoscaler-能力"><a href="#2-Autoscaler-能力" class="headerlink" title="2 Autoscaler 能力"></a>2 Autoscaler 能力</h2><p>GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，<strong>GCS 会每隔 100ms 从所有的注册到自己的 raylets 去拉取最新的资源使用情况的视图，也会间隔 100ms 去广播给其它的 raylets。</strong> 同时 GCS 也会为 Autoscaler 组件提供当前集群的负载的数据，以帮助 Autoscaler 去判断什么时候给集群增加机器和从集群中移除机器。</p>
+<p><img src="/2024/05/03/ray-autoscaler/autoscaler.png" alt="ray autoscaler"></p>
+<p>Ray Autoscaler 负责从集群中添加和删除节点。它查看分布式调度器公开的逻辑资源需求、集群中当前的节点、集群的节点配置文件， 计算所需的集群配置，并执行将集群移动到所需状态的操作。<strong>Autoscaler 会从 GCS 中去拉取当前集群的负载情况，然后调用云厂商的实现去添加和移除节点。</strong></p>
+<hr>
+<p><strong>自动扩缩容的主要工作包含以下几点</strong>：</p>
+<ul>
+<li><p>当应用提交 actors、tasks、placement groups 去请求资源，如 CPU、GPU 等。</p>
+</li>
+<li><p>调度器会查看资源的要求和可用的资源，然后决定 tasks 应该放置的位置，或者<strong>资源不满足的时候就会阻塞，这个信息会被作为一个快照放到 GCS 中</strong>。</p>
+</li>
+<li><p>Autoscaler 作为一个独立的进程运行，<strong>它周期性地从 GCS 中抓取步骤 2 中提到的快照</strong>， 然后从中查看集群的可用资源、请求的资源、有什么 tasks 是阻塞的，以及 worker 节点被设置的配置， <strong>然后运行bin-packing 算法（下面第3节有介绍）</strong>去计算一下，在能保证运行中的 tasks&#x2F;actors&#x2F;placement group 和阻塞的这些 tasks&#x2F;actors&#x2F;placement group 的资源都能满足的情况下，一共需要多少节点。</p>
+</li>
+<li><p>然后 Autoscaler 使用 node provider interface 去添加和移除节点，<strong>各种 cloud provider 可以去实现自己的 node provider interface</strong>，如 AWS、 GCP、Azure、Kubernetes 以及 on-premise 的数据中心。（也包括LSF和Slurm）</p>
+</li>
+<li><p>当新的节点启动了，也注册到 Ray 的集群中了，这些节点就可以接收应用的工作负载了。</p>
+</li>
+</ul>
+<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/2024/05/03/ray-autoscaler/scheduler.webp" alt="scheduler"></p>
+<p>当资源请求 (i.e RequestWorkerLease PRC) 被 raylet 接受之后, 整个过程就如上图的状态机一样，<strong>主要包含三个状态:</strong></p>
+<ol>
+<li><strong>Granted</strong>: 在这个状态下，client 是可以使用申请的资源和 raylet 返回来的对应的 worker 去运行 actor 和 task 的。</li>
+<li><strong>Reschedule</strong>: 如果有比本地节点更合适的节点的时候，就需要重新调度到别的节点，这个过程就是重新调度的过程。在这个过程中，本地节点是可以从集群视角去看到集群全部节点的资源使用情况。</li>
+<li><strong>Canceled</strong>: 当申请的资源无法被满足的时候，就会取消本地的调度。比如一个 client 请求了一个特定的机器，但是这个机器挂了。再比如，给 task 请求分配的运行环境不能正常的创建出来，就会导致 raylet 不能启动 worker 去运行 task，这个时候调度的请求也会被取消。</li>
+</ol>
+<p><strong>调度策略主要包含：</strong></p>
+<ul>
+<li><p><strong>Hybrid Policy</strong>：如果不指定特定的调度策略，这个就是一种默认的调度策略。</p>
+<ol>
+<li>该策略首先是尝试将 task 放在自己本地来运行，但是当本地节点的资源使用量超过了配置的阈值（默认为 50%），就将 task 分配到其它的机器上，这个分配机器的过程是按照机器的 ID 进行排序（保证每次都按照相同顺序来），这里有第一远程节点、第二远程节点等等，依此类推，直到所有节点上的关键资源利用率都超过阈值。它将选择资源利用率最低的节点。</li>
+<li>该策略是在 bin-packing 和 load-balancing 之间进行平衡。<strong>bin-packing 的场景就是先紧着第一台机器，等第一台机器实在不行了，再到第二台，这种会造成大部分有 task 的机器的负载都很高，会导致一些不确定的问题</strong>，机器的负载高了，什么问题都可能发生。</li>
+<li>load-balancing 就是下面介绍的 spread 的方式，简单理解就是，有 task 大家一起均摊来运行，这种会有资源碎片化的问题。</li>
+</ol>
+</li>
+<li><p><strong>Spread Policy</strong>：该策略使用轮询的方式，在具有可用资源的节点之间分配 task，这样可以保证所有的 task 在整个集群中比较均衡地分布，不至于某一些机器的负载很高，其它的机器又很空闲。但这种调度的问题是，可能会导致资源碎片化。</p>
+</li>
+<li><p><strong>Node Affinity Policy</strong>：使用此策略，用户可以明确指定 task 或 actor 应运行的目标节点。如果目标节点处于活动状态，则任务或参与者只会在那里运行。如果目标节点已挂了，则取决于亲和力是否是软限制，task 或 actor 可能会被安排到其他节点或无法被安排。</p>
+</li>
+<li><p><strong>Data Locality Policy</strong>：简单理解就是，task 可能依赖很多参数对象，task 依赖的参数对象分布在哪个节点多，就调度到哪个节点去，这样就不需要将依赖的参数对象搬来搬去了。就是所谓的，数据本地化策略。</p>
+</li>
+<li><p><strong>Placement Group Policy</strong>：task 和 actor 将在 placement group 所在的位置运行。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>ray</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Ray Basic Introdution</title>
+    <url>/2024/03/03/ray-basic/</url>
+    <content><![CDATA[<h2 id="什么是-Ray？"><a href="#什么是-Ray？" class="headerlink" title="什么是 Ray？"></a>什么是 Ray？</h2><p>Ray 是一个开源框架，专为构建可扩展的分布式应用程序而设计，旨在通过提供简单直观的 API，简化分布式计算的复杂性，让开发者能够便捷高效地编写并行和分布式 Python 应用程序。</p>
+<p>Ray 的统一计算框架由三层组成：</p>
+<h3 id="Ray-AI-libraries"><a href="#Ray-AI-libraries" class="headerlink" title="Ray AI libraries"></a>Ray AI libraries</h3><p>一个开源、Python 语言的特定领域库集，为 ML 工程师、数据科学家和研究人员提供了一个可扩展且统一的 ML 应用程序工具包。</p>
+<h3 id="Ray-Core"><a href="#Ray-Core" class="headerlink" title="Ray Core"></a>Ray Core</h3><p>一个开源的 Python 通用分布式计算库，使机器学习工程师和 Python 开发人员能够扩展 Python 应用程序并加速机器学习工作负载。</p>
+<h3 id="Ray-Cluster"><a href="#Ray-Cluster" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h3><p>Ray 集群由一个 Head 节点（负责协调和管理整个 Ray 集群，以及运行 Ray 的一些关键的全局服务）和若干个 Worker 节点（实际执行计算任务的节点，可以自动伸缩以适应工作负载的资源需求变化）组成，Worker 节点连接到 Head 节点。Ray 集群可以部署在物理机、虚拟机、Kubernetes 以及各种云环境之上。</p>
+<p><img src="/2024/03/03/ray-basic/map-of-ray.svg" alt="ray-framework"></p>
+<h2 id="Ray-Core-1"><a href="#Ray-Core-1" class="headerlink" title="Ray Core"></a>Ray Core</h2><p>Ray Core 包含以下三个核心概念：</p>
+<h3 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h3><p>Ray 支持在独立的 Python 工作线程中异步执行任意函数，这些可异步执行的函数称作“任务（Task）”。开发者能够为每个任务配置所需的 CPU、GPU 及其他自定义资源。Ray 集群调度器会根据这些资源请求在集群中合理调度任务，从而实现高效并行处理。</p>
+<h3 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h3><p>参与者（Actor）将 Ray API 从函数（即任务）扩展到类。参与者本质上是一个有状态的工作实体（或服务）。每当一个新的参与者被实例化时，将创建一个新的工作线程，并将该参与者调度到该特定的工作线程上，并且可以访问和改变该工作线程的状态。与任务一样，参与者也支持 CPU、GPU 和自定义资源需求。</p>
+<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>在 Ray 中，任务和参与者在对象（Objects）上创建和计算。我们将这些对象称为远程对象（remote objects），因为它们可以存储在 Ray 集群中的任何位置，并且我们使用 objects ref 来引用它们。远程对象缓存在 Ray 的分布式共享内存的对象存储中，并且集群中的每个节点都有一个对象存储。在 Ray 集群设置中，一个远程对象可以驻留在一个或多个节点上，与谁持有 objects ref 无关。</p>
+<p><img src="/2024/03/03/ray-basic/ray-core.png" alt="ray core"></p>
+<h2 id="Ray-Cluster-1"><a href="#Ray-Cluster-1" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h2><p>Ray Cluster 的基本架构如下图所示。一个 Ray 集群由一个 Head 节点和若干个 Worker 节点组成，Worker 节点通过网络连接到 Head 节点，进行协同和通信。</p>
+<p>Head 节点主要负责运行 Ray 集群管理相关的控制进程（以蓝色突出显示），例如 Autoscaler、GCS，以及负责运行 Ray 作业的 Driver processes。除此之外，主节点与其他 Worker 节点无异，Ray 可以像任何其他 Worker 节点一样在 Head 节点上调度任务。</p>
+<p><strong>Worker 节点则专注于执行 Ray 作业中用户的应用程序代码</strong>，不运行任何 Head 节点中的控制和管理进程。它们参与分布式调度，以及 Ray Objects 在集群内存中的存储和分发。</p>
+<p><img src="/2024/03/03/ray-basic/ray-cluster.svg" alt="ray cluster"></p>
+<p>要在生产环境中跨多台机器部署 Ray，首要步骤是部署一个由 Head 节点和 Worker 节点（Ray 节点在 Kubernetes 上运行时实现为 pod）构成的 Ray 集群。该集群支持通过 Ray 自带的 autoscaler 功能实现弹性扩缩。</p>
+]]></content>
+      <categories>
+        <category>ray</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Non-Modifying Operations 上</title>
-    <url>/2024/08/20/non-modifying-part1/</url>
+    <url>/2023/10/01/non-modifying-part1/</url>
     <content><![CDATA[<blockquote>
 <p>A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.</p>
 </blockquote>
@@ -300,18 +403,20 @@
 <li><p>example</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">adjacent_find</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">adjacent_find</span>(v);  </span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), i);  <span class="comment">// index = 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h4 id="search-n"><a href="#search-n" class="headerlink" title="search_n"></a>search_n</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of v consecutive v, return @end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">search_n</span><span class="params">(begin, end, n, v)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">search_n</span>(range, n, v); <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>example<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">search_n</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), n, <span class="number">9</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 8</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">search_n</span>(v, n, <span class="number">2</span>);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), <span class="built_in">begin</span>(r));  <span class="comment">// index = 3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<h4 id="search-n"><a href="#search-n" class="headerlink" title="search_n"></a>search_n</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of v consecutive v, return @end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">search_n</span><span class="params">(begin, end, n, v)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">search_n</span>(range, n, v); <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">search_n</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), n, <span class="number">9</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 8</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">search_n</span>(v, n, <span class="number">2</span>);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), <span class="built_in">begin</span>(r));  <span class="comment">// index = 3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
 <li><a href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>C++</category>
         <category>Standard Library Algorithms</category>
+        <category>C++</category>
       </categories>
       <tags>
         <tag>C++</tag>
@@ -408,81 +513,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Ray AutoScaler Introduction</title>
-    <url>/2024/05/03/ray-autoscaler/</url>
-    <content><![CDATA[<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p><strong>Autoscaler</strong>：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。</p>
-<h2 id="2-Autoscaler-能力"><a href="#2-Autoscaler-能力" class="headerlink" title="2 Autoscaler 能力"></a>2 Autoscaler 能力</h2><p>GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，<strong>GCS 会每隔 100ms 从所有的注册到自己的 raylets 去拉取最新的资源使用情况的视图，也会间隔 100ms 去广播给其它的 raylets。</strong> 同时 GCS 也会为 Autoscaler 组件提供当前集群的负载的数据，以帮助 Autoscaler 去判断什么时候给集群增加机器和从集群中移除机器。</p>
-<p><img src="/2024/05/03/ray-autoscaler/autoscaler.png" alt="ray autoscaler"></p>
-<p>Ray Autoscaler 负责从集群中添加和删除节点。它查看分布式调度器公开的逻辑资源需求、集群中当前的节点、集群的节点配置文件， 计算所需的集群配置，并执行将集群移动到所需状态的操作。<strong>Autoscaler 会从 GCS 中去拉取当前集群的负载情况，然后调用云厂商的实现去添加和移除节点。</strong></p>
-<hr>
-<p><strong>自动扩缩容的主要工作包含以下几点</strong>：</p>
-<ul>
-<li><p>当应用提交 actors、tasks、placement groups 去请求资源，如 CPU、GPU 等。</p>
-</li>
-<li><p>调度器会查看资源的要求和可用的资源，然后决定 tasks 应该放置的位置，或者<strong>资源不满足的时候就会阻塞，这个信息会被作为一个快照放到 GCS 中</strong>。</p>
-</li>
-<li><p>Autoscaler 作为一个独立的进程运行，<strong>它周期性地从 GCS 中抓取步骤 2 中提到的快照</strong>， 然后从中查看集群的可用资源、请求的资源、有什么 tasks 是阻塞的，以及 worker 节点被设置的配置， <strong>然后运行bin-packing 算法（下面第3节有介绍）</strong>去计算一下，在能保证运行中的 tasks&#x2F;actors&#x2F;placement group 和阻塞的这些 tasks&#x2F;actors&#x2F;placement group 的资源都能满足的情况下，一共需要多少节点。</p>
-</li>
-<li><p>然后 Autoscaler 使用 node provider interface 去添加和移除节点，<strong>各种 cloud provider 可以去实现自己的 node provider interface</strong>，如 AWS、 GCP、Azure、Kubernetes 以及 on-premise 的数据中心。（也包括LSF和Slurm）</p>
-</li>
-<li><p>当新的节点启动了，也注册到 Ray 的集群中了，这些节点就可以接收应用的工作负载了。</p>
-</li>
-</ul>
-<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/2024/05/03/ray-autoscaler/scheduler.webp" alt="scheduler"></p>
-<p>当资源请求 (i.e RequestWorkerLease PRC) 被 raylet 接受之后, 整个过程就如上图的状态机一样，<strong>主要包含三个状态:</strong></p>
-<ol>
-<li><strong>Granted</strong>: 在这个状态下，client 是可以使用申请的资源和 raylet 返回来的对应的 worker 去运行 actor 和 task 的。</li>
-<li><strong>Reschedule</strong>: 如果有比本地节点更合适的节点的时候，就需要重新调度到别的节点，这个过程就是重新调度的过程。在这个过程中，本地节点是可以从集群视角去看到集群全部节点的资源使用情况。</li>
-<li><strong>Canceled</strong>: 当申请的资源无法被满足的时候，就会取消本地的调度。比如一个 client 请求了一个特定的机器，但是这个机器挂了。再比如，给 task 请求分配的运行环境不能正常的创建出来，就会导致 raylet 不能启动 worker 去运行 task，这个时候调度的请求也会被取消。</li>
-</ol>
-<p><strong>调度策略主要包含：</strong></p>
-<ul>
-<li><p><strong>Hybrid Policy</strong>：如果不指定特定的调度策略，这个就是一种默认的调度策略。</p>
-<ol>
-<li>该策略首先是尝试将 task 放在自己本地来运行，但是当本地节点的资源使用量超过了配置的阈值（默认为 50%），就将 task 分配到其它的机器上，这个分配机器的过程是按照机器的 ID 进行排序（保证每次都按照相同顺序来），这里有第一远程节点、第二远程节点等等，依此类推，直到所有节点上的关键资源利用率都超过阈值。它将选择资源利用率最低的节点。</li>
-<li>该策略是在 bin-packing 和 load-balancing 之间进行平衡。<strong>bin-packing 的场景就是先紧着第一台机器，等第一台机器实在不行了，再到第二台，这种会造成大部分有 task 的机器的负载都很高，会导致一些不确定的问题</strong>，机器的负载高了，什么问题都可能发生。</li>
-<li>load-balancing 就是下面介绍的 spread 的方式，简单理解就是，有 task 大家一起均摊来运行，这种会有资源碎片化的问题。</li>
-</ol>
-</li>
-<li><p><strong>Spread Policy</strong>：该策略使用轮询的方式，在具有可用资源的节点之间分配 task，这样可以保证所有的 task 在整个集群中比较均衡地分布，不至于某一些机器的负载很高，其它的机器又很空闲。但这种调度的问题是，可能会导致资源碎片化。</p>
-</li>
-<li><p><strong>Node Affinity Policy</strong>：使用此策略，用户可以明确指定 task 或 actor 应运行的目标节点。如果目标节点处于活动状态，则任务或参与者只会在那里运行。如果目标节点已挂了，则取决于亲和力是否是软限制，task 或 actor 可能会被安排到其他节点或无法被安排。</p>
-</li>
-<li><p><strong>Data Locality Policy</strong>：简单理解就是，task 可能依赖很多参数对象，task 依赖的参数对象分布在哪个节点多，就调度到哪个节点去，这样就不需要将依赖的参数对象搬来搬去了。就是所谓的，数据本地化策略。</p>
-</li>
-<li><p><strong>Placement Group Policy</strong>：task 和 actor 将在 placement group 所在的位置运行。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>ray</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Ray Basic Introdution</title>
-    <url>/2024/03/03/ray-basic/</url>
-    <content><![CDATA[<h2 id="什么是-Ray？"><a href="#什么是-Ray？" class="headerlink" title="什么是 Ray？"></a>什么是 Ray？</h2><p>Ray 是一个开源框架，专为构建可扩展的分布式应用程序而设计，旨在通过提供简单直观的 API，简化分布式计算的复杂性，让开发者能够便捷高效地编写并行和分布式 Python 应用程序。</p>
-<p>Ray 的统一计算框架由三层组成：</p>
-<h3 id="Ray-AI-libraries"><a href="#Ray-AI-libraries" class="headerlink" title="Ray AI libraries"></a>Ray AI libraries</h3><p>一个开源、Python 语言的特定领域库集，为 ML 工程师、数据科学家和研究人员提供了一个可扩展且统一的 ML 应用程序工具包。</p>
-<h3 id="Ray-Core"><a href="#Ray-Core" class="headerlink" title="Ray Core"></a>Ray Core</h3><p>一个开源的 Python 通用分布式计算库，使机器学习工程师和 Python 开发人员能够扩展 Python 应用程序并加速机器学习工作负载。</p>
-<h3 id="Ray-Cluster"><a href="#Ray-Cluster" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h3><p>Ray 集群由一个 Head 节点（负责协调和管理整个 Ray 集群，以及运行 Ray 的一些关键的全局服务）和若干个 Worker 节点（实际执行计算任务的节点，可以自动伸缩以适应工作负载的资源需求变化）组成，Worker 节点连接到 Head 节点。Ray 集群可以部署在物理机、虚拟机、Kubernetes 以及各种云环境之上。</p>
-<p><img src="/2024/03/03/ray-basic/map-of-ray.svg" alt="ray-framework"></p>
-<h2 id="Ray-Core-1"><a href="#Ray-Core-1" class="headerlink" title="Ray Core"></a>Ray Core</h2><p>Ray Core 包含以下三个核心概念：</p>
-<h3 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h3><p>Ray 支持在独立的 Python 工作线程中异步执行任意函数，这些可异步执行的函数称作“任务（Task）”。开发者能够为每个任务配置所需的 CPU、GPU 及其他自定义资源。Ray 集群调度器会根据这些资源请求在集群中合理调度任务，从而实现高效并行处理。</p>
-<h3 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h3><p>参与者（Actor）将 Ray API 从函数（即任务）扩展到类。参与者本质上是一个有状态的工作实体（或服务）。每当一个新的参与者被实例化时，将创建一个新的工作线程，并将该参与者调度到该特定的工作线程上，并且可以访问和改变该工作线程的状态。与任务一样，参与者也支持 CPU、GPU 和自定义资源需求。</p>
-<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>在 Ray 中，任务和参与者在对象（Objects）上创建和计算。我们将这些对象称为远程对象（remote objects），因为它们可以存储在 Ray 集群中的任何位置，并且我们使用 objects ref 来引用它们。远程对象缓存在 Ray 的分布式共享内存的对象存储中，并且集群中的每个节点都有一个对象存储。在 Ray 集群设置中，一个远程对象可以驻留在一个或多个节点上，与谁持有 objects ref 无关。</p>
-<p><img src="/2024/03/03/ray-basic/ray-core.png" alt="ray core"></p>
-<h2 id="Ray-Cluster-1"><a href="#Ray-Cluster-1" class="headerlink" title="Ray Cluster"></a>Ray Cluster</h2><p>Ray Cluster 的基本架构如下图所示。一个 Ray 集群由一个 Head 节点和若干个 Worker 节点组成，Worker 节点通过网络连接到 Head 节点，进行协同和通信。</p>
-<p>Head 节点主要负责运行 Ray 集群管理相关的控制进程（以蓝色突出显示），例如 Autoscaler、GCS，以及负责运行 Ray 作业的 Driver processes。除此之外，主节点与其他 Worker 节点无异，Ray 可以像任何其他 Worker 节点一样在 Head 节点上调度任务。</p>
-<p><strong>Worker 节点则专注于执行 Ray 作业中用户的应用程序代码</strong>，不运行任何 Head 节点中的控制和管理进程。它们参与分布式调度，以及 Ray Objects 在集群内存中的存储和分发。</p>
-<p><img src="/2024/03/03/ray-basic/ray-cluster.svg" alt="ray cluster"></p>
-<p>要在生产环境中跨多台机器部署 Ray，首要步骤是部署一个由 Head 节点和 Worker 节点（Ray 节点在 Kubernetes 上运行时实现为 pod）构成的 Ray 集群。该集群支持通过 Ray 自带的 autoscaler 功能实现弹性扩缩。</p>
-]]></content>
-      <categories>
-        <category>ray</category>
-      </categories>
-  </entry>
-  <entry>
     <title>读书和生活</title>
     <url>/2023/09/03/read-life/</url>
     <content><![CDATA[<blockquote>
@@ -545,5 +575,53 @@
       <tags>
         <tag>随笔</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>2023年以前的文章</title>
+    <url>/2023/07/01/non-modifying-part2/history-article/</url>
+    <content><![CDATA[<p>历史文章，Welcome to my <a href="https://www.jianshu.com/u/097b09693b97">简书主页</a></p>
+<p>23年以前的文章全部发布在了简书，未发布的以及以后都会更新在<a href="https://gyhaoran.github.io/">Leo’s Blog</a></p>
+<h2 id="文章分类"><a href="#文章分类" class="headerlink" title="文章分类"></a>文章分类</h2><h3 id="C-相关"><a href="#C-相关" class="headerlink" title="C++相关"></a>C++相关</h3><ul>
+<li><a href="https://www.jianshu.com/p/8b68acb04278">可调用对象</a></li>
+<li><a href="https://www.jianshu.com/p/80b09e6d20a7">FP范式之旅</a></li>
+<li><a href="https://www.jianshu.com/p/21d38236c260">浅析内存分配</a></li>
+<li><a href="https://www.jianshu.com/p/cd43ce140211">C++ 方法引用</a></li>
+<li><a href="https://www.jianshu.com/p/971a8e861eca">控制对象的内存分配</a></li>
+<li><a href="https://www.jianshu.com/p/7ed95fdd0efb">几个关于vector的问题</a></li>
+<li><a href="https://www.jianshu.com/p/f1b6d44aeab6">Algorithms on sets in STL</a></li>
+<li><a href="https://www.jianshu.com/p/4e0a7ee1db23">组合（Composite）模式 in C++</a></li>
+</ul>
+<h3 id="Modern-cpp-recepies"><a href="#Modern-cpp-recepies" class="headerlink" title="Modern cpp recepies"></a>Modern cpp recepies</h3><ul>
+<li><a href="https://www.jianshu.com/p/8cda42b34d7c">类型别名</a></li>
+<li><a href="https://www.jianshu.com/p/2e0729c40623">using auto</a></li>
+<li><a href="https://www.jianshu.com/p/579388f3b9da">使用作用域枚举</a></li>
+<li><a href="https://www.jianshu.com/p/a9f0490e8b05">自定义类型实现范围for循环</a></li>
+<li><a href="https://www.jianshu.com/p/98e9eff85544">defaulted and deleted functions</a></li>
+<li><a href="https://www.jianshu.com/p/40afbf741774">Mordern Cpp - Vocabulary Types</a></li>
+</ul>
+<h3 id="Kata"><a href="#Kata" class="headerlink" title="Kata"></a>Kata</h3><ul>
+<li><a href="https://www.jianshu.com/p/c175cd0fcff5">统计单词</a></li>
+<li><a href="https://www.jianshu.com/p/4319abbcebe3">Sum of Intervals</a></li>
+<li><a href="https://www.jianshu.com/p/24de87579ced">Validating passwords in C++</a></li>
+<li><a href="https://www.jianshu.com/p/d1551fd13a26">A coding kata – Fibonacci sequence</a></li>
+<li><a href="https://www.jianshu.com/p/11fc2b64bbe6">Serializing and Deserializing for XML in C++</a></li>
+</ul>
+<h3 id="Python相关"><a href="#Python相关" class="headerlink" title="Python相关"></a>Python相关</h3><ul>
+<li><a href="https://www.jianshu.com/p/a02ee5ac03c5">Python sched</a></li>
+<li><a href="https://www.jianshu.com/p/38049a126769">Python Snippets</a></li>
+<li><a href="https://www.jianshu.com/p/4d61171f495f">Python Tricks – One-Line Code</a></li>
+</ul>
+<h3 id="个人思考"><a href="#个人思考" class="headerlink" title="个人思考"></a>个人思考</h3><ul>
+<li><a href="https://www.jianshu.com/p/4625af0b9faf">Last 30 Days</a></li>
+<li><a href="https://www.jianshu.com/p/9b45f6f0ae58">高效学习和主动学习</a></li>
+</ul>
+<h3 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h3><ul>
+<li><a href="https://www.jianshu.com/p/184edfb171ec">第一个三年</a></li>
+<li><a href="https://www.jianshu.com/p/6f0ddb5ad2f3">成年人的世界可以很简单</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>History</category>
+      </categories>
   </entry>
 </search>
