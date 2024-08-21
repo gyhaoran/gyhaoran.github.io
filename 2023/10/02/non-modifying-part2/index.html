@@ -33,8 +33,9 @@
 <meta property="og:image" content="https://gyhaoran.github.io/2023/10/02/non-modifying-part2/upper_bound.png">
 <meta property="og:image" content="https://gyhaoran.github.io/2023/10/02/non-modifying-part2/equal_range.png">
 <meta property="og:image" content="https://gyhaoran.github.io/2023/10/02/non-modifying-part2/includes.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/10/02/non-modifying-part2/merge.png">
 <meta property="article:published_time" content="2023-10-02T01:13:14.000Z">
-<meta property="article:modified_time" content="2024-08-21T02:59:27.999Z">
+<meta property="article:modified_time" content="2024-08-21T03:14:31.673Z">
 <meta property="article:author" content="Leo Ge">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -148,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparing-Ranges"><span class="nav-number">1.</span> <span class="nav-text">Comparing Ranges</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equal"><span class="nav-number">1.1.</span> <span class="nav-text">equal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mismatch"><span class="nav-number">1.2.</span> <span class="nav-text">mismatch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-Search-of-Sorted-Ranges"><span class="nav-number">2.</span> <span class="nav-text">Binary Search of Sorted Ranges</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#binary-search"><span class="nav-number">2.1.</span> <span class="nav-text">binary_search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lower-bound"><span class="nav-number">2.2.</span> <span class="nav-text">lower_bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upper-bound"><span class="nav-number">2.3.</span> <span class="nav-text">upper_bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equal-range"><span class="nav-number">2.4.</span> <span class="nav-text">equal_range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#includes"><span class="nav-number">2.5.</span> <span class="nav-text">includes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">3.</span> <span class="nav-text">Ref</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparing-Ranges"><span class="nav-number">1.</span> <span class="nav-text">Comparing Ranges</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equal"><span class="nav-number">1.1.</span> <span class="nav-text">equal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mismatch"><span class="nav-number">1.2.</span> <span class="nav-text">mismatch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Binary-Search-of-Sorted-Ranges"><span class="nav-number">2.</span> <span class="nav-text">Binary Search of Sorted Ranges</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#binary-search"><span class="nav-number">2.1.</span> <span class="nav-text">binary_search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lower-bound"><span class="nav-number">2.2.</span> <span class="nav-text">lower_bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upper-bound"><span class="nav-number">2.3.</span> <span class="nav-text">upper_bound</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#equal-range"><span class="nav-number">2.4.</span> <span class="nav-text">equal_range</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#includes"><span class="nav-number">2.5.</span> <span class="nav-text">includes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Merging"><span class="nav-number">3.</span> <span class="nav-text">Merging</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#merge"><span class="nav-number">3.1.</span> <span class="nav-text">merge</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">4.</span> <span class="nav-text">Ref</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -163,7 +164,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -240,7 +241,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-21 10:59:27" itemprop="dateModified" datetime="2024-08-21T10:59:27+08:00">2024-08-21</time>
+      <time title="修改时间：2024-08-21 11:14:31" itemprop="dateModified" datetime="2024-08-21T11:14:31+08:00">2024-08-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +285,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>759</span>
+      <span>915</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -324,7 +325,8 @@
 <li><p>c++20</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> [p1, p2] = std::ranges::<span class="built_in">mismatch</span>(range1, range2);</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> value1 = *p1;  <span class="comment">// 6</span></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> value2 = *p2;  <span class="comment">// 7</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="Binary-Search-of-Sorted-Ranges"><a href="#Binary-Search-of-Sorted-Ranges" class="headerlink" title="Binary Search of Sorted Ranges"></a>Binary Search of Sorted Ranges</h2><h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><ul>
+<h2 id="Binary-Search-of-Sorted-Ranges"><a href="#Binary-Search-of-Sorted-Ranges" class="headerlink" title="Binary Search of Sorted Ranges"></a>Binary Search of Sorted Ranges</h2><p>Searching one element in a sorted sequence of N elements can be done in O(log N) steps.<br>Finding an element in an unsorted sequence would take N steps in the worst case.</p>
+<h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><ul>
 <li><p>intro<br><img src="/2023/10/02/non-modifying-part2/binary_search.png" alt="alt text"></p>
 </li>
 <li><p>example</p>
@@ -361,6 +363,16 @@
 </li>
 <li><p>c++20</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">includes</span>(range1, range2);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Merging"><a href="#Merging" class="headerlink" title="Merging"></a>Merging</h2><p>Two sorted sequences can be merged into one sorted sequence in linear time.</p>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/non-modifying-part2/merge.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; in1 &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; in2 &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// make sure output can fit all elements</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; out;</span><br><span class="line">out.<span class="built_in">resize</span>(in1.<span class="built_in">size</span>() + in2.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line"><span class="built_in">merge</span>(<span class="built_in">begin</span>(in1), <span class="built_in">end</span>(in1), <span class="built_in">begin</span>(in2), <span class="built_in">end</span>(in2), <span class="built_in">begin</span>(out));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : out) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 0 1 2 3 4 5 6 7 8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; in1 &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; in2 &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// make sure output can fit all elements</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; out;</span><br><span class="line">out.<span class="built_in">resize</span>(in1.<span class="built_in">size</span>() + in2.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line">std::ranges::<span class="built_in">merge</span>(in1, in2, <span class="built_in">begin</span>(out));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : out) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 0 1 2 3 4 5 6 7 8</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
@@ -403,8 +415,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/01/12/lex-yacc/" rel="next" title="Introduction with Lex and Yacc">
-                  Introduction with Lex and Yacc <i class="fa fa-chevron-right"></i>
+                <a href="/2023/10/03/non-modifying-part3/" rel="next" title="Non-Modifying Operations 下">
+                  Non-Modifying Operations 下 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -437,13 +449,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">10k</span>
+    <span title="站点总字数">11k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">37 分钟</span>
+    <span title="站点阅读时长">39 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

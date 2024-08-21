@@ -21,31 +21,34 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"gyhaoran.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="1 简介Autoscaler：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。 2 Autoscaler 能力GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，">
+    <meta name="description" content="A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.  Minimum &#x2F; Maximumequal minmax  example 123456int a &#x3D; 2;int b &#x3D; 9;auto p &#x3D; std::minmax(a,b);  &#x2F;&#x2F; std::p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ray AutoScaler Introduction">
-<meta property="og:url" content="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/index.html">
+<meta property="og:title" content="Non-Modifying Operations 下">
+<meta property="og:url" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/index.html">
 <meta property="og:site_name" content="Leo&#39;s Blog">
-<meta property="og:description" content="1 简介Autoscaler：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。 2 Autoscaler 能力GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，">
+<meta property="og:description" content="A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.  Minimum &#x2F; Maximumequal minmax  example 123456int a &#x3D; 2;int b &#x3D; 9;auto p &#x3D; std::minmax(a,b);  &#x2F;&#x2F; std::p">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/autoscaler.png">
-<meta property="og:image" content="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/scheduler.webp">
-<meta property="article:published_time" content="2024-05-03T13:49:29.000Z">
-<meta property="article:modified_time" content="2024-08-20T00:44:51.874Z">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/minmax.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/clamp.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/min_element.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/max_element.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/minmax_element.png">
+<meta property="article:published_time" content="2023-10-03T01:13:14.000Z">
+<meta property="article:modified_time" content="2024-08-21T03:33:15.371Z">
 <meta property="article:author" content="Leo Ge">
-<meta property="article:tag" content="Linux, C++">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/autoscaler.png">
+<meta name="twitter:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/minmax.png">
 
 
-<link rel="canonical" href="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/">
+<link rel="canonical" href="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gyhaoran.github.io/2024/05/03/ray-autoscaler/","path":"2024/05/03/ray-autoscaler/","title":"Ray AutoScaler Introduction"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gyhaoran.github.io/2023/10/03/non-modifying-part3/","path":"2023/10/03/non-modifying-part3/","title":"Non-Modifying Operations 下"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Ray AutoScaler Introduction | Leo's Blog</title>
+<title>Non-Modifying Operations 下 | Leo's Blog</title>
   
 
 
@@ -145,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Autoscaler-%E8%83%BD%E5%8A%9B"><span class="nav-number">2.</span> <span class="nav-text">2 Autoscaler 能力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%B0%83%E5%BA%A6%E8%83%BD%E5%8A%9B"><span class="nav-number">3.</span> <span class="nav-text">3 调度能力</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimum-x2F-Maximum"><span class="nav-number">1.</span> <span class="nav-text">Minimum &#x2F; Maximum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equal"><span class="nav-number">1.1.</span> <span class="nav-text">equal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clamp-c-17"><span class="nav-number">1.2.</span> <span class="nav-text">clamp(c++17)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min-element"><span class="nav-number">1.3.</span> <span class="nav-text">min_element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max-element"><span class="nav-number">1.4.</span> <span class="nav-text">max_element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minmax-element"><span class="nav-number">1.5.</span> <span class="nav-text">minmax_element</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">2.</span> <span class="nav-text">Ref</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,7 +204,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -214,12 +217,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Ray AutoScaler Introduction | Leo's Blog">
+      <meta itemprop="name" content="Non-Modifying Operations 下 | Leo's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Ray AutoScaler Introduction
+          Non-Modifying Operations 下
         </h1>
 
         <div class="post-meta-container">
@@ -230,14 +233,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-03 21:49:29" itemprop="dateCreated datePublished" datetime="2024-05-03T21:49:29+08:00">2024-05-03</time>
+      <time title="创建时间：2023-10-03 09:13:14" itemprop="dateCreated datePublished" datetime="2023-10-03T09:13:14+08:00">2023-10-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-20 08:44:51" itemprop="dateModified" datetime="2024-08-20T08:44:51+08:00">2024-08-20</time>
+      <time title="修改时间：2024-08-21 11:33:15" itemprop="dateModified" datetime="2024-08-21T11:33:15+08:00">2024-08-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -245,7 +248,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ray/" itemprop="url" rel="index"><span itemprop="name">ray</span></a>
+          <a href="/categories/Standard-Library-Algorithms/" itemprop="url" rel="index"><span itemprop="name">Standard Library Algorithms</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
         </span>
     </span>
 
@@ -265,8 +272,8 @@
       </span>
       <span class="post-meta-item-text">Changyan：</span>
     
-    <a title="Ray AutoScaler Introduction" href="/2024/05/03/ray-autoscaler/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::d4dcadb4ffe068435edbd04d9076e61a" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="Non-Modifying Operations 下" href="/2023/10/03/non-modifying-part3/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::c6ae8d1bd652572288df157c90335988" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -277,14 +284,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
+      <span>329</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>1 分钟</span>
     </span>
 </div>
 
@@ -294,48 +301,42 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p><strong>Autoscaler</strong>：基于集群的资源的使用情况，以及 job 对资源的需求，去增加和移除集群的节点。</p>
-<h2 id="2-Autoscaler-能力"><a href="#2-Autoscaler-能力" class="headerlink" title="2 Autoscaler 能力"></a>2 Autoscaler 能力</h2><p>GCS 负责保证所有的 raylets 有最新的集群资源使用的视图。这样分布式调度器就可以更有效的完成调度， 如果这个视图是不够新的，那就可能会给分布式调度器造成调度不准确的问题，导致 actors&#x2F;tasks 不能很好的被调度到合适的位置。 默认，<strong>GCS 会每隔 100ms 从所有的注册到自己的 raylets 去拉取最新的资源使用情况的视图，也会间隔 100ms 去广播给其它的 raylets。</strong> 同时 GCS 也会为 Autoscaler 组件提供当前集群的负载的数据，以帮助 Autoscaler 去判断什么时候给集群增加机器和从集群中移除机器。</p>
-<p><img src="/2024/05/03/ray-autoscaler/autoscaler.png" alt="ray autoscaler"></p>
-<p>Ray Autoscaler 负责从集群中添加和删除节点。它查看分布式调度器公开的逻辑资源需求、集群中当前的节点、集群的节点配置文件， 计算所需的集群配置，并执行将集群移动到所需状态的操作。<strong>Autoscaler 会从 GCS 中去拉取当前集群的负载情况，然后调用云厂商的实现去添加和移除节点。</strong></p>
-<hr>
-<p><strong>自动扩缩容的主要工作包含以下几点</strong>：</p>
-<ul>
-<li><p>当应用提交 actors、tasks、placement groups 去请求资源，如 CPU、GPU 等。</p>
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.</p>
+</blockquote>
+<h2 id="Minimum-x2F-Maximum"><a href="#Minimum-x2F-Maximum" class="headerlink" title="Minimum &#x2F; Maximum"></a>Minimum &#x2F; Maximum</h2><h3 id="equal"><a href="#equal" class="headerlink" title="equal"></a>equal</h3><ul>
+<li><p>minmax<br><img src="/2023/10/03/non-modifying-part3/minmax.png" alt="alt text"></p>
 </li>
-<li><p>调度器会查看资源的要求和可用的资源，然后决定 tasks 应该放置的位置，或者<strong>资源不满足的时候就会阻塞，这个信息会被作为一个快照放到 GCS 中</strong>。</p>
-</li>
-<li><p>Autoscaler 作为一个独立的进程运行，<strong>它周期性地从 GCS 中抓取步骤 2 中提到的快照</strong>， 然后从中查看集群的可用资源、请求的资源、有什么 tasks 是阻塞的，以及 worker 节点被设置的配置， <strong>然后运行bin-packing 算法（下面第3节有介绍）</strong>去计算一下，在能保证运行中的 tasks&#x2F;actors&#x2F;placement group 和阻塞的这些 tasks&#x2F;actors&#x2F;placement group 的资源都能满足的情况下，一共需要多少节点。</p>
-</li>
-<li><p>然后 Autoscaler 使用 node provider interface 去添加和移除节点，<strong>各种 cloud provider 可以去实现自己的 node provider interface</strong>，如 AWS、 GCP、Azure、Kubernetes 以及 on-premise 的数据中心。（也包括LSF和Slurm）</p>
-</li>
-<li><p>当新的节点启动了，也注册到 Ray 的集群中了，这些节点就可以接收应用的工作负载了。</p>
-</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> b = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">auto</span> p = std::<span class="built_in">minmax</span>(a,b);  <span class="comment">// std::pair&lt;int,int&gt; p &#123;2,9&#125;</span></span><br><span class="line"><span class="keyword">auto</span> min = p.first;  <span class="comment">// int min = 2</span></span><br><span class="line"><span class="keyword">auto</span> max = p.second; <span class="comment">// int max = 9</span></span><br><span class="line"><span class="keyword">auto</span> [lo,hi] = std::<span class="built_in">minmax</span>(a,b);  <span class="comment">// int lo = 2, hi = 9  C++17</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="3-调度能力"><a href="#3-调度能力" class="headerlink" title="3 调度能力"></a>3 调度能力</h2><p><img src="/2024/05/03/ray-autoscaler/scheduler.webp" alt="scheduler"></p>
-<p>当资源请求 (i.e RequestWorkerLease PRC) 被 raylet 接受之后, 整个过程就如上图的状态机一样，<strong>主要包含三个状态:</strong></p>
-<ol>
-<li><strong>Granted</strong>: 在这个状态下，client 是可以使用申请的资源和 raylet 返回来的对应的 worker 去运行 actor 和 task 的。</li>
-<li><strong>Reschedule</strong>: 如果有比本地节点更合适的节点的时候，就需要重新调度到别的节点，这个过程就是重新调度的过程。在这个过程中，本地节点是可以从集群视角去看到集群全部节点的资源使用情况。</li>
-<li><strong>Canceled</strong>: 当申请的资源无法被满足的时候，就会取消本地的调度。比如一个 client 请求了一个特定的机器，但是这个机器挂了。再比如，给 task 请求分配的运行环境不能正常的创建出来，就会导致 raylet 不能启动 worker 去运行 task，这个时候调度的请求也会被取消。</li>
-</ol>
-<p><strong>调度策略主要包含：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="type">const</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> b = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">auto</span> p = std::<span class="built_in">minmax</span>(&#123;<span class="number">3</span>,<span class="number">0</span>,b,<span class="number">3</span>,a,<span class="number">8</span>&#125;);  <span class="comment">// std::pair&lt;int,int&gt; p &#123;0,9&#125;</span></span><br><span class="line"><span class="keyword">auto</span> min = p.first;  <span class="comment">// int min = 0</span></span><br><span class="line"><span class="keyword">auto</span> max = p.second; <span class="comment">// int max = 9</span></span><br><span class="line"><span class="keyword">auto</span> [lo,hi] = std::<span class="built_in">minmax</span>(&#123;<span class="number">3</span>,<span class="number">0</span>,b,<span class="number">3</span>,a,<span class="number">8</span>&#125;);  <span class="comment">// int lo = 0, hi = 9  C++17</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>Hybrid Policy</strong>：如果不指定特定的调度策略，这个就是一种默认的调度策略。</p>
-<ol>
-<li>该策略首先是尝试将 task 放在自己本地来运行，但是当本地节点的资源使用量超过了配置的阈值（默认为 50%），就将 task 分配到其它的机器上，这个分配机器的过程是按照机器的 ID 进行排序（保证每次都按照相同顺序来），这里有第一远程节点、第二远程节点等等，依此类推，直到所有节点上的关键资源利用率都超过阈值。它将选择资源利用率最低的节点。</li>
-<li>该策略是在 bin-packing 和 load-balancing 之间进行平衡。<strong>bin-packing 的场景就是先紧着第一台机器，等第一台机器实在不行了，再到第二台，这种会造成大部分有 task 的机器的负载都很高，会导致一些不确定的问题</strong>，机器的负载高了，什么问题都可能发生。</li>
-<li>load-balancing 就是下面介绍的 spread 的方式，简单理解就是，有 task 大家一起均摊来运行，这种会有资源碎片化的问题。</li>
-</ol>
+<li>c++20<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> p = std::ranges::<span class="built_in">minmax</span>(v);  <span class="comment">// std::pair&lt;int,int&gt; p &#123;1,9&#125;</span></span><br><span class="line"><span class="keyword">auto</span> [min,max] = std::ranges::<span class="built_in">minmax</span>(v);</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">P</span> &#123; <span class="type">int</span> q; <span class="type">char</span> c; &#125;;</span><br><span class="line">std::vector&lt;P&gt; <span class="type">const</span> w &#123;P&#123;<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>&#125;,P&#123;<span class="number">2</span>,<span class="string">&#x27;b&#x27;</span>&#125;,P&#123;<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">auto</span> [lo,hi] = std::ranges::<span class="built_in">minmax</span>(w, </span><br><span class="line">    [](P p1, P p2)&#123; <span class="keyword">return</span> p1.q &lt; p2.q; &#125;);  <span class="comment">// P lo &#123;1,&#x27;c&#x27;&#125;, hi &#123;3,&#x27;a&#x27;&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="clamp-c-17"><a href="#clamp-c-17" class="headerlink" title="clamp(c++17)"></a>clamp(c++17)</h3><ul>
+<li><p>intro<br>if value &lt; lo, return lo; if value &gt; hi, return hi; return value, otherwise<br><img src="/2023/10/03/non-modifying-part3/clamp.png" alt="alt text"></p>
 </li>
-<li><p><strong>Spread Policy</strong>：该策略使用轮询的方式，在具有可用资源的节点之间分配 task，这样可以保证所有的 task 在整个集群中比较均衡地分布，不至于某一些机器的负载很高，其它的机器又很空闲。但这种调度的问题是，可能会导致资源碎片化。</p>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = std::<span class="built_in">clamp</span>( <span class="number">8</span>,  <span class="number">1</span>, <span class="number">5</span>);  <span class="comment">// int a =  5</span></span><br><span class="line"><span class="type">int</span> b = std::<span class="built_in">clamp</span>(<span class="number">-4</span>,  <span class="number">1</span>, <span class="number">5</span>);  <span class="comment">// int b =  1</span></span><br><span class="line"><span class="type">int</span> c = std::<span class="built_in">clamp</span>(<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">5</span>);  <span class="comment">// int c = -1</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="min-element"><a href="#min-element" class="headerlink" title="min_element"></a>min_element</h3><ul>
+<li><p>intro<br><img src="/2023/10/03/non-modifying-part3/min_element.png" alt="alt text"></p>
 </li>
-<li><p><strong>Node Affinity Policy</strong>：使用此策略，用户可以明确指定 task 或 actor 应运行的目标节点。如果目标节点处于活动状态，则任务或参与者只会在那里运行。如果目标节点已挂了，则取决于亲和力是否是软限制，task 或 actor 可能会被安排到其他节点或无法被安排。</p>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// smallest in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">min_element</span>(<span class="built_in">begin</span>(v)+<span class="number">2</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>);</span><br><span class="line"><span class="keyword">auto</span> min = *i;  <span class="comment">// int min = 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// smallest in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">min_element</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v));</span><br><span class="line">std::cout &lt;&lt; *j;  <span class="comment">// prints &#x27;0&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// index of smallest:</span></span><br><span class="line"><span class="keyword">auto</span> argmin = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// int argmin = 9</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Data Locality Policy</strong>：简单理解就是，task 可能依赖很多参数对象，task 依赖的参数对象分布在哪个节点多，就调度到哪个节点去，这样就不需要将依赖的参数对象搬来搬去了。就是所谓的，数据本地化策略。</p>
-</li>
-<li><p><strong>Placement Group Policy</strong>：task 和 actor 将在 placement group 所在的位置运行。</p>
-</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">min_element</span>(v);</span><br><span class="line"><span class="keyword">auto</span> min = *i;  <span class="comment">// int min = 0</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="max-element"><a href="#max-element" class="headerlink" title="max_element"></a>max_element</h3><ul>
+<li>intro<br><img src="/2023/10/03/non-modifying-part3/max_element.png" alt="alt text"></li>
+</ul>
+<h3 id="minmax-element"><a href="#minmax-element" class="headerlink" title="minmax_element"></a>minmax_element</h3><ul>
+<li>intro<br><img src="/2023/10/03/non-modifying-part3/minmax_element.png" alt="alt text"></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
 </ul>
 
     </div>
@@ -354,7 +355,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://gyhaoran.github.io/2024/05/03/ray-autoscaler/" title="Ray AutoScaler Introduction">https://gyhaoran.github.io/2024/05/03/ray-autoscaler/</a>
+      <a href="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/" title="Non-Modifying Operations 下">https://gyhaoran.github.io/2023/10/03/non-modifying-part3/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -362,18 +363,21 @@
 </ul>
 </div>
 
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/03/03/ray-basic/" rel="prev" title="Ray Basic Introdution">
-                  <i class="fa fa-chevron-left"></i> Ray Basic Introdution
+                <a href="/2023/10/02/non-modifying-part2/" rel="prev" title="Non-Modifying Operations 中">
+                  <i class="fa fa-chevron-left"></i> Non-Modifying Operations 中
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/06/06/ray-job/" rel="next" title="Ray Job Management">
-                  Ray Job Management <i class="fa fa-chevron-right"></i>
+                <a href="/2024/01/12/lex-yacc/" rel="next" title="Introduction with Lex and Yacc">
+                  Introduction with Lex and Yacc <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -386,7 +390,7 @@
 
 
 
-    <div class="comments" id="SOHUCS" sid="d4dcadb4ffe068435edbd04d9076e61a"></div>
+    <div class="comments" id="SOHUCS" sid="c6ae8d1bd652572288df157c90335988"></div>
 </div>
   </main>
 
