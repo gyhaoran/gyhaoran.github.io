@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -183,6 +183,237 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/07/19/plugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/07/19/plugin/" class="post-title-link" itemprop="url">Summary of Plugin in C++</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-19 21:49:29" itemprop="dateCreated datePublished" datetime="2023-07-19T21:49:29+08:00">2023-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-20 21:05:40" itemprop="dateModified" datetime="2024-08-20T21:05:40+08:00">2024-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Summary of Plugin in C++" href="/2023/07/19/plugin/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::6836b2fb001a87ccbfe37c3c2360cd9a" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>A plugin is a software component that enables new functionality to be added to a program after the program’s initial compile.</p>
+</blockquote>
+<h2 id="What-problem-Plugin-solve"><a href="#What-problem-Plugin-solve" class="headerlink" title="What problem Plugin solve?"></a>What problem Plugin solve?</h2><p>对于已经发布的软件，我们如何做到动态地（非侵入式）修改为其增强（增加、更新、删除）功能，插件架构就是一个很好的解决方案。<br>总结一下，我们创造插件主要是帮助解决两种类型的问题：</p>
+<ul>
+<li>为系统提供全新的能力</li>
+<li>对系统现有能力进行定制</li>
+</ul>
+<h2 id="Why-We-Need-Plugin"><a href="#Why-We-Need-Plugin" class="headerlink" title="Why We Need Plugin?"></a>Why We Need Plugin?</h2><p>我们的软件系统往往是要面向持续性的迭代的，在开发之初很难把所有需要支持的功能都想清楚，有时候还需要借助社区的力量去持续生产新的功能点，或者优化已有的功能。这就需要我们的软件系统具备一定的可扩展性。插件模式就是我们常常选用的方法。</p>
+<h2 id="What-is-Plugin"><a href="#What-is-Plugin" class="headerlink" title="What is Plugin"></a>What is Plugin</h2><p>插件是安装在应用程序上的附加组件，扩展了系统的功能，它实现了系统的接口，但是插件通常不能独立运行。<br>例如，如果你想在网站上观看视频，您可能需要一个插件来执行此操作。如果未安装该插件，你的浏览器可能将无法播放视频。</p>
+<p><img src="/2023/07/19/plugin/plugin-architecture.png" alt="Plugin Architecture"></p>
+<h3 id="Rules-for-C-Plugin"><a href="#Rules-for-C-Plugin" class="headerlink" title="Rules for C++ Plugin"></a>Rules for C++ Plugin</h3><p>其实，插件在概念上不是C++语言的一部分。相反，插件是操作系统层面的概念，即OS如何加载动态链接库(通常，动态库的后缀，Windows .dll, linux .so, MAC OS .dylib)。对于任何规模非常大的项目，应用程序通常分为一个主程序文件和若干动态库组成</p>
+<ol>
+<li>在插件中分配的内存必须在同一插件中释放</li>
+<li>插件接口中不能使用标准库组件(如， map、string、unique_ptr)</li>
+<li>假设对齐不兼容。如果变量在主应用程序中使用，请避免从具有成员变量的主应用程序类继承插件</li>
+<li>从插件中导出的函数（由应用程序调用）必须声明为 extern “C” 形式。反之，从主应用程序导出的函数亦是如此</li>
+<li>主应用程序应和插件之间应该通过接口（一般为纯虚函数）相联系</li>
+<li>不要让异常从插件中抛出</li>
+</ol>
+<h2 id="Plugin-Design"><a href="#Plugin-Design" class="headerlink" title="Plugin Design"></a>Plugin Design</h2><h3 id="Plugin-Interface"><a href="#Plugin-Interface" class="headerlink" title="Plugin Interface"></a>Plugin Interface</h3><h4 id="接口的功能职责"><a href="#接口的功能职责" class="headerlink" title="接口的功能职责"></a>接口的功能职责</h4><ol>
+<li>能够发现新的Command和添加新的GUI控件的接口</li>
+<li>提供内存分配和释放的API</li>
+<li>提供版本查询的API</li>
+</ol>
+<h4 id="如何发现新的Commmand"><a href="#如何发现新的Commmand" class="headerlink" title="如何发现新的Commmand"></a>如何发现新的Commmand</h4><p>我们面临的第一个问题是，当我们既不知道插件提供了什么命令，也不知道需要实例化的类的名称时，就不知道如何从插件中分配命令。<br>因此，我们定义一个接口，需要插件实现来提供这些信息，结合前面所述的C++ 插件规则，我们<code>Plugin</code>接口定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Plugin</span>() = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nCommands;</span><br><span class="line">        <span class="type">char</span>** commandNames;</span><br><span class="line">        Command** commands;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginDescriptor&amp; <span class="title">getPluginDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里<strong>Command</strong>的简单定义</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Command</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Command</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">exec</span><span class="params">()</span> <span class="keyword">noexcept</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> Command* <span class="title">clone</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">noexcept</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>说明：由于C++缺少反射机制，所以我们这里通过<code>clone</code>接口实现多态对象的克隆</p>
+<h4 id="添加GUI控件"><a href="#添加GUI控件" class="headerlink" title="添加GUI控件"></a>添加GUI控件</h4><p>同样地，动态添加按钮与动态添加命令没有太大区别，主应用程序也不知道需要从插件中导入哪些按钮，因此插件接口必须提供一个提供按钮描述的接口，定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginButtonDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nButtons;</span><br><span class="line">        <span class="type">char</span>** cmdLabels;    <span class="comment">// command label</span></span><br><span class="line">        <span class="type">char</span>** cmdNames;     <span class="comment">// command</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginButtonDescriptor* <span class="title">getPluginButtonDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>说明：接口<code>getPluginButtonDescriptor</code>返回指针的原因，插件可能没有相应GUI按钮的命令</p>
+<h4 id="API-Versioning"><a href="#API-Versioning" class="headerlink" title="API Versioning"></a>API Versioning</h4><p>当我们的应用程序的生命周期足够长，出于各种原因，插件的规范协议可能会发生变更。这就意味着，在某一特定时间点写的插件很可能不在适用新的API版本。<br>另外，由于插件被设计为独立于应用程序的开发，因此可能无法将插件版本与应用程序版本同步。<br>为了兼容性考虑，即使在开始之初，我们可能用不到API的版本号，但依然建议考虑加上<strong>api</strong>版本查询接口，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ApiVersion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> major;</span><br><span class="line">        <span class="type">int</span> minor;</span><br><span class="line">        <span class="type">int</span> patch;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ApiVersion <span class="title">apiVersion</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>至此，我们得到了第一版的Plugin接口，总体展示一下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Plugin</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Plugin</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nCommands;</span><br><span class="line">        <span class="type">char</span>** commandNames;</span><br><span class="line">        Command** commands;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginDescriptor&amp; <span class="title">getPluginDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* for gui */</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">PluginButtonDescriptor</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> nButtons;      </span><br><span class="line">        <span class="type">char</span>** cmdLabels;    <span class="comment">// command label</span></span><br><span class="line">        <span class="type">char</span>** cmdNames;     <span class="comment">// command</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">const</span> PluginButtonDescriptor* <span class="title">getPluginButtonDescriptor</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">ApiVersion</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> major;</span><br><span class="line">        <span class="type">int</span> minor;</span><br><span class="line">        <span class="type">int</span> patch;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> ApiVersion <span class="title">apiVersion</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Plugin-Allocation-and-Deallocation"><a href="#Plugin-Allocation-and-Deallocation" class="headerlink" title="Plugin Allocation and Deallocation"></a>Plugin Allocation and Deallocation</h3><p>与上一小节提到的问题相似，我们无法提前知道<code>Plugin</code>子类的名字，也就无法直接通过new的方式创建插件实例。<br>我们通过一种更为简单的方式解决这个问题，通过和插件实现放约定一个分配和释放插件实例的C接口，即可解决这个问题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">void</span>* <span class="title">AllocPlugin</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="function"><span class="type">void</span> <span class="title">DeallocPlugin</span><span class="params">(<span class="type">void</span>*)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>我们不需要具体插件的类名，<code>AllocPlugin</code>和<code>DellocPlugin</code>函数对帮助我们解决问题</p>
+<h3 id="Loading-Plugins"><a href="#Loading-Plugins" class="headerlink" title="Loading Plugins"></a>Loading Plugins</h3><p>如前所述，我们知道插件是基于操作系统的，从本质上讲，加载插件需要操作系统提供相关的代码。</p>
+<h4 id="不同平台的动态库加载方式"><a href="#不同平台的动态库加载方式" class="headerlink" title="不同平台的动态库加载方式"></a>不同平台的动态库加载方式</h4><p>为了使用插件，我们只需要三个特定于OS的函数：打开动态库，关闭动态库，以及从打开的动态库中提取需要的符号。</p>
+<table>
+<thead>
+<tr>
+<th align="left">OS</th>
+<th align="center">POSIX</th>
+<th align="center">win32</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">header</td>
+<td align="center">dlfcn.h</td>
+<td align="center">windows.h</td>
+</tr>
+<tr>
+<td align="left">load library</td>
+<td align="center">dlopen()</td>
+<td align="center">LoadLibrary()</td>
+</tr>
+<tr>
+<td align="left">close library</td>
+<td align="center">dlclose()</td>
+<td align="center">FreeLibrary()</td>
+</tr>
+<tr>
+<td align="left">get library symbol</td>
+<td align="center">dlsym()</td>
+<td align="center">GetProcAddress()</td>
+</tr>
+</tbody></table>
+<p>使用插件的第一步就是运行平台库函数打开动态库，然后从打开的库中导出需要的符号用于程序流中，等程序处理完毕卸载库即可关闭插件</p>
+<h4 id="POSIX平台的加载方式"><a href="#POSIX平台的加载方式" class="headerlink" title="POSIX平台的加载方式"></a>POSIX平台的加载方式</h4><h3 id="Platform-Independent"><a href="#Platform-Independent" class="headerlink" title="Platform Independent"></a>Platform Independent</h3><h4 id="Solution1-using-3rd-library"><a href="#Solution1-using-3rd-library" class="headerlink" title="Solution1 using 3rd-library"></a>Solution1 using 3rd-library</h4><ul>
+<li>not free</li>
+<li>licence</li>
+<li>the cost</li>
+<li>may no support</li>
+<li>incompatible(toolchain, release period)</li>
+</ul>
+<h4 id="Solution2-using-预处理指令"><a href="#Solution2-using-预处理指令" class="headerlink" title="Solution2 using 预处理指令"></a>Solution2 using 预处理指令</h4><p>代码处理可能是这样</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> POSI</span></span><br><span class="line"><span class="type">void</span>* handle = <span class="built_in">dlopen</span>(<span class="string">&quot;libPlugin.so&quot;</span>, RTLD_LAZY)</span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> WIN3</span></span><br><span class="line">HINSTANCE handle = <span class="built_in">LoadLibrary</span>(<span class="string">&quot;Plugin.dll&quot;</span>)</span><br><span class="line"><span class="meta">#endi</span></span><br></pre></td></tr></table></figure>
+<p>还有，不要忘记头文件包含也要加预处理</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> POSI</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dlfcn.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> WIN32</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>问题不言而喻，这种处理方式，一旦代码规模变大，将会使得代码维护和阅读成本加大，添加和删除功能很容易遗漏而导致Bug的引入。<br>一种稍微聪明的预处理宏的使用方式</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifdef</span> POSIX</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HANDLE void*</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CLOSE_LIBRARY dlclose</span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> WIN32</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CLOSE_LIBRARY FreeLibrary</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HANDLE HINSTANCE</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">CLOSE_LIBRARY</span>(handle);</span><br></pre></td></tr></table></figure>
+<p>但是，这种方法只适用于具有相同参数的函数调用emo~</p>
+<h4 id="Solution3-using-编译单元控制"><a href="#Solution3-using-编译单元控制" class="headerlink" title="Solution3 using 编译单元控制"></a>Solution3 using 编译单元控制</h4><p>分离源文件，通过编译脚本识别在不同的平台编译不同的文件。使用这种方式，将没有预处理宏的代码。不过采用这种方式存在一些问题</p>
+<ol>
+<li>必然会造成重复，软件设计中重复即耦合</li>
+<li>对于不同的平台，就要求我们需要实现所有的接口</li>
+<li>实现方式对代码开发人员不透明，并且两种平台之间没有任何痕迹表明另一份的存在，很可能导致一种平台适配完成，另一个平台功能未及时适配<br>一般不推荐这种纯编译技术控制的方式来解耦平台依赖</li>
+</ol>
+<h4 id="Solution4-using-An-Abstract-Factory-for-Platform"><a href="#Solution4-using-An-Abstract-Factory-for-Platform" class="headerlink" title="Solution4 using An Abstract Factory for Platform"></a>Solution4 using An Abstract Factory for Platform</h4><p>综上考虑，我们采用编译宏和抽象工厂结合的方式来处理平台独立性</p>
+<blockquote>
+<p>talk is cheap, show me the code</p>
+</blockquote>
+<ul>
+<li>PlatformFactory单例，用来分离平台<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">PlatformFactor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="type">static</span> PlatformFactory&amp; <span class="title">Instance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="meta">#<span class="keyword">ifdef</span> POSIX</span></span><br><span class="line">            <span class="type">static</span> PosixFactory instance;</span><br><span class="line">        <span class="meta">#<span class="keyword">elif</span> WIN32</span></span><br><span class="line">            <span class="type">static</span> WindowsFactory instance;</span><br><span class="line">        <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::unique_ptr&lt;DynamicLoader&gt; <span class="title">createDynamicLoader</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">PlatformFactory</span>(<span class="type">const</span> PlatformFactory&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">    PlatformFactory&amp; <span class="keyword">operator</span>=(<span class="type">const</span> PlatformFactory&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+不同的实例，在接口<code>createDynamicLoader</code>中返回不同平台动态库加载<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">WindowsFactory</span> : <span class="keyword">public</span> PlatformFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">std::unique_ptr&lt;DynamicLoader&gt; <span class="title">createDynamicLoader</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">PosixFactory</span> : <span class="keyword">public</span> PlatformFactory</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">std::unique_ptr&lt;DynamicLoader&gt; <span class="title">createDynamicLoader</span><span class="params">()</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>DynamicLoader接口用来分离平台实现<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">DynamicLoader</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">DynamicLoader</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> Plugin* <span class="title">allocatePlugin</span><span class="params">(<span class="type">const</span> string&amp; pluginName)</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">deallocatePlugin</span><span class="params">(Plugin*)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+之后只要定义自己的平台的<code>DynamicLoader</code>即可。</li>
+</ul>
+<h2 id="Questions-or-Feature-to-Consider-in-Future"><a href="#Questions-or-Feature-to-Consider-in-Future" class="headerlink" title="Questions or Feature to Consider in Future"></a>Questions or Feature to Consider in Future</h2><ul>
+<li>Todo</li>
+<li><input checked disabled type="checkbox"> 平台移植性</li>
+<li><input disabled type="checkbox"> 控件扩展</li>
+<li><input disabled type="checkbox"> 如何显示当前的插件信息</li>
+<li><input disabled type="checkbox"> 插件安装的依赖关系</li>
+</ul>
+<h2 id="Some-Ref"><a href="#Some-Ref" class="headerlink" title="Some Ref"></a>Some Ref</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/427795467">C++ 程序设计 - 插件框架分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.linuxjournal.com/article/3687">Dynamic Class Loading for C++ on Linux</a></li>
+<li><a target="_blank" rel="noopener" href="https://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html">Dynamically Loaded (DL) Libraries</a></li>
+<li><a target="_blank" rel="noopener" href="https://cs.uwaterloo.ca/~m2nagapp/courses/CS446/1195/Arch_Design_Activity/PlugIn.pdf">Plugin architecture</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.computerhope.com/jargon/p/plugin.htm">Plugin</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -360,13 +591,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">13k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">44 分钟</span>
+    <span title="站点阅读时长">47 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
