@@ -21,34 +21,33 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"gyhaoran.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.  Minimum &#x2F; Maximumminmax intro  example 12345678910111213int a &#x3D; 2;int b &#x3D; 9;auto p &#x3D; std::minmax(a,b);">
+    <meta name="description" content="A Simple Introduction to C++ Standard Library Algorithms: Range Utilities.  Utilitiesdistance Avoid using distance with iterators into non-random access containers like std::list, because the runtime">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STL - Non-Modifying Operations 下">
-<meta property="og:url" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/index.html">
+<meta property="og:title" content="STL - Range Utilities">
+<meta property="og:url" content="https://gyhaoran.github.io/2023/11/03/range-utilities/index.html">
 <meta property="og:site_name" content="Leo&#39;s Blog">
-<meta property="og:description" content="A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.  Minimum &#x2F; Maximumminmax intro  example 12345678910111213int a &#x3D; 2;int b &#x3D; 9;auto p &#x3D; std::minmax(a,b);">
+<meta property="og:description" content="A Simple Introduction to C++ Standard Library Algorithms: Range Utilities.  Utilitiesdistance Avoid using distance with iterators into non-random access containers like std::list, because the runtime">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/minmax.png">
-<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/clamp.png">
-<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/min_element.png">
-<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/max_element.png">
-<meta property="og:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/minmax_element.png">
-<meta property="article:published_time" content="2023-10-03T01:13:14.000Z">
-<meta property="article:modified_time" content="2024-08-22T01:59:26.745Z">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/03/range-utilities/distance.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/03/range-utilities/for_each.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/03/range-utilities/next_prev.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/03/range-utilities/iter_swap.png">
+<meta property="article:published_time" content="2023-11-03T01:13:14.000Z">
+<meta property="article:modified_time" content="2024-08-23T02:58:41.788Z">
 <meta property="article:author" content="Leo Ge">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/minmax.png">
+<meta name="twitter:image" content="https://gyhaoran.github.io/2023/11/03/range-utilities/distance.png">
 
 
-<link rel="canonical" href="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/">
+<link rel="canonical" href="https://gyhaoran.github.io/2023/11/03/range-utilities/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gyhaoran.github.io/2023/10/03/non-modifying-part3/","path":"2023/10/03/non-modifying-part3/","title":"STL - Non-Modifying Operations 下"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gyhaoran.github.io/2023/11/03/range-utilities/","path":"2023/11/03/range-utilities/","title":"STL - Range Utilities"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>STL - Non-Modifying Operations 下 | Leo's Blog</title>
+<title>STL - Range Utilities | Leo's Blog</title>
   
 
 
@@ -148,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Minimum-x2F-Maximum"><span class="nav-number">1.</span> <span class="nav-text">Minimum &#x2F; Maximum</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#minmax"><span class="nav-number">1.1.</span> <span class="nav-text">minmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clamp-c-17"><span class="nav-number">1.2.</span> <span class="nav-text">clamp(c++17)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min-element"><span class="nav-number">1.3.</span> <span class="nav-text">min_element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max-element"><span class="nav-number">1.4.</span> <span class="nav-text">max_element</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minmax-element"><span class="nav-number">1.5.</span> <span class="nav-text">minmax_element</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">2.</span> <span class="nav-text">Ref</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Utilities"><span class="nav-number">1.</span> <span class="nav-text">Utilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#distance"><span class="nav-number">1.1.</span> <span class="nav-text">distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-each-x2F-for-each-n-c-17"><span class="nav-number">1.2.</span> <span class="nav-text">for_each &#x2F; for_each_n(c++17)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#next-x2F-prev"><span class="nav-number">1.3.</span> <span class="nav-text">next&#x2F;prev</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iter-swap"><span class="nav-number">1.4.</span> <span class="nav-text">iter_swap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">2.</span> <span class="nav-text">Ref</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -204,7 +203,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/11/03/range-utilities/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -217,12 +216,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="STL - Non-Modifying Operations 下 | Leo's Blog">
+      <meta itemprop="name" content="STL - Range Utilities | Leo's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          STL - Non-Modifying Operations 下
+          STL - Range Utilities
         </h1>
 
         <div class="post-meta-container">
@@ -233,14 +232,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-10-03 09:13:14" itemprop="dateCreated datePublished" datetime="2023-10-03T09:13:14+08:00">2023-10-03</time>
+      <time title="创建时间：2023-11-03 09:13:14" itemprop="dateCreated datePublished" datetime="2023-11-03T09:13:14+08:00">2023-11-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-22 09:59:26" itemprop="dateModified" datetime="2024-08-22T09:59:26+08:00">2024-08-22</time>
+      <time title="修改时间：2024-08-23 10:58:41" itemprop="dateModified" datetime="2024-08-23T10:58:41+08:00">2024-08-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -272,8 +271,8 @@
       </span>
       <span class="post-meta-item-text">Changyan：</span>
     
-    <a title="STL - Non-Modifying Operations 下" href="/2023/10/03/non-modifying-part3/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::c6ae8d1bd652572288df157c90335988" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="STL - Range Utilities" href="/2023/11/03/range-utilities/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::94bca7155834cea89fce2c5bb366c6d8" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -284,14 +283,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>328</span>
+      <span>424</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -302,37 +301,46 @@
     
     
     <div class="post-body" itemprop="articleBody"><blockquote>
-<p>A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.</p>
+<p>A Simple Introduction to C++ Standard Library Algorithms: Range Utilities.</p>
 </blockquote>
-<h2 id="Minimum-x2F-Maximum"><a href="#Minimum-x2F-Maximum" class="headerlink" title="Minimum &#x2F; Maximum"></a>Minimum &#x2F; Maximum</h2><h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax"></a>minmax</h3><ul>
-<li><p>intro<br><img src="/2023/10/03/non-modifying-part3/minmax.png" alt="alt text"></p>
+<h2 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h2><h3 id="distance"><a href="#distance" class="headerlink" title="distance"></a>distance</h3><blockquote>
+<p>Avoid using distance with iterators into non-random access containers like std::list, because the runtime will be proportional to the size of the input range!</p>
+</blockquote>
+<ul>
+<li><p>into<br><img src="/2023/11/03/range-utilities/distance.png" alt="alt text"></p>
 </li>
 <li><p>example</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> b = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">auto</span> p = std::<span class="built_in">minmax</span>(a,b);  <span class="comment">// std::pair&lt;int,int&gt; p &#123;2,9&#125;</span></span><br><span class="line"><span class="keyword">auto</span> min = p.first;  <span class="comment">// int min = 2</span></span><br><span class="line"><span class="keyword">auto</span> max = p.second; <span class="comment">// int max = 9</span></span><br><span class="line"><span class="keyword">auto</span> [lo,hi] = std::<span class="built_in">minmax</span>(a,b);  <span class="comment">// int lo = 2, hi = 9  C++17</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="type">const</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> b = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">auto</span> p = std::<span class="built_in">minmax</span>(&#123;<span class="number">3</span>,<span class="number">0</span>,b,<span class="number">3</span>,a,<span class="number">8</span>&#125;);  <span class="comment">// std::pair&lt;int,int&gt; p &#123;0,9&#125;</span></span><br><span class="line"><span class="keyword">auto</span> min = p.first;  <span class="comment">// int min = 0</span></span><br><span class="line"><span class="keyword">auto</span> max = p.second; <span class="comment">// int max = 9</span></span><br><span class="line"><span class="keyword">auto</span> [lo,hi] = std::<span class="built_in">minmax</span>(&#123;<span class="number">3</span>,<span class="number">0</span>,b,<span class="number">3</span>,a,<span class="number">8</span>&#125;);  <span class="comment">// int lo = 0, hi = 9  C++17</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">// size of subrange (as shown in image)</span></span><br><span class="line"><span class="keyword">auto</span> n = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v)+<span class="number">2</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>);  <span class="comment">// 5</span></span><br><span class="line"><span class="comment">// size of entire container</span></span><br><span class="line"><span class="keyword">auto</span> m = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v));        <span class="comment">// 9</span></span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">// get index of smallest element in w:</span></span><br><span class="line"><span class="keyword">auto</span> argmin = <span class="built_in">distance</span>(<span class="built_in">begin</span>(w), <span class="built_in">min_element</span>(<span class="built_in">begin</span>(w),<span class="built_in">end</span>(w)) );  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="for-each-x2F-for-each-n-c-17"><a href="#for-each-x2F-for-each-n-c-17" class="headerlink" title="for_each &#x2F; for_each_n(c++17)"></a>for_each &#x2F; for_each_n(c++17)</h3><ul>
+<li><p>into<br><img src="/2023/11/03/range-utilities/for_each.png" alt="alt text"></p>
+</li>
+<li><p>for_each</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Container&lt;Type&gt; v; …</span><br><span class="line"></span><br><span class="line"><span class="comment">// read-only, type cheap to copy or copy needed:</span></span><br><span class="line">for_each(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v),       [](Type x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line">for_each(<span class="built_in">begin</span>(v)+<span class="number">2</span>, <span class="built_in">begin</span>(v)+<span class="number">5</span>, [](<span class="keyword">auto</span> x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// read-only, type expensive to copy:</span></span><br><span class="line">for_each(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), [](Type <span class="type">const</span>&amp; x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line">for_each(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), [](<span class="keyword">auto</span> <span class="type">const</span>&amp; x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// modify values:</span></span><br><span class="line">for_each(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), [](Type&amp; x)&#123; cin &gt;&gt; x; &#125;);</span><br><span class="line">for_each(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), [](<span class="keyword">auto</span>&amp; x)&#123; cin &gt;&gt; x; &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for_each_n(c++17)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Container&lt;Type&gt; v; …</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> n = v.<span class="built_in">size</span>() / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// read-only, type cheap to copy or copy needed:</span></span><br><span class="line">for_each_n(<span class="built_in">begin</span>(v), n, [](Type x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// read-only, type expensive to copy:</span></span><br><span class="line">for_each_n(<span class="built_in">begin</span>(v), n, [](Type <span class="type">const</span>&amp; x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// modify values:</span></span><br><span class="line">for_each_n(<span class="built_in">begin</span>(v), n, [](Type&amp; x)&#123; cin &gt;&gt; x; &#125;);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>c++20</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> p = std::ranges::<span class="built_in">minmax</span>(v);  <span class="comment">// std::pair&lt;int,int&gt; p &#123;1,9&#125;</span></span><br><span class="line"><span class="keyword">auto</span> [min,max] = std::ranges::<span class="built_in">minmax</span>(v);</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">P</span> &#123; <span class="type">int</span> q; <span class="type">char</span> c; &#125;;</span><br><span class="line">std::vector&lt;P&gt; <span class="type">const</span> w &#123;P&#123;<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>&#125;,P&#123;<span class="number">2</span>,<span class="string">&#x27;b&#x27;</span>&#125;,P&#123;<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">auto</span> [lo,hi] = std::ranges::<span class="built_in">minmax</span>(w, </span><br><span class="line">    [](P p1, P p2)&#123; <span class="keyword">return</span> p1.q &lt; p2.q; &#125;);  <span class="comment">// P lo &#123;1,&#x27;c&#x27;&#125;, hi &#123;3,&#x27;a&#x27;&#125;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Container&lt;Type&gt; v; …</span><br><span class="line"></span><br><span class="line"><span class="comment">// read-only, type cheap to copy or copy needed:</span></span><br><span class="line">ranges::for_each(v, [](Type x)&#123; cout &lt;&lt; x; &#125;); </span><br><span class="line">ranges::for_each(v, [](<span class="keyword">auto</span> x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// read-only, type expensive to copy:</span></span><br><span class="line">ranges::for_each(v, [](Type <span class="type">const</span>&amp; x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line">ranges::for_each(v, [](<span class="keyword">auto</span> <span class="type">const</span>&amp; x)&#123; cout &lt;&lt; x; &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// modify values:</span></span><br><span class="line">ranges::for_each(v, [](Type&amp; x)&#123; cin &gt;&gt; x; &#125;);</span><br><span class="line">ranges::for_each(v, [](<span class="keyword">auto</span>&amp; x)&#123; cin &gt;&gt; x; &#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="clamp-c-17"><a href="#clamp-c-17" class="headerlink" title="clamp(c++17)"></a>clamp(c++17)</h3><ul>
-<li><p>intro<br>if value &lt; lo, return lo; if value &gt; hi, return hi; return value, otherwise<br><img src="/2023/10/03/non-modifying-part3/clamp.png" alt="alt text"></p>
+<h3 id="next-x2F-prev"><a href="#next-x2F-prev" class="headerlink" title="next&#x2F;prev"></a>next&#x2F;prev</h3><blockquote>
+<p>Functions std::prev and std::next provide a universal way of incrementing&#x2F;decrementing iterators even if the iterator type does not support random access (e.g., it +&#x3D; 5).<br>However, be aware that advancing non-random access iterators (e.g., those from std::list) by N steps might be costly, i.e., involve on the order of N memory operations.</p>
+</blockquote>
+<ul>
+<li><p>into<br><img src="/2023/11/03/range-utilities/next_prev.png" alt="alt text"></p>
+</li>
+<li><p>next</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">next</span>(v.<span class="built_in">begin</span>());</span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">next</span>(i, <span class="number">3</span>); <span class="comment">// c++11</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>prev</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">prev</span>(v.<span class="built_in">end</span>()); <span class="comment">// 6</span></span><br><span class="line">     i = <span class="built_in">prev</span>(i); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">prev</span>(i, <span class="number">3</span>); <span class="comment">// 2 (c++11)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="iter-swap"><a href="#iter-swap" class="headerlink" title="iter_swap"></a>iter_swap</h3><ul>
+<li><p>intro<br><img src="/2023/11/03/range-utilities/iter_swap.png" alt="alt text"></p>
 </li>
 <li><p>example</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = std::<span class="built_in">clamp</span>( <span class="number">8</span>,  <span class="number">1</span>, <span class="number">5</span>);  <span class="comment">// int a =  5</span></span><br><span class="line"><span class="type">int</span> b = std::<span class="built_in">clamp</span>(<span class="number">-4</span>,  <span class="number">1</span>, <span class="number">5</span>);  <span class="comment">// int b =  1</span></span><br><span class="line"><span class="type">int</span> c = std::<span class="built_in">clamp</span>(<span class="number">-1</span>, <span class="number">-2</span>, <span class="number">5</span>);  <span class="comment">// int c = -1</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="min-element"><a href="#min-element" class="headerlink" title="min_element"></a>min_element</h3><ul>
-<li><p>intro<br><img src="/2023/10/03/non-modifying-part3/min_element.png" alt="alt text"></p>
-</li>
-<li><p>example</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// smallest in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">min_element</span>(<span class="built_in">begin</span>(v)+<span class="number">2</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>);</span><br><span class="line"><span class="keyword">auto</span> min = *i;  <span class="comment">// int min = 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// smallest in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">min_element</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v));</span><br><span class="line">std::cout &lt;&lt; *j;  <span class="comment">// prints &#x27;0&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// index of smallest:</span></span><br><span class="line"><span class="keyword">auto</span> argmin = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// int argmin = 9</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>c++20</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">min_element</span>(v);</span><br><span class="line"><span class="keyword">auto</span> min = *i;  <span class="comment">// int min = 0</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="max-element"><a href="#max-element" class="headerlink" title="max_element"></a>max_element</h3><ul>
-<li>intro<br><img src="/2023/10/03/non-modifying-part3/max_element.png" alt="alt text"></li>
-</ul>
-<h3 id="minmax-element"><a href="#minmax-element" class="headerlink" title="minmax_element"></a>minmax_element</h3><ul>
-<li>intro<br><img src="/2023/10/03/non-modifying-part3/minmax_element.png" alt="alt text"></li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">8</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">iter_swap</span>(<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(w)+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : v) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 0 3 8</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : w) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 2 1 4 5</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
@@ -354,7 +362,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://gyhaoran.github.io/2023/10/03/non-modifying-part3/" title="STL - Non-Modifying Operations 下">https://gyhaoran.github.io/2023/10/03/non-modifying-part3/</a>
+      <a href="https://gyhaoran.github.io/2023/11/03/range-utilities/" title="STL - Range Utilities">https://gyhaoran.github.io/2023/11/03/range-utilities/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -370,13 +378,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/10/02/non-modifying-part2/" rel="prev" title="STL - Non-Modifying Operations 中">
-                  <i class="fa fa-chevron-left"></i> STL - Non-Modifying Operations 中
+                <a href="/2023/11/02/range-copy-move/" rel="prev" title="STL - Range Copy/Move Algorithms">
+                  <i class="fa fa-chevron-left"></i> STL - Range Copy/Move Algorithms
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/10/04/modifying-elements/" rel="next" title="STL - Modifying Operations">
-                  STL - Modifying Operations <i class="fa fa-chevron-right"></i>
+                <a href="/2024/01/12/lex-yacc/" rel="next" title="Introduction with Lex and Yacc">
+                  Introduction with Lex and Yacc <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -389,7 +397,7 @@
 
 
 
-    <div class="comments" id="SOHUCS" sid="c6ae8d1bd652572288df157c90335988"></div>
+    <div class="comments" id="SOHUCS" sid="94bca7155834cea89fce2c5bb366c6d8"></div>
 </div>
   </main>
 

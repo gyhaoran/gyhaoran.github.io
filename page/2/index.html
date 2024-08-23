@@ -152,7 +152,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -183,6 +183,198 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/10/01/non-modifying-part1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/01/non-modifying-part1/" class="post-title-link" itemprop="url">STL - Non-Modifying Operations 上</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-01 09:13:14" itemprop="dateCreated datePublished" datetime="2023-10-01T09:13:14+08:00">2023-10-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-23 10:24:20" itemprop="dateModified" datetime="2024-08-23T10:24:20+08:00">2024-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Standard-Library-Algorithms/" itemprop="url" rel="index"><span itemprop="name">Standard Library Algorithms</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="STL - Non-Modifying Operations 上" href="/2023/10/01/non-modifying-part1/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::1935aea202517534a7861d6f334bfad7" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>946</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.</p>
+</blockquote>
+<h2 id="Existence-Queries"><a href="#Existence-Queries" class="headerlink" title="Existence Queries"></a>Existence Queries</h2><h3 id="any-of-x2F-all-of-x2F-none-of"><a href="#any-of-x2F-all-of-x2F-none-of" class="headerlink" title="any_of &#x2F; all_of &#x2F; none_of"></a>any_of &#x2F; all_of &#x2F; none_of</h3><ul>
+<li><p>intro（c++11）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">all_of</span><span class="params">(begin, end, check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// true</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">any_of</span><span class="params">(begin, end, check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// if check yield true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* for all, any or none of the elements in the input range */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">none_of</span><span class="params">(begin, end, check(v) -&gt; <span class="type">bool</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> check = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> x &gt;= <span class="number">1</span>; &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in subrange (as shown in image):</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">all_of</span> (<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">any_of</span> (<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">none_of</span>(<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, check);  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// in entire vector:</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">all_of</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), check);  <span class="comment">// false</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">any_of</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">none_of</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), check);  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++ 20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">all_of</span><span class="params">(range, check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// true</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">any_of</span><span class="params">(range check(v) -&gt; <span class="type">bool</span>)</span></span>; <span class="comment">// if check yield true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* for all, any or none of the elements in the input range */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">none_of</span><span class="params">(range, check(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br></pre></td></tr></table></figure></li>
+<li><p>usage</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> check = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> x &gt;= <span class="number">1</span>; &#125;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">all_of</span>(v, check);  <span class="comment">// false</span></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">any_of</span>(v, check);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">none_of</span>(v, check);  <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="count-x2F-count-if"><a href="#count-x2F-count-if" class="headerlink" title="count&#x2F;count_if"></a>count&#x2F;count_if</h3><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">count</span><span class="params">(begin, end, v)</span></span>; <span class="comment">// number of occurrences</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* number of elements(pred=true) */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">count_if</span><span class="params">(begin, end, pred(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="comment">// count in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> n = <span class="built_in">count</span>(<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">8</span>, <span class="number">2</span>);  <span class="comment">// n = 3</span></span><br><span class="line"><span class="comment">// count in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> m = <span class="built_in">count</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">2</span>);  <span class="comment">// m = 4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> is_even = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> !(x &amp; <span class="number">1</span>); &#125;;</span><br><span class="line"><span class="comment">// count in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> n = <span class="built_in">count_if</span> (<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">begin</span>(v)+<span class="number">8</span>, is_even);  <span class="comment">// n = 3</span></span><br><span class="line"><span class="comment">// count in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> m = <span class="built_in">count_if</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), is_even);  <span class="comment">// m = 4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++ 20<br>As mentioned above.</p>
+</li>
+</ul>
+<h2 id="Finding-x2F-Locating-Elements"><a href="#Finding-x2F-Locating-Elements" class="headerlink" title="Finding &#x2F; Locating Elements"></a>Finding &#x2F; Locating Elements</h2><h3 id="Find-Single-Elements"><a href="#Find-Single-Elements" class="headerlink" title="Find Single Elements"></a>Find Single Elements</h3><h4 id="find-x2F-find-if-x2F-find-if-not"><a href="#find-x2F-find-if-x2F-find-if-not" class="headerlink" title="find&#x2F;find_if&#x2F;find_if_not"></a>find&#x2F;find_if&#x2F;find_if_not</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st elem equal v, return end if no match</span></span><br><span class="line"><span class="function">interator <span class="title">find</span><span class="params">(begin, end, v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// @1st elem which pred is true, return end if no match</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_if</span><span class="params">(begin, end, pred(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// @1st elem which pred is false, return end if no match</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find_if_not</span><span class="params">(begin, end, pred(v) -&gt; <span class="type">bool</span>)</span></span>; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">9</span>,<span class="number">0</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find &#x27;9&#x27; in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">9</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> f = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> x &gt;= <span class="number">6</span>; &#125;;</span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_if</span> (<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), f);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_if_not</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), f);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>c++ 20<br>As mentioned above.</p>
+</li>
+</ul>
+<h4 id="find-first-of"><a href="#find-first-of" class="headerlink" title="find_first_of"></a>find_first_of</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">iterator <span class="title">find_first_of</span><span class="params">(s_begin, s_end, w_begin, w_end)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>returns an iterator to the 1st element in range s that compares equal to any of the elements in range w; otherwise returns @send if no such element was found</p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find any of &#x27;w&#x27; in all of &#x27;s&#x27;:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_first_of</span>(<span class="built_in">begin</span>(s), <span class="built_in">end</span>(s), <span class="built_in">begin</span>(w), <span class="built_in">end</span>(w));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), j);  <span class="comment">// index = 1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">find_first_of</span>(s, w);  </span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), i);  <span class="comment">// index = 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Find-Subranges"><a href="#Find-Subranges" class="headerlink" title="Find Subranges"></a>Find Subranges</h3><h4 id="search"><a href="#search" class="headerlink" title="search"></a>search</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of range w inside range s, return s_end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">search</span><span class="params">(s_begin, s_end, w_begin, w_end)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">search</span>(s_range, w_range);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find all of &#x27;w&#x27; in all of &#x27;s&#x27;:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">search</span>(<span class="built_in">begin</span>(s), <span class="built_in">end</span>(s), <span class="built_in">begin</span>(w), <span class="built_in">end</span>(w));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), j);  <span class="comment">// index = 4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">search</span>(s, w);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> x : r) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 4 6 5 8 9</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="find-end"><a href="#find-end" class="headerlink" title="find_end"></a>find_end</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// last occurrence of range w inside range s, return s_end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">find_end</span><span class="params">(s_begin, s_end, w_begin, w_end)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">find_end</span>(s_range, w_range);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; s &#123;<span class="number">0</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; w &#123;<span class="number">4</span>,<span class="number">6</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find all of &#x27;w&#x27; in all of &#x27;s&#x27;:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">find_end</span>(<span class="built_in">begin</span>(s), <span class="built_in">end</span>(s), <span class="built_in">begin</span>(w), <span class="built_in">end</span>(w));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(s)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(s), j);  <span class="comment">// index = 5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">find_end</span>(s, w);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> x : r) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 6 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Find-Run-of-Equal-Elements-查找相等元素的连续序列"><a href="#Find-Run-of-Equal-Elements-查找相等元素的连续序列" class="headerlink" title="Find Run of Equal Elements(查找相等元素的连续序列)"></a>Find Run of Equal Elements(查找相等元素的连续序列)</h3><h4 id="adjacent-find"><a href="#adjacent-find" class="headerlink" title="adjacent_find"></a>adjacent_find</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of 2 consecutive elements, return @end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">adjacent_find</span><span class="params">(begin, end)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">adjacent_find</span>(range); <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find in entire vector:</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">adjacent_find</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v));</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">5</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">adjacent_find</span>(v);  </span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), i);  <span class="comment">// index = 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="search-n"><a href="#search-n" class="headerlink" title="search_n"></a>search_n</h4><ul>
+<li><p>intro</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @1st occurrence of v consecutive v, return @end otherwise</span></span><br><span class="line"><span class="function">iterator <span class="title">search_n</span><span class="params">(begin, end, n, v)</span></span>;</span><br><span class="line"></span><br><span class="line">range::<span class="built_in">search_n</span>(range, n, v); <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">search_n</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), n, <span class="number">9</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), j);  <span class="comment">// index = 8</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">const</span> <span class="keyword">auto</span> n = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> r = std::ranges::<span class="built_in">search_n</span>(v, n, <span class="number">2</span>);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">not</span> <span class="built_in">empty</span>(r)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> <span class="type">const</span> index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(v), <span class="built_in">begin</span>(r));  <span class="comment">// index = 3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -261,14 +453,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -427,14 +619,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>5.3k</span>
+      <span>2.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>8 分钟</span>
     </span>
 </div>
 
@@ -658,7 +850,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>472</span>
+      <span>204</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -757,13 +949,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">52k</span>
+    <span title="站点总字数">14k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">47 分钟</span>
+    <span title="站点阅读时长">52 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
