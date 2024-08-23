@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/red/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"gyhaoran.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"changyan","storage":true,"lazyload":false,"nav":null,"activeClass":"changyan"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="A Simple Introduction to C++ Standard Library Algorithms: Range Copy &amp;&amp; Move.  Copy AlgorithmsTarget ranges must be able to receive all copied elements! This means that, e.g., target containe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STL - Range Copy&#x2F;Move Algorithms">
+<meta property="og:url" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/index.html">
+<meta property="og:site_name" content="Leo&#39;s Blog">
+<meta property="og:description" content="A Simple Introduction to C++ Standard Library Algorithms: Range Copy &amp;&amp; Move.  Copy AlgorithmsTarget ranges must be able to receive all copied elements! This means that, e.g., target containe">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/copy.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/copy_n.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/copy_backward.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/copy_if.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/sample.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/move.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/move_backward.png">
+<meta property="og:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/swap_ranges.png">
+<meta property="article:published_time" content="2023-11-02T01:13:14.000Z">
+<meta property="article:modified_time" content="2024-08-23T02:08:38.338Z">
+<meta property="article:author" content="Leo Ge">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/copy.png">
+
+
+<link rel="canonical" href="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/","path":"2023/11/02/cpp/stl/range-copy-move/","title":"STL - Range Copy/Move Algorithms"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>STL - Range Copy/Move Algorithms | Leo's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Leo's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">保持谦逊，终身学习</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fa fa-book fa-fw"></i>留言板</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Copy-Algorithms"><span class="nav-number">1.</span> <span class="nav-text">Copy Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#copy"><span class="nav-number">1.1.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy-n-c-11"><span class="nav-number">1.2.</span> <span class="nav-text">copy_n(c++11)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy-backward-c-11"><span class="nav-number">1.3.</span> <span class="nav-text">copy_backward(c++11)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy-if"><span class="nav-number">1.4.</span> <span class="nav-text">copy_if</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-c-17"><span class="nav-number">1.5.</span> <span class="nav-text">sample(c++17)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Move-Algorithms"><span class="nav-number">2.</span> <span class="nav-text">Move Algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#move-C-11"><span class="nav-number">2.1.</span> <span class="nav-text">move(C++11)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#move-backward-C-11"><span class="nav-number">2.2.</span> <span class="nav-text">move_backward(C++11)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swap-ranges"><span class="nav-number">2.3.</span> <span class="nav-text">swap_ranges</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-number">3.</span> <span class="nav-text">Ref</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leo Ge"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">Leo Ge</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STL - Range Copy/Move Algorithms | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STL - Range Copy/Move Algorithms
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-02 09:13:14" itemprop="dateCreated datePublished" datetime="2023-11-02T09:13:14+08:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-23 10:08:38" itemprop="dateModified" datetime="2024-08-23T10:08:38+08:00">2024-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Standard-Library-Algorithms/" itemprop="url" rel="index"><span itemprop="name">Standard Library Algorithms</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="STL - Range Copy/Move Algorithms" href="/2023/11/02/cpp/stl/range-copy-move/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::0f178c375cb14c843d56f253eb2e5d5a" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>851</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>A Simple Introduction to C++ Standard Library Algorithms: Range Copy &amp;&amp; Move.</p>
+</blockquote>
+<h2 id="Copy-Algorithms"><a href="#Copy-Algorithms" class="headerlink" title="Copy Algorithms"></a>Copy Algorithms</h2><p>Target ranges must be able to receive all copied elements!</p>
+<p>This means that, e.g., target containers must be <strong>resized properly</strong>. Standard algorithms don’t – and in most cases can’t – check if the target range is large enough.</p>
+<p>Trying to copy elements beyond the target’s capacity will invoke <strong>undefined behavior</strong>!</p>
+<h3 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h3><ul>
+<li><p>into<br><img src="/2023/11/02/cpp/stl/range-copy-move/copy.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; src &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; tgt;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="type">const</span> n = <span class="number">5</span>;</span><br><span class="line">tgt.<span class="built_in">resize</span>(n);</span><br><span class="line"></span><br><span class="line"><span class="built_in">copy</span>(<span class="built_in">begin</span>(src)+<span class="number">3</span>, <span class="built_in">begin</span>(src)+<span class="number">8</span>, <span class="built_in">begin</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 5 6 7 8</span></span><br><span class="line"></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; bad;</span><br><span class="line">bad.<span class="built_in">resize</span>(<span class="number">2</span>);</span><br><span class="line"><span class="comment">//  UNDEFINED BEHAVIOR: target size is too small!</span></span><br><span class="line"><span class="built_in">copy</span>(<span class="built_in">begin</span>(src), <span class="built_in">end</span>(src), <span class="built_in">begin</span>(bad));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; src &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(src.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line">std::ranges::<span class="built_in">copy</span>(src, <span class="built_in">begin</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 5 6 7 8</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="copy-n-c-11"><a href="#copy-n-c-11" class="headerlink" title="copy_n(c++11)"></a>copy_n(c++11)</h3><ul>
+<li><p>into<br><img src="/2023/11/02/cpp/stl/range-copy-move/copy_n.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; src &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; tgt;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> n = <span class="number">5</span>;</span><br><span class="line">tgt.<span class="built_in">resize</span>(n);</span><br><span class="line"></span><br><span class="line"><span class="built_in">copy_n</span>(<span class="built_in">begin</span>(src)+<span class="number">3</span>, n, <span class="built_in">begin</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 5 6 7 8</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="copy-backward-c-11"><a href="#copy-backward-c-11" class="headerlink" title="copy_backward(c++11)"></a>copy_backward(c++11)</h3><ul>
+<li><p>into<br><img src="/2023/11/02/cpp/stl/range-copy-move/copy_backward.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; src &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">copy_backward</span>(<span class="built_in">begin</span>(src)+<span class="number">3</span>, <span class="built_in">begin</span>(src)+<span class="number">8</span>, <span class="built_in">end</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 5 6 7 8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; src &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(src.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line">std::ranges::<span class="built_in">copy_backward</span>(src, <span class="built_in">end</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 5 6 7 8</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="copy-if"><a href="#copy-if" class="headerlink" title="copy_if"></a>copy_if</h3><ul>
+<li><p>into<br><img src="/2023/11/02/cpp/stl/range-copy-move/copy_if.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> <span class="type">const</span> is_even = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> !(x &amp; <span class="number">1</span>); &#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; src &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">3</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> e = <span class="built_in">copy_if</span> (<span class="built_in">begin</span>(src)+<span class="number">2</span>, <span class="built_in">begin</span>(src)+<span class="number">7</span>, <span class="built_in">begin</span>(tgt), is_even);</span><br><span class="line"><span class="comment">// how many elements copied?</span></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> copy_count = <span class="built_in">distance</span>(<span class="built_in">begin</span>(tgt), e);  <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// resize to fit</span></span><br><span class="line">tgt.<span class="built_in">erase</span>(e, <span class="built_in">end</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 6 8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> <span class="type">const</span> is_even = [](<span class="type">int</span> x) &#123; <span class="keyword">return</span> !(x &amp; <span class="number">1</span>); &#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; src &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> e = std::ranges::<span class="built_in">copy_if</span> (src, <span class="built_in">begin</span>(tgt), is_even);</span><br><span class="line"><span class="comment">// how many elements copied?</span></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> copy_count = <span class="built_in">distance</span>(<span class="built_in">begin</span>(tgt), e.out);  <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// resize to fit</span></span><br><span class="line">tgt.<span class="built_in">erase</span>(e.out, <span class="built_in">end</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 4 6 8</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="sample-c-17"><a href="#sample-c-17" class="headerlink" title="sample(c++17)"></a>sample(c++17)</h3><ul>
+<li><p>into<br>Samples n elements in the given sequence (without replacement) where every element has an equal chance of being selected.<br><img src="/2023/11/02/cpp/stl/range-copy-move/sample.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;random&gt;</span></span></span><br><span class="line"><span class="comment">// 32 bit mersenne twister engine</span></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> seed = std::random_device&#123;&#125;();</span><br><span class="line"><span class="keyword">auto</span> reng = std::mt19937&#123;seed&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="type">const</span> n = <span class="number">4</span>;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; samples;</span><br><span class="line">samples.<span class="built_in">resize</span>(n);</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; pop &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">sample</span>(<span class="built_in">begin</span>(pop), <span class="built_in">end</span>(pop), <span class="built_in">begin</span>(samples), n, reng);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : samples) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 4 6 8(one case, may be other elems)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;random&gt;</span></span></span><br><span class="line"><span class="comment">// 32 bit mersenne twister engine</span></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> seed = std::random_device&#123;&#125;();</span><br><span class="line"><span class="keyword">auto</span> reng = std::mt19937&#123;seed&#125;;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> n = <span class="number">4</span>;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; samples;</span><br><span class="line">samples.<span class="built_in">resize</span>(n);</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; pop &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::ranges::<span class="built_in">sample</span>(pop, <span class="built_in">begin</span>(samples), n, reng);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : samples) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 4 6 8（one case, may be other elems）</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Move-Algorithms"><a href="#Move-Algorithms" class="headerlink" title="Move Algorithms"></a>Move Algorithms</h2><h3 id="move-C-11"><a href="#move-C-11" class="headerlink" title="move(C++11)"></a>move(C++11)</h3><ul>
+<li><p>into<br><img src="/2023/11/02/cpp/stl/range-copy-move/move.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="type">lines_t</span> = std::vector&lt;std::string&gt;;</span><br><span class="line"><span class="type">lines_t</span> src &#123;<span class="string">&quot;X&quot;</span>,<span class="string">&quot;Y&quot;</span>,<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>,<span class="string">&quot;D&quot;</span>,<span class="string">&quot;E&quot;</span>,<span class="string">&quot;F&quot;</span>,<span class="string">&quot;G&quot;</span>&#125;;</span><br><span class="line"><span class="type">lines_t</span> tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">move</span>(<span class="built_in">begin</span>(src)+<span class="number">2</span>, <span class="built_in">begin</span>(src)+<span class="number">7</span>, <span class="built_in">begin</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> <span class="type">const</span>&amp; x : tgt) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// A B C D E</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> X = std::vector&lt;std::vector&lt;<span class="type">int</span>&gt;&gt;;</span><br><span class="line">X v &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;, &#123;<span class="number">4</span>,<span class="number">5</span>&#125;, &#123;<span class="number">7</span>,<span class="number">8</span>&#125;&#125;;</span><br><span class="line">X w; w.<span class="built_in">resize</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">move</span>(<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">end</span>(v), <span class="built_in">begin</span>(w)); <span class="comment">// v: &#123;&#123;1,2,3&#125;,&#123;&#125;,&#123;&#125;&#125;, w: &#123;&#123;4,5&#125;,&#123;7,8&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">v.<span class="built_in">erase</span>(<span class="built_in">begin</span>(v)+<span class="number">1</span>, <span class="built_in">end</span>(v)); <span class="comment">// v: &#123;&#123;1,2,3&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="type">lines_t</span> = std::vector&lt;std::string&gt;;</span><br><span class="line"><span class="type">lines_t</span> src &#123;<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>,<span class="string">&quot;D&quot;</span>,<span class="string">&quot;E&quot;</span>&#125;;</span><br><span class="line"><span class="type">lines_t</span> tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(<span class="number">8</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> ends = std::ranges::<span class="built_in">move</span>(src, <span class="built_in">begin</span>(tgt)+<span class="number">1</span>);</span><br><span class="line">for_each(<span class="built_in">begin</span>(tgt)+<span class="number">1</span>, ends.out, [](<span class="keyword">auto</span> <span class="type">const</span>&amp; x) &#123; </span><br><span class="line">  std::cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;); <span class="comment">// A B C D E</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="move-backward-C-11"><a href="#move-backward-C-11" class="headerlink" title="move_backward(C++11)"></a>move_backward(C++11)</h3><ul>
+<li><p>into<br><img src="/2023/11/02/cpp/stl/range-copy-move/move_backward.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="type">lines_t</span> = std::vector&lt;std::string&gt;;</span><br><span class="line"><span class="type">lines_t</span> src &#123;<span class="string">&quot;X&quot;</span>,<span class="string">&quot;Y&quot;</span>,<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>,<span class="string">&quot;D&quot;</span>,<span class="string">&quot;E&quot;</span>,<span class="string">&quot;F&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">lines_t</span> tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">move_backward</span>(<span class="built_in">begin</span>(src)+<span class="number">2</span>, <span class="built_in">begin</span>(src)+<span class="number">7</span>, <span class="built_in">end</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> <span class="type">const</span>&amp; x : tgt) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// A B C D E</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="type">lines_t</span> = std::vector&lt;std::string&gt;;</span><br><span class="line"><span class="type">lines_t</span> src &#123;<span class="string">&quot;A&quot;</span>,<span class="string">&quot;B&quot;</span>,<span class="string">&quot;C&quot;</span>,<span class="string">&quot;D&quot;</span>,<span class="string">&quot;E&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">lines_t</span> tgt;</span><br><span class="line">tgt.<span class="built_in">resize</span>(<span class="number">7</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> ends = std::ranges::<span class="built_in">move_backward</span>(src, <span class="built_in">end</span>(tgt));</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> <span class="type">const</span>&amp; x : tgt) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// A B C D E</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="swap-ranges"><a href="#swap-ranges" class="headerlink" title="swap_ranges"></a>swap_ranges</h3><ul>
+<li><p>intro<br><img src="/2023/11/02/cpp/stl/range-copy-move/swap_ranges.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; r1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; r2 &#123;<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// swap subranges (as shown in image):</span></span><br><span class="line"><span class="built_in">swap_ranges</span>(<span class="built_in">begin</span>(r1)+<span class="number">1</span>, <span class="built_in">begin</span>(r1)+<span class="number">5</span>, <span class="built_in">begin</span>(r2)+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : r1) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 0 8 7 6 5 5</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : r2) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 9 1 2 3 4 3 1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">9</span>&#125;;</span><br><span class="line"></span><br><span class="line">std::ranges::<span class="built_in">swap_ranges</span>(range1, range2);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : range1) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 8 7 6 5</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : range2) &#123; cout &lt;&lt; x &lt;&lt;<span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 2 3 4 9 9</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Leo Ge
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/" title="STL - Range Copy&#x2F;Move Algorithms">https://gyhaoran.github.io/2023/11/02/cpp/stl/range-copy-move/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/11/01/cpp/stl/numeric-operations/" rel="prev" title="STL - Numeric Operations">
+                  <i class="fa fa-chevron-left"></i> STL - Numeric Operations
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/11/03/cpp/stl/range-utilities/" rel="next" title="STL - Range Utilities">
+                  STL - Range Utilities <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS" sid="0f178c375cb14c843d56f253eb2e5d5a"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Leo Ge</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">14k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">52 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("06/30/2023 11:03:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/gyhaoran" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cywKMio1u","appkey":"804af93d76e3f080dbb3d3ddaa361b28","count":true}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>

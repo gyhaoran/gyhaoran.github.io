@@ -152,13 +152,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -192,7 +192,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/10/01/non-modifying-part1/">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/10/02/cpp/stl/non-modifying-part2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -210,7 +210,205 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/10/01/non-modifying-part1/" class="post-title-link" itemprop="url">STL - Non-Modifying Operations 上</a>
+          <a href="/2023/10/02/cpp/stl/non-modifying-part2/" class="post-title-link" itemprop="url">STL - Non-Modifying Operations 中</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-02 09:13:14" itemprop="dateCreated datePublished" datetime="2023-10-02T09:13:14+08:00">2023-10-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-23 20:42:01" itemprop="dateModified" datetime="2024-08-23T20:42:01+08:00">2024-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Standard-Library-Algorithms/" itemprop="url" rel="index"><span itemprop="name">Standard Library Algorithms</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="STL - Non-Modifying Operations 中" href="/2023/10/02/cpp/stl/non-modifying-part2/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::3ca6f9ce0ce196e7e4fb10ce83dd8887" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>980</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>A Simple Introduction to C++ Standard Library Algorithms: Non-Modifying Operations Topics.</p>
+</blockquote>
+<h2 id="Comparing-Ranges"><a href="#Comparing-Ranges" class="headerlink" title="Comparing Ranges"></a>Comparing Ranges</h2><h3 id="equal"><a href="#equal" class="headerlink" title="equal"></a>equal</h3><ul>
+<li><p>intro<br>uses <code>operator ==</code> for comparing elements; alternatively a custom <code>function(object)</code> can be passed as additional argument</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// true, if all elem in both range are equal</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2)</span></span>;       <span class="comment">// use  v1 == v2</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2, pred)</span></span>; <span class="comment">// use pred(v1, v2)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2, end2)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">equal</span><span class="params">(begin1, end1, begin2, end2, pred)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ranges::equal</span><span class="params">(range1, range2)</span></span>;    <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; r1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; r2 &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">equal</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2));  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// compare other subranges:</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">equal</span>(<span class="built_in">begin</span>(r1)+<span class="number">1</span>, <span class="built_in">begin</span>(r1)+<span class="number">7</span>, <span class="built_in">begin</span>(r2), <span class="built_in">begin</span>(r2)+<span class="number">6</span>);  <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// custom type</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">P</span> &#123; <span class="type">int</span> x; <span class="type">char</span> q; &#125;;</span><br><span class="line">std::vector&lt;P&gt; a &#123; P&#123;<span class="number">1</span>,<span class="string">&#x27;n&#x27;</span>&#125;, P&#123;<span class="number">2</span>,<span class="string">&#x27;m&#x27;</span>&#125; &#125;;</span><br><span class="line">std::vector&lt;P&gt; b &#123; P&#123;<span class="number">1</span>,<span class="string">&#x27;y&#x27;</span>&#125;, P&#123;<span class="number">2</span>,<span class="string">&#x27;z&#x27;</span>&#125; &#125;;</span><br><span class="line"><span class="comment">// compare &#x27;P&#x27;s only by member &#x27;x&#x27;</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">equal</span>(<span class="built_in">begin</span>(a),<span class="built_in">end</span>(a), <span class="built_in">begin</span>(b),<span class="built_in">end</span>(b), </span><br><span class="line">              [](P p1, P p2) &#123; <span class="keyword">return</span> p1.x == p2.x; &#125; );  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">equal</span>(range1, range2);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="mismatch"><a href="#mismatch" class="headerlink" title="mismatch"></a>mismatch</h3><ul>
+<li><p>intro<br>returns a std::pair of iterators to the first mismatching elements in 2 ranges<br>uses operator &#x3D;&#x3D; for comparing elements; alternatively a custom function(object) can be passed as additional argument</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2)</span></span>;</span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2, pred)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2, end2)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(begin1, end1, begin2, end2, pred)</span></span>; <span class="comment">// c++14</span></span><br><span class="line"></span><br><span class="line"><span class="function">pair&lt;it1, it2&gt; <span class="title">mismatch</span><span class="params">(range1, range2)</span></span>;    <span class="comment">// c++20</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; r1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; r2 &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// compare subranges (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> p = <span class="built_in">mismatch</span>(<span class="built_in">begin</span>(r1)+<span class="number">2</span>, <span class="built_in">begin</span>(r1)+<span class="number">9</span>, <span class="built_in">begin</span>(r2)+<span class="number">1</span>);</span><br><span class="line"><span class="comment">// != end-of-range ⇒ mismatch</span></span><br><span class="line"><span class="keyword">if</span> (p.first  != <span class="built_in">begin</span>(r1)+<span class="number">9</span>) &#123; <span class="keyword">auto</span> p1value = *p.first;  &#125;  <span class="comment">// 6</span></span><br><span class="line"><span class="keyword">if</span> (p.second != <span class="built_in">end</span>(r2))     &#123; <span class="keyword">auto</span> p2value = *p.second; &#125;  <span class="comment">// 7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// compare entire containers:</span></span><br><span class="line"><span class="keyword">auto</span> q = <span class="built_in">mismatch</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2));</span><br><span class="line"><span class="keyword">if</span> (q.first != <span class="built_in">end</span>(r1)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> q1value = *q.first;  <span class="comment">// 0</span></span><br><span class="line">  <span class="keyword">auto</span> q1index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(r1), q.first);  <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (q.second != <span class="built_in">end</span>(r2)) &#123;</span><br><span class="line">  <span class="keyword">auto</span> q2value = *q.second;  <span class="comment">// 1</span></span><br><span class="line">  <span class="keyword">auto</span> q2index = <span class="built_in">distance</span>(<span class="built_in">begin</span>(r2), q.second);  <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> [p1, p2] = std::ranges::<span class="built_in">mismatch</span>(range1, range2);</span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> value1 = *p1;  <span class="comment">// 6</span></span><br><span class="line"><span class="keyword">auto</span> <span class="type">const</span> value2 = *p2;  <span class="comment">// 7</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Binary-Search-of-Sorted-Ranges"><a href="#Binary-Search-of-Sorted-Ranges" class="headerlink" title="Binary Search of Sorted Ranges"></a>Binary Search of Sorted Ranges</h2><p>Searching one element in a sorted sequence of N elements can be done in O(log N) steps.<br>Finding an element in an unsorted sequence would take N steps in the worst case.</p>
+<h3 id="binary-search"><a href="#binary-search" class="headerlink" title="binary_search"></a>binary_search</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/cpp/stl/non-modifying-part2/binary_search.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">// search in subrange (as in image):</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">binary_search</span>(<span class="built_in">begin</span>(v)+<span class="number">2</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, <span class="number">4</span>);  <span class="comment">// true</span></span><br><span class="line"><span class="comment">// search in entire vector:</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">binary_search</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">8</span>);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">binary_search</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">9</span>);  <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">binary_search</span>(v, <span class="number">4</span>);  <span class="comment">// true</span></span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">binary_search</span>(v, <span class="number">9</span>);  <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound"></a>lower_bound</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/cpp/stl/non-modifying-part2/lower_bound.png" alt="lower_bound"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">// find in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">lower_bound</span>(<span class="built_in">begin</span>(v)+<span class="number">3</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// find in entire vector</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">lower_bound</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *j;  <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">lower_bound</span>(v, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound"></a>upper_bound</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/cpp/stl/non-modifying-part2/upper_bound.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"><span class="comment">// find in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> i = <span class="built_in">upper_bound</span>(<span class="built_in">begin</span>(v)+<span class="number">3</span>, <span class="built_in">begin</span>(v)+<span class="number">7</span>, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 6</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// find in entire vector</span></span><br><span class="line"><span class="keyword">auto</span> j = <span class="built_in">upper_bound</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">2</span>);</span><br><span class="line"><span class="keyword">if</span> (j != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *j;  <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> i = std::ranges::<span class="built_in">upper_bound</span>(v, <span class="number">5</span>);</span><br><span class="line"><span class="keyword">if</span> (i != <span class="built_in">end</span>(v)) &#123;  <span class="comment">// true ⇒ found</span></span><br><span class="line">  cout &lt;&lt; *i;  <span class="comment">// 6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="equal-range"><a href="#equal-range" class="headerlink" title="equal_range"></a>equal_range</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/cpp/stl/non-modifying-part2/equal_range.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// find in subrange (as shown in image):</span></span><br><span class="line"><span class="keyword">auto</span> r5 = <span class="built_in">equal_range</span>(<span class="built_in">begin</span>(v)+<span class="number">3</span>, <span class="built_in">begin</span>(v)+<span class="number">11</span>, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// erase range of &#x27;5&#x27;</span></span><br><span class="line">v.<span class="built_in">erase</span>(r5.first, r5.second);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : v) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 1 2 3 4 6 6 7 7 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// find in entire vector</span></span><br><span class="line"><span class="keyword">auto</span> r6 = <span class="built_in">equal_range</span>(<span class="built_in">begin</span>(v), <span class="built_in">end</span>(v), <span class="number">6</span>);</span><br><span class="line"><span class="comment">// erase range of &#x27;6&#x27;</span></span><br><span class="line">v.<span class="built_in">erase</span>(r6.first, r6.second);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : v) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 1 1 2 3 4 7 7 8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> [r5b,r5e] = std::ranges::<span class="built_in">equal_range</span>(v, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// erase range</span></span><br><span class="line">v.<span class="built_in">erase</span>(r5b, r5e);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : v) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 3 4 6 6 7</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/cpp/stl/non-modifying-part2/includes.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; r1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; r2 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="comment">// as shown in image</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">includes</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2)+<span class="number">1</span>, <span class="built_in">begin</span>(r2)+<span class="number">5</span>);  <span class="comment">// true</span></span><br><span class="line"><span class="comment">// entire r2 in r1?</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">includes</span>(<span class="built_in">begin</span>(r1), <span class="built_in">end</span>(r1), <span class="built_in">begin</span>(r2), <span class="built_in">end</span>(r2));  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; range1 &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; range2 &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line">cout &lt;&lt; std::ranges::<span class="built_in">includes</span>(range1, range2);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Merging"><a href="#Merging" class="headerlink" title="Merging"></a>Merging</h2><p>Two sorted sequences can be merged into one sorted sequence in linear time.</p>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><ul>
+<li><p>intro<br><img src="/2023/10/02/cpp/stl/non-modifying-part2/merge.png" alt="alt text"></p>
+</li>
+<li><p>example</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; in1 &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; in2 &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// make sure output can fit all elements</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; out;</span><br><span class="line">out.<span class="built_in">resize</span>(in1.<span class="built_in">size</span>() + in2.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line"><span class="built_in">merge</span>(<span class="built_in">begin</span>(in1), <span class="built_in">end</span>(in1), <span class="built_in">begin</span>(in2), <span class="built_in">end</span>(in2), <span class="built_in">begin</span>(out));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : out) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 0 1 2 3 4 5 6 7 8</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>c++20</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; in1 &#123;<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; in2 &#123;<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// make sure output can fit all elements</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; out;</span><br><span class="line">out.<span class="built_in">resize</span>(in1.<span class="built_in">size</span>() + in2.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line">std::ranges::<span class="built_in">merge</span>(in1, in2, <span class="built_in">begin</span>(out));</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> x : out) &#123; cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span>; &#125;  <span class="comment">// 0 1 2 3 4 5 6 7 8</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hackingcpp.com/cpp/std/algorithms.html">Hacking cpp Standard Library Algorithms</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/10/01/cpp/stl/non-modifying-part1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="Leo Ge">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Leo's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/01/cpp/stl/non-modifying-part1/" class="post-title-link" itemprop="url">STL - Non-Modifying Operations 上</a>
         </h2>
 
         <div class="post-meta-container">
@@ -236,11 +434,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Standard-Library-Algorithms/" itemprop="url" rel="index"><span itemprop="name">Standard Library Algorithms</span></a>
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+          <a href="/categories/Standard-Library-Algorithms/" itemprop="url" rel="index"><span itemprop="name">Standard Library Algorithms</span></a>
         </span>
     </span>
 
@@ -253,8 +451,8 @@
       </span>
       <span class="post-meta-item-text">Changyan：</span>
     
-    <a title="STL - Non-Modifying Operations 上" href="/2023/10/01/non-modifying-part1/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::1935aea202517534a7861d6f334bfad7" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="STL - Non-Modifying Operations 上" href="/2023/10/01/cpp/stl/non-modifying-part1/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::8913f1e836e985971582ebe5c9809ea9" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -384,7 +582,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/09/03/read-life/">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/09/03/thinking/read-life/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -402,7 +600,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/09/03/read-life/" class="post-title-link" itemprop="url">读书和生活</a>
+          <a href="/2023/09/03/thinking/read-life/" class="post-title-link" itemprop="url">读书和生活</a>
         </h2>
 
         <div class="post-meta-container">
@@ -441,8 +639,8 @@
       </span>
       <span class="post-meta-item-text">Changyan：</span>
     
-    <a title="读书和生活" href="/2023/09/03/read-life/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::f436bb98841286f5a13fb2c888f0869f" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="读书和生活" href="/2023/09/03/thinking/read-life/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::ffdc289f7fb8e48f8bf65610a63c8ba2" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -490,7 +688,7 @@
 <blockquote>
 <p>子曰：“士志于道，而耻恶衣恶食者，未足与议也”</p>
 </blockquote>
-<p><img src="/2023/09/03/read-life/library.jpg" alt="图书馆标语"></p>
+<p><img src="/2023/09/03/thinking/read-life/library.jpg" alt="图书馆标语"></p>
 <p>作家梁晓声在《读书是最对得起付出的一件事》一书中说到：“寂寞是对人性的缓慢的破坏人啊，为了使自己具有抵抗寂寞的能力，读书吧”</p>
 <h3 id="阅读的投资回报率"><a href="#阅读的投资回报率" class="headerlink" title="阅读的投资回报率"></a>阅读的投资回报率</h3><p>作为一个理工生，做一件事情很喜欢去考虑投资回报率</p>
 <p>一般高中生阅读现代文的速度不少于600字&#x2F;分钟。我们就按每分钟600字估算，每小时就是3.6万字，因人而异，这里只是简单做个估算；</p>
@@ -550,7 +748,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/07/19/plugin/">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/07/19/cpp/architecture/plugin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -568,7 +766,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/19/plugin/" class="post-title-link" itemprop="url">Summary of Plugin in C++</a>
+          <a href="/2023/07/19/cpp/architecture/plugin/" class="post-title-link" itemprop="url">Summary of Plugin in C++</a>
         </h2>
 
         <div class="post-meta-container">
@@ -607,8 +805,8 @@
       </span>
       <span class="post-meta-item-text">Changyan：</span>
     
-    <a title="Summary of Plugin in C++" href="/2023/07/19/plugin/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::6836b2fb001a87ccbfe37c3c2360cd9a" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="Summary of Plugin in C++" href="/2023/07/19/cpp/architecture/plugin/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::295c2514d07a608d3f9ddcc6a9285d36" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -647,7 +845,7 @@
 </ul>
 <h2 id="Why-We-Need-Plugin"><a href="#Why-We-Need-Plugin" class="headerlink" title="Why We Need Plugin?"></a>Why We Need Plugin?</h2><p>我们的软件系统往往是要面向持续性的迭代的，在开发之初很难把所有需要支持的功能都想清楚，有时候还需要借助社区的力量去持续生产新的功能点，或者优化已有的功能。这就需要我们的软件系统具备一定的可扩展性。插件模式就是我们常常选用的方法。</p>
 <h2 id="What-is-Plugin"><a href="#What-is-Plugin" class="headerlink" title="What is Plugin"></a>What is Plugin</h2><p>插件是安装在应用程序上的附加组件，扩展了系统的功能，它实现了系统的接口，但是插件通常不能独立运行。<br>例如，如果你想在网站上观看视频，您可能需要一个插件来执行此操作。如果未安装该插件，你的浏览器可能将无法播放视频。</p>
-<p><img src="/2023/07/19/plugin/plugin-architecture.png" alt="Plugin Architecture"></p>
+<p><img src="/2023/07/19/cpp/architecture/plugin/plugin-architecture.png" alt="Plugin Architecture"></p>
 <h3 id="Rules-for-C-Plugin"><a href="#Rules-for-C-Plugin" class="headerlink" title="Rules for C++ Plugin"></a>Rules for C++ Plugin</h3><p>其实，插件在概念上不是C++语言的一部分。相反，插件是操作系统层面的概念，即OS如何加载动态链接库(通常，动态库的后缀，Windows .dll, linux .so, MAC OS .dylib)。对于任何规模非常大的项目，应用程序通常分为一个主程序文件和若干动态库组成</p>
 <ol>
 <li>在插件中分配的内存必须在同一插件中释放</li>
@@ -781,7 +979,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/07/01/non-modifying-part2/history-article/">
+    <link itemprop="mainEntityOfPage" href="https://gyhaoran.github.io/2023/07/01/cpp/stl/non-modifying-part2/history-article/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -799,7 +997,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/07/01/non-modifying-part2/history-article/" class="post-title-link" itemprop="url">2023年以前的文章</a>
+          <a href="/2023/07/01/cpp/stl/non-modifying-part2/history-article/" class="post-title-link" itemprop="url">2023年以前的文章</a>
         </h2>
 
         <div class="post-meta-container">
@@ -838,8 +1036,8 @@
       </span>
       <span class="post-meta-item-text">Changyan：</span>
     
-    <a title="2023年以前的文章" href="/2023/07/01/non-modifying-part2/history-article/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::3e62fb49e7b4d838fa17cfed6887a45c" class="cy_cmt_count" itemprop="commentCount"></span>
+    <a title="2023年以前的文章" href="/2023/07/01/cpp/stl/non-modifying-part2/history-article/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::e0ea924552e3b78f8c9e8cab56a05f80" class="cy_cmt_count" itemprop="commentCount"></span>
     </a>
   </span>
   
